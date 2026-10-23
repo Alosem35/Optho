@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ophtho Ultra-Condensed — Module 2 (Dr. Al-Soufi)</title>
+<style>
+  :root {
+    --bg: #f8fafc; --card: #ffffff; --text: #0f172a; --muted: #475569;
+    --border: #e2e8f0; --accent: #0284c7; --th-bg: #f1f5f9;
+    --buzz-bg: #fef08a; --buzz-txt: #854d0e;
+    --trap-bg: #ffe4e6; --trap-txt: #be123c;
+    --mech-bg: #e0f2fe; --mech-txt: #0369a1;
+  }
+  body.dark {
+    --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8;
+    --border: #334155; --accent: #38bdf8; --th-bg: #0f172a;
+    --buzz-bg: #713f12; --buzz-txt: #fef08a;
+    --trap-bg: #4c0519; --trap-txt: #fda4af;
+    --mech-bg: #082f49; --mech-txt: #7dd3fc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.42;
+    padding: 12px; font-size: 13px; transition: 0.2s;
+  }
+  .top-bar {
+    background: linear-gradient(135deg, #0f172a, #0369a1); color: #fff;
+    padding: 12px 16px; border-radius: 8px; margin-bottom: 10px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .top-bar h1 { font-size: 17px; font-weight: 800; }
+  .top-bar p { font-size: 11.5px; opacity: 0.85; }
+  .btn-toggle {
+    background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);
+    padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 11.5px; font-weight: 700;
+  }
+  .nav {
+    display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 12px;
+    position: sticky; top: 6px; z-index: 99; background: var(--bg); padding: 5px 0;
+  }
+  .nav a {
+    background: var(--card); color: var(--text); border: 1px solid var(--border);
+    text-decoration: none; padding: 4px 10px; border-radius: 5px; font-size: 11px; font-weight: 700;
+  }
+  .nav a:hover { border-color: var(--accent); color: var(--accent); }
+  .sec {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 14px; margin-bottom: 14px;
+  }
+  .sec-hdr {
+    font-size: 15px; font-weight: 800; color: var(--accent);
+    border-bottom: 2px solid var(--accent); padding-bottom: 5px; margin-bottom: 10px;
+    display: flex; justify-content: space-between;
+  }
+  h3 {
+    font-size: 13px; font-weight: 800; margin: 10px 0 6px 0;
+    color: var(--text); border-left: 3px solid var(--accent); padding-left: 6px;
+  }
+  ul, ol { padding-left: 16px; margin-bottom: 6px; }
+  li { margin-bottom: 3px; }
+  .g2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 10px; }
+  .g4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; }
+  .card-mini {
+    border: 1px solid var(--border); border-radius: 6px; padding: 7px 9px; background: var(--bg);
+  }
+  .card-mini b { color: var(--accent); display: block; font-size: 12px; margin-bottom: 2px; }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 12px; }
+  th, td { border: 1px solid var(--border); padding: 5px 7px; text-align: left; vertical-align: top; }
+  th { background: var(--th-bg); font-weight: 700; }
+  .bz { background: var(--buzz-bg); color: var(--buzz-txt); padding: 0 4px; border-radius: 3px; font-weight: 700; }
+  .trp { background: var(--trap-bg); color: var(--trap-txt); padding: 1px 5px; border-radius: 3px; font-weight: 700; font-size: 11.5px; }
+  .mech { background: var(--mech-bg); color: var(--mech-txt); padding: 4px 8px; border-radius: 5px; margin: 5px 0; font-size: 12px; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div>
+    <h1>⚡ OPHTHALMOLOGY ULTRA-CONDENSED — MODULE 2</h1>
+    <p>Dr. Ibrahim Al-Soufi: Lacrimal System • Orbit • Uveal Tract • Sclera • Vitreous (100% Bank Yield, Zero Fluff)</p>
+  </div>
+  <button class="btn-toggle" onclick="document.body.classList.toggle('dark')">🌓 Dark / Light</button>
+</div>
+
+<div class="nav">
+  <a href="#terms">🔤 Terminology</a>
+  <a href="#mm">🧠 Mind Map</a>
+  <a href="#ch1">1. Lacrimal System</a>
+  <a href="#ch2">2. The Orbit</a>
+  <a href="#ch3">3. Uveal Tract</a>
+  <a href="#ch4">4. Sclera &amp; Staphyloma</a>
+  <a href="#ch5">5. The Vitreous</a>
+</div>
+
+<!-- ==================== TERMINOLOGY ==================== -->
+<div id="terms" class="sec">
+  <div class="sec-hdr"><span>🔤 HIGH-YIELD KEYWORDS &amp; TERMINOLOGY</span><span>★★★★★</span></div>
+  <div class="g4">
+    <div class="card-mini"><b>Epiphora vs. Lacrimation</b>• <b>Epiphora:</b> Impaired tear <i>drainage</i> (block or CN VII pump failure).<br>• <b>Lacrimation:</b> Reflex <i>hypersecretion</i> (irritation/inflammation).</div>
+    <div class="card-mini"><b>DCR vs. DCT</b>• <b>DCR:</b> Anastomosis of lacrimal sac to <b>Middle Nasal Meatus</b>.<br>• <b>DCT:</b> Complete excision of lacrimal sac.</div>
+    <div class="card-mini"><b>Proptosis vs. Enophthalmos</b>• <b>Proptosis/Exophthalmos:</b> Forward protrusion (#1 = <b>Graves'</b>).<br>• <b>Enophthalmos:</b> Sunken globe (Blow-out fx, Horner's, Breast Ca).</div>
+    <div class="card-mini"><b>Aqueous Flare &amp; KPs</b>• <b>Flare:</b> Protein Tyndall haze in AC (<b>Earliest sign of Ant. Uveitis!</b>).<br>• <b>KPs:</b> Leukocytes on corneal endothelium (<b>Most diagnostic sign!</b>).</div>
+    <div class="card-mini"><b>Koeppe vs. Busacca Nodules</b>Seen in <b>Granulomatous Uveitis</b>:<br>• <b>Koeppe:</b> At <b>pupillary border</b>.<br>• <b>Busacca:</b> On <b>iris stroma</b>.</div>
+    <div class="card-mini"><b>Synechiae &amp; Pupillary Block</b>• <b>Post. Synechiae:</b> Iris-to-lens adhesion ($\rightarrow$ <b>Festooned pupil</b>).<br>• <b>Seclusio:</b> 360° ring adhesion $\rightarrow$ <b>Iris Bombé</b>.<br>• <b>Occlusio:</b> Membrane across pupil.</div>
+    <div class="card-mini"><b>Snowballs &amp; Snowbanking</b>Vitreous cellular aggregates &amp; pars plana exudates in <b>Intermediate Uveitis (Pars Planitis)</b>.</div>
+    <div class="card-mini"><b>Iridodialysis &amp; Rubeosis Iridis</b>• <b>Iridodialysis:</b> Iris root torn from ciliary body $\rightarrow$ <b>'D'-shaped pupil</b>.<br>• <b>Rubeosis Iridis:</b> Iris neovascularization (DM, CRVO, Uveitis).</div>
+    <div class="card-mini"><b>Sympathetic Ophthalmia</b>Bilateral granulomatous panuveitis <b>4–8 wks</b> post-trauma. Injured = <b>Exciting eye</b>; Fellow = <b>Sympathizing eye</b>.</div>
+    <div class="card-mini"><b>Endophthalmitis vs. Panophthalmitis</b>• <b>Endophthalmitis:</b> Inner cavities/coats only (motility intact).<br>• <b>Panophthalmitis:</b> All 3 coats + orbit (frozen globe, No PL).</div>
+    <div class="card-mini"><b>Ocular Staphyloma</b>Bulging of thinned cornea/sclera <b>lined internally by uveal tissue</b>. (<b>Posterior</b> = ONLY one with Normal IOP!).</div>
+    <div class="card-mini"><b>Muscae Volitantes</b>Physiological/degenerative floaters from vitreous liquefaction (<b>Synchysis</b>) &amp; collapse (<b>Syneresis</b>) in myopia/aging.</div>
+  </div>
+</div>
+
+<!-- ==================== MIND MAP ==================== -->
+<div id="mm" class="sec">
+  <div class="sec-hdr"><span>🧠 BIG-PICTURE MIND MAP (1-MINUTE OVERVIEW)</span><span>⚡</span></div>
+  <div class="g4">
+    <div class="card-mini">
+      <b>1. LACRIMAL SYSTEM</b>
+      • <b>Normal NLD:</b> Opens in <b>Inferior Meatus</b> (Valve of Hasner).<br>
+      • <b>Infant (&lt;6m) Watering/Pus:</b> Congenital NLD block $\rightarrow$ <b>Sac Massage + Antibiotics</b> ($\rightarrow$ Probing after 6m).<br>
+      • <b>Adult Chronic Dacryocystitis:</b> <i>Pneumococcus</i> reservoir (+ve Regurgitation test) $\rightarrow$ <b>Contraindicates Cataract Surgery!</b> Rx: <b>DCR (Middle Meatus)</b>.
+    </div>
+    <div class="card-mini">
+      <b>2. THE ORBIT</b>
+      • <b>Medial Wall:</b> Thinnest (Ethmoid; 🚫 <i>No Zygoma!</i>) $\rightarrow$ Ethmoiditis causes <b>Orbital Cellulitis</b>.<br>
+      • <b>Floor (Inferior):</b> <b>Blow-out fx</b> $\rightarrow$ Diplopia + Enophthalmos.<br>
+      • <b>Proptosis #1:</b> <b>Thyroid (Graves')</b> (#1 Unilateral &amp; Bilateral! Lid retraction = #1 sign; muscles: <b>IR &gt; MR</b>).<br>
+      • <b>Cellulitis vs. CST:</b> Unilateral vs. <b>Bilateral + Mastoid edema + CN III, IV, VI palsy</b>.
+    </div>
+    <div class="card-mini">
+      <b>3. UVEAL TRACT</b>
+      • <b>Parts:</b> Iris, Ciliary body (secretes aqueous), Choroid (🚫 <i>Not Schwalbe's or Bowman's!</i>).<br>
+      • <b>Ant. Uveitis:</b> #1 Idiopathic; #1 Systemic = <b>Ankylosing Spondylitis</b>. Flare (earliest), KPs (diagnostic), Miotic pupil. Rx: <b>Steroids + Atropine</b> (🚫 <i>No Miotics!</i>). #1 Comp = <b>PSC Cataract</b>.<br>
+      • <b>Post./Pan:</b> Toxoplasma (Cat; Clindamycin QID in pregnancy), Toxocara (Child 2–9y, PPV), Behçet (HLA-B5, hypopyon), VKH vs. Sympathetic Ophthalmia.
+    </div>
+    <div class="card-mini">
+      <b>4. SCLERA &amp; VITREOUS</b>
+      • <b>Blue Sclera:</b> Osteogenesis imperfecta, Ehlers-Danlos, Buphthalmos.<br>
+      • <b>Scleritis:</b> Boring night pain + <b>Rheumatoid Arthritis (#1)</b>.<br>
+      • <b>Staphylomas:</b> Intercalary (Limbus), Ciliary (2–8mm), Equatorial (Vortex v.), <b>Posterior (High Myopia — Normal IOP!)</b>.<br>
+      • <b>Vitreous (4 mL):</b> Hemorrhage (#1 <b>PDR</b>; <b>Trauma</b> in young; B-scan US) &amp; <b>Endophthalmitis</b> (Intravitreal Abx; PPV if PL).
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 1 ==================== -->
+<div id="ch1" class="sec">
+  <div class="sec-hdr"><span>1. THE LACRIMAL SYSTEM (EPIPHORA &amp; DACRYOCYSTITIS)</span><span>★★★★</span></div>
+  <div class="g2">
+    <div>
+      <h3>1.1 Anatomy &amp; Evaluation of Epiphora</h3>
+      <ul>
+        <li><b>Drainage Pathway:</b> Puncta $\rightarrow$ Canaliculi $\rightarrow$ Lacrimal Sac $\rightarrow$ Nasolacrimal Duct (NLD) $\rightarrow$ opens into <b>Inferior Nasal Meatus</b> (guarded by <b>Valve of Hasner</b>).</li>
+        <li><b>Lacrimal Pump:</b> Driven by <b>Orbicularis oculi (CN VII)</b>; paralysis $\rightarrow$ pump failure epiphora.</li>
+        <li><b>Causes of Epiphora (Obstructive vs. Pump):</b>
+          <ul>
+            <li><b>Punctal:</b> Stenosis or <b>Lower Lid Ectropion</b>.</li>
+            <li><b>Canalicular:</b> Obstruction / <i>Actinomyces</i> canaliculitis.</li>
+            <li><b>Nasolacrimal Duct (NLD — #1):</b> Congenital membrane or Adult acquired stenosis (<b>Chronic Dacryocystitis</b>).</li>
+            <li><b>Pump Failure:</b> <b>Facial nerve (CN VII) palsy</b>.</li>
+          </ul>
+        </li>
+        <li><b>Evaluation of Epiphora (4 Steps):</b> (1) Slit-lamp inspection (rule out trichiasis/ectropion), (2) <span class="bz">Lacrirnal Sac Regurgitation Test</span> (+ve reflux of mucopus on pressing sac = <b>Chronic Dacryocystitis</b>; <span class="trp">🚫 "Negative regurgitation test" is FALSE in chronic dacryocystitis!</span>), (3) <span class="bz">Fluorescein Dye Disappearance Test</span> (best in infants), (4) Diagnostic Syringing &amp; Probing.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>1.2 Congenital vs. Adult Chronic Dacryocystitis</h3>
+      <ul>
+        <li><b>Congenital Dacryocystitis (Neonatal Epiphora):</b>
+          <ul>
+            <li><b>Cause:</b> Imperforate membrane at <b>Valve of Hasner</b>.</li>
+            <li><b>DD of Neonatal Watering (3):</b> (1) <b>Congenital NLD obstruction (#1)</b> (+ve mucopus regurgitation, clear normal cornea), (2) <b>Congenital Glaucoma / Buphthalmos</b> (photophobia + large hazy cornea &gt;13 mm), (3) <b>Ophthalmia neonatorum</b> / Corneal abrasion.</li>
+            <li><b>Rx by Age:</b> <b>Up to 6–9 months (First-line!)</b> = <span class="bz">Lacrimal Sac Massage + Topical Antibiotics</span> | <b>Persistent &gt;6–9 months</b> = <span class="bz">Probing &amp; Syringing</span>.</li>
+          </ul>
+        </li>
+        <li><b>Adult Chronic Dacryocystitis:</b>
+          <ul>
+            <li><b>Organism (#1):</b> <span class="bz">Streptococcus pneumoniae (Pneumococcus)</span> (or <i>Staph. aureus</i>).</li>
+            <li><b>Complications:</b> Causes persistent unilateral conjunctivitis, <span class="bz">Pneumococcal Hypopyon Corneal Ulcer</span>, and post-op <b>Endophthalmitis</b>! (<span class="trp">🚫 Cataract surgery is STRICTLY CONTRAINDICATED until treated!</span>).</li>
+            <li><b>Rx of Choice:</b> <span class="bz">Dacryocystorhinostomy (DCR)</span> $\rightarrow$ bony opening made into the <span class="bz">Middle Nasal Meatus</span>! (Or <b>Dacryocystectomy [DCT]</b> in frail elderly).</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 2 ==================== -->
+<div id="ch2" class="sec">
+  <div class="sec-hdr"><span>2. THE ORBIT (PROPTOSIS, GRAVES' &amp; INFECTIONS)</span><span>★★★★★</span></div>
+  <div class="g2">
+    <div>
+      <h3>2.1 Orbital Anatomy, Blow-Out Fx &amp; Proptosis</h3>
+      <ul>
+        <li><b>Orbital Septum:</b> Anterior boundary separating <b>Preseptal Cellulitis</b> (lid swelling from insect bite/trauma; no proptosis, normal motility, Rx: systemic antibiotics) from <b>Orbital Cellulitis</b>.</li>
+        <li><b>Medial Wall (<span class="bz">Thinnest Wall!</span>):</b> Formed by Maxillary, Lacrimal, <b>Ethmoid (lamina papyracea)</b>, &amp; Sphenoid. (<span class="trp">🚫 Zygoma does NOT form the medial wall!</span>).</li>
+        <li><b>Superior Orbital Fissure:</b> Transmits CN III, IV, VI, V1 (nasociliary, frontal, lacrimal), ophthalmic veins. (<span class="trp">🚫 Facial nerve [CN VII] does NOT pass through SOF!</span>).</li>
+        <li><b>Blow-Out Fracture:</b> Blunt trauma (tennis ball/fist) $\rightarrow$ fractures <span class="bz">Inferior Wall (Orbital Floor)</span> $\rightarrow$ entraps IR/IO muscles $\rightarrow$ <span class="bz">Binocular Diplopia</span> (disappears on covering either eye!) + <b>Enophthalmos</b> + Infraorbital anesthesia. (<span class="trp">🚫 Does NOT require immediate Day-1 emergency surgery!</span>).</li>
+        <li><b>Proptosis Rules:</b>
+          <ul>
+            <li><b>#1 Cause Worldwide (Adult Unilateral AND Bilateral):</b> <span class="bz">Thyroid Eye Disease (Graves' / Dysthyroid Ophthalmopathy)</span>!</li>
+            <li><b>Axial Proptosis:</b> Graves', Optic nerve glioma, Orbital cellulitis. (<span class="trp">🚫 Lacrimal gland tumor causes NON-AXIAL / Eccentric proptosis!</span>).</li>
+            <li><b>Painful / Acute Proptosis Causes (4):</b> <b>Orbital Cellulitis</b>, <b>Cavernous Sinus Thrombosis</b>, <span class="bz">Orbital Pseudotumor</span> (idiopathic orbital inflammation), Trauma/Hemorrhage, <b>Rhabdomyosarcoma</b> (children).</li>
+            <li><b>Enophthalmos Causes:</b> Blow-out trauma, <span class="bz">Horner's Syndrome</span> (<span class="trp">🚫 Horner's NEVER causes proptosis!</span>), <span class="bz">Scirrhous Breast Ca metastasis</span>, Cachexia, Post-radiotherapy.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>2.2 Thyroid Eye Disease (Graves' / Thyrotoxicosis) ★★★★★</h3>
+      <div class="mech">🔬 Autoimmune GAG deposition &amp; edema enlarging extraocular muscle bellies (sparing tendons). Confirmed by <span class="bz">Orbital Ultrasonography / CT</span>.</div>
+      <ul>
+        <li><b>Eyelid Signs:</b>
+          <ul>
+            <li><span class="bz">Upper Lid Retraction (Dalrymple's Sign) &amp; Scleral Show:</span> <b>#1 Most common sign of Graves' disease!</b> (<span class="trp">🚫 Ptosis is NOT a sign of Graves'!</span>).</li>
+            <li><span class="bz">Lid Lag on Downgaze (Von Graefe's Sign)</span>.</li>
+            <li><b>Stellwag's Sign:</b> Infrequent blinking | <b>Enroth's:</b> Lid edema.</li>
+          </ul>
+        </li>
+        <li><b>Extraocular Muscle Involvement Order (<span class="bz">I M S L</span>):</b>
+          <ul>
+            <li><b>1st: <span class="bz">Inferior Rectus</span></b> (restricts elevation $\rightarrow$ diplopia) $\rightarrow$ <b>2nd: <span class="bz">Medial Rectus</span></b> (causes convergent squint!).</li>
+            <li><b>Möbius Sign:</b> Convergence weakness.</li>
+          </ul>
+        </li>
+        <li><b>Complications:</b> Axial Exophthalmos $\rightarrow$ <b>Lagophthalmos &amp; Exposure Keratopathy</b>, and Compressive Optic Neuropathy.</li>
+        <li><b>DD of Thyroid Ophthalmopathy:</b> Orbital cellulitis, Orbital pseudotumor, Cavernous sinus thrombosis, Carotid-cavernous fistula, Orbital tumors (Lymphoma, Glioma, Meningioma).</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>2.3 Master Differentiation: Orbital Cellulitis vs. Cavernous Sinus Thrombosis ★★★★★</h3>
+  <table>
+    <tr>
+      <th>Feature</th>
+      <th>Acute Orbital Cellulitis</th>
+      <th>Cavernous Sinus Thrombosis (CST)</th>
+    </tr>
+    <tr>
+      <td><b>Origin &amp; Site</b></td>
+      <td>Infection <b>behind</b> orbital septum (<span class="trp">🚫 NOT in front!</span>), secondary to <span class="bz">Ethmoiditis (#1)</span>.</td>
+      <td>Septic thrombosis of cavernous sinus from facial danger triangle, sinusitis, or orbital cellulitis.</td>
+    </tr>
+    <tr>
+      <td><b>Laterality</b></td>
+      <td>Strictly <span class="bz">Unilateral</span>.</td>
+      <td>Starts unilateral $\rightarrow$ <span class="bz">rapidly becomes BILATERAL</span>!</td>
+    </tr>
+    <tr>
+      <td><b>Symptoms</b></td>
+      <td>Severe ocular pain (worse on eye movement), high fever.</td>
+      <td><b>Profound systemic illness:</b> High fever, severe headache, vomiting, <b>drowsiness / coma</b>.</td>
+    </tr>
+    <tr>
+      <td><b>Clinical Signs</b></td>
+      <td>Lid edema, chemosis, axial proptosis, limited motility. (<i>Differentiated from Panophthalmitis by <b>Vision</b>: vision is preserved early in cellulitis vs. lost in panophthalmitis</i>).</td>
+      <td>Bilateral proptosis, <span class="bz">Mastoid Edema</span> (behind ear!), rapid <span class="bz">Cranial Nerve Palsies (CN III, IV, VI — VI earliest!)</span>, corneal anesthesia (V1), and <b>Bilateral Papilledema</b>.</td>
+    </tr>
+    <tr>
+      <td><b>Treatment</b></td>
+      <td><b>IV Antibiotics</b> + <b>Surgical Drainage Indications (2):</b> (1) <span class="bz">Orbital/Subperiosteal Abscess</span>, (2) <span class="bz">Deteriorating Vision</span> / no response in 48h.</td>
+      <td>Massive <b>High-dose IV Antibiotics + <span class="bz">Systemic Anticoagulation (Heparin)</span></b> + Corticosteroids.</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ==================== CHAPTER 3 ==================== -->
+<div id="ch3" class="sec">
+  <div class="sec-hdr"><span>3. THE UVEAL TRACT (UVEITIS &amp; ENDOPHTHALMITIS)</span><span>★★★★★</span></div>
+  <div class="g2">
+    <div>
+      <h3>3.1 Applied Anatomy &amp; Uveitis Classification</h3>
+      <ul>
+        <li><b>Uvea (Middle Layer):</b> (1) <b>Iris</b> (controls light entry), (2) <b>Ciliary Body</b> (<b>Pars plicata / Ciliary processes</b> secrete <b>Aqueous Humor</b> into Posterior Chamber [located <i>after iris</i>]; Ciliary muscle = Accommodation; <b>Pars plana</b> = safe surgical entry), (3) <b>Choroid</b>. (<span class="trp">🚫 Schwalbe's line &amp; Bowman's membrane are NOT uvea!</span>).</li>
+        <li><b>Anatomical Classification:</b>
+          <ul>
+            <li><b>Anterior (Iritis/Iridocyclitis):</b> Primary site = AC. <span class="bz">~50% are Idiopathic (#1 overall cause!)</span>.</li>
+            <li><b>Intermediate (<span class="bz">Pars Planitis</span> = idiopathic):</b> Primary site = <b>Vitreous</b> $\rightarrow$ floaters, vitritis, <span class="bz">"Snowball" opacities</span> &amp; snowbanking. Associated with <span class="bz">Multiple Sclerosis (MS)</span>.</li>
+            <li><b>Posterior:</b> Active <b>Choroiditis</b> = deep <b>round yellow nodule</b>; Active <b>Retinitis</b> = whitish retinal opacity (foveal lesion $\rightarrow$ central scotoma, least likely floaters; peripheral lesion $\rightarrow$ floaters).</li>
+            <li><b>Panuveitis:</b> Entire uvea (VKH, Sympathetic ophthalmia, Behçet).</li>
+          </ul>
+        </li>
+        <li><b>Course:</b> <b>Acute</b> = sudden, lasts $\le$<b>6 weeks</b> | <b>Chronic</b> = lasts &gt;<b>3 months</b>.</li>
+        <li><b>Pathology:</b> <b>Granulomatous</b> = Large greasy <span class="bz">Mutton-fat KPs</span> + <span class="bz">Koeppe's nodules</span> (pupillary border) &amp; <span class="bz">Busacca's nodules</span> (stroma) — seen in <b>Sarcoidosis</b> (bilateral hilar lymphadenopathy), TB, Syphilis, VKH, Sympathetic Ophthalmia.</li>
+        <li><b>Masquerade Syndromes:</b> Malignant = <span class="bz">Lymphoma</span>, Melanoma | Non-neoplastic = <span class="bz">Juvenile Xanthogranuloma</span>, Drug-induced.</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>3.2 Acute Anterior Uveitis (Iridocyclitis) ★★★★★</h3>
+      <ul>
+        <li><b>Symptoms:</b> Dull aching pain (worse at night), photophobia, watery tearing, and <span class="bz">Diminution of vision (Constant symptom!)</span>. (<span class="trp">🚫 NO mucopurulent discharge!</span>).</li>
+        <li><b>5 Basic Clinical Signs:</b>
+          <ol>
+            <li><b>Ciliary Injection</b> (circumcorneal flush).</li>
+            <li><span class="bz">Aqueous Flare &amp; Cells</span> (<b>Earliest feature &amp; surest sign of active inflammation!</b> Seen by Slit-lamp Biomicroscope).</li>
+            <li><span class="bz">Keratic Precipitates (KPs)</span> on corneal endothelium (<b>Most diagnostic sign!</b>).</li>
+            <li><b>Muddy Iris</b> with loss of pattern.</li>
+            <li><span class="bz">Small, Constricted (Miosis), Irregular Pupil</span> (becomes <span class="bz">Festooned</span> with atropine due to <b>Posterior Synechiae</b> between iris &amp; anterior lens).</li>
+          </ol>
+        </li>
+        <li><b>IOP in Uveitis:</b> Can be <b>increased OR decreased</b>.</li>
+        <li><b>Complications of Chronic Iridocyclitis:</b>
+          <ol>
+            <li><span class="bz">Complicated Cataract (PSC — #1 most common complication!)</span>.</li>
+            <li><b>Posterior Synechiae $\rightarrow$ Seclusio Pupillae $\rightarrow$ Iris Bombé $\rightarrow$ Secondary Angle-Closure Glaucoma</b>; <span class="bz">Occlusio Pupillae</span> (white membrane across pupil in <b>JIA</b>).</li>
+            <li><span class="bz">Rubeosis Iridis</span> (new iris vessels), Band keratopathy, CME, &amp; <b>Phthisis bulbi</b>.</li>
+          </ol>
+        </li>
+        <li><b>Treatment:</b>
+          <ul>
+            <li><b>1. Cycloplegics (<span class="bz">Atropine 1%</span> — Drug of Choice!):</b> <span class="bz">Relieves ciliary pain &amp; prevents/breaks Posterior Synechiae</span>. (<span class="trp">🚫 Miotics [Pilocarpine] are STRICTLY CONTRAINDICATED!</span>).</li>
+            <li><b>2. <span class="bz">Corticosteroids</span> (#1 anti-inflammatory):</b> Treat inflammation &amp; prevent CME (<span class="trp">🚫 Do NOT prevent synechiae!</span>). Start specific posterior uveitis Rx when <b>CME present &amp; VA falls to &lt;<span class="bz">6/12</span></b>.</li>
+            <li><b>3. Uveitic Glaucoma Rx:</b> Steroids + Atropine + Beta-blockers / CAIs (<span class="trp">🚫 Never Miotics!</span>).</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>3.3 Specific Systemic &amp; Infectious Uveitic Syndromes (80-Q Bank Mastery) ★★★★★</h3>
+  <table>
+    <tr>
+      <th>Disease</th>
+      <th>Association / Host</th>
+      <th>Key Clinical Features &amp; Diagnostic Criteria</th>
+      <th>Treatment &amp; Exam Traps</th>
+    </tr>
+    <tr>
+      <td><b>HLA-B27 &amp; Reiter's</b></td>
+      <td><span class="bz">HLA-B27</span> (~20% of AAU).<br><b>#1 Systemic Disease = <span class="bz">Ankylosing Spondylitis</span></b>.</td>
+      <td><b>Reiter Syndrome Triad &amp; Sequence:</b> <span class="bz">1. Urethritis $\rightarrow$ 2. Conjunctivitis $\rightarrow$ 3. Arthritis</span> (+ acute iritis).</td>
+      <td>Topical Steroids + Atropine.</td>
+    </tr>
+    <tr>
+      <td><b>Behçet Disease</b></td>
+      <td><span class="bz">HLA-B5</span>.<br>Pathology: <span class="bz">Obliterative vasculitis</span>.</td>
+      <td>Triad: Recurrent <b>Oral ulcers + Genital ulcers + Bilateral Iridocyclitis with <span class="bz">Hypopyon</span></b>.<br><b>End-stage:</b> Optic/retinal atrophy, gliosis, sheathing, vessel attenuation &amp; ghosting (<span class="trp">🚫 NO Choroidal Neovascularization!</span>).</td>
+      <td>Systemic Steroids + Immunosuppressants.</td>
+    </tr>
+    <tr>
+      <td><b>VKH Syndrome</b></td>
+      <td>Autoimmune vs melanocytes.<br><span class="bz">NO history of penetrating trauma!</span></td>
+      <td><b>Strictly Bilateral</b> panuveitis.<br>• <b>Harada:</b> Meningismus, tinnitus, <span class="bz">CSF lymphocytosis</span>, <b>Exudative RDs</b>.<br>• <b>Skin/Hair:</b> <span class="bz">Vitiligo, Alopecia, Poliosis</span>.</td>
+      <td>High-dose Systemic Steroids. (<span class="trp">🚫 Unilateral uveitis or trauma rules out VKH!</span>).</td>
+    </tr>
+    <tr>
+      <td><b>Sympathetic Ophthalmia</b></td>
+      <td>Penetrating trauma with <span class="bz">uveal prolapse</span>.</td>
+      <td>Bilateral granulomatous panuveitis starting <span class="bz">4–6 weeks (4–8 wks)</span> post-injury. Prodrome = <b>Photophobia</b> &amp; near vision blurring (loss of accommodation). (<i>Rare in acute suppuration!</i>).</td>
+      <td>Prophylactic Enucleation of blind exciting eye within 14d; Systemic Steroids + Atropine.</td>
+    </tr>
+    <tr>
+      <td><b>Toxoplasmosis</b></td>
+      <td><i>T. gondii</i>. Definitive host: <span class="bz">Cat</span>. (Uncooked meat, pica, congenital; <span class="trp">🚫 NOT droplets!</span>).</td>
+      <td>Congenital: Convulsions, intracranial calcification, hydrocephalus + macular scars (<span class="trp">🚫 No isolated iritis!</span>).<br>Adult: Necrotizing retinitis + vitritis + papillitis (<span class="trp">🚫 NO Scleritis &amp; NO Snowbanking!</span>).</td>
+      <td>• <b>Pregnancy Drug of Choice:</b> <span class="bz">Clindamycin 300 mg QID for 21 days</span>.<br>• <b>Triple Therapy:</b> Pyrimethamine + <b>Sulfadiazine</b> (monitor for <span class="bz">BM suppression/thrombocytopenia &amp; Renal + SJS</span>!) + Prednisolone.<br>• <b>Azithromycin:</b> <span class="bz">500 mg for 3 days</span>.</td>
+    </tr>
+    <tr>
+      <td><b>Toxocariasis</b></td>
+      <td><i>Toxocara canis</i> (dog worm; history of <b>pica</b>, pneumonitis, abdominal pain).</td>
+      <td>Presents at age <span class="bz">2–9 years</span> (<b>differentiated from Retinoblastoma by AGE!</b>) with Leukocoria/strabismus as: Posterior pole granuloma, Peripheral granuloma, or Endophthalmitis-like picture. <b>2/3 have permanent visual loss</b>.</td>
+      <td>Anthelmintics + Steroids + <span class="bz">Pars Plana Vitrectomy (PPV)</span>.</td>
+    </tr>
+    <tr>
+      <td><b>Viral Retinitis (ARN &amp; CMV)</b></td>
+      <td><b>ARN:</b> <span class="bz">HSV (young) vs VZV (old)</span>.<br><b>AIDS:</b> <span class="bz">CMV</span>.</td>
+      <td><b>ARN Triad:</b> (1) Confluent necrotizing retinitis, (2) Arteritis/periphlebitis, (3) Vitritis (<span class="trp">🚫 NOT Exudative RD!</span>). Occasionally affects AIDS patients.</td>
+      <td>IV Acyclovir (ARN); Ganciclovir (CMV).</td>
+    </tr>
+  </table>
+
+  <h3>3.4 Acute Bacterial Endophthalmitis ★★★★</h3>
+  <ul>
+    <li><b>Definition &amp; Incidence:</b> Purulent inflammation of internal eye cavities/coats (aqueous/vitreous) sparing sclera (~<b>1:1,000</b> post-cataract surgery; #1 source = <span class="bz">patient's own external flora</span>).</li>
+    <li><b>Clinical Features (24–72h post-op):</b> Severe pain, visual loss, lid edema, hypopyon, vitritis, and <span class="bz">Absent Red Reflex</span>.</li>
+    <li><b>Rx:</b> Vitreous aspirate (<i>store overnight at <span class="bz">37°C</span>!</i>) + Immediate <span class="bz">Intravitreal Antibiotics</span> (Vancomycin + Ceftazidime; <span class="trp">🚫 Systemic antibiotics are NOT beneficial!</span>) + <span class="bz">Pars Plana Vitrectomy (PPV) ONLY if vision is Perception of Light (PL)</span>!</li>
+  </ul>
+</div>
+
+<!-- ==================== CHAPTER 4 ==================== -->
+<div id="ch4" class="sec">
+  <div class="sec-hdr"><span>4. THE SCLERA (SCLERITIS &amp; OCULAR STAPHYLOMAS)</span><span>★★★★</span></div>
+  <div class="g2">
+    <div>
+      <h3>4.1 Blue Sclera, Scleritis &amp; Scleral Rupture</h3>
+      <ul>
+        <li><b>Blue Sclera Causes:</b> <span class="bz">Osteogenesis Imperfecta</span>, <span class="bz">Ehlers-Danlos Syndrome</span>, Marfan, Buphthalmos.</li>
+        <li><b>Episcleritis:</b> Benign, superficial; blanches with phenylephrine. Differs from phlycten in being <b>tender &amp; flat</b>.</li>
+        <li><b>Diffused / Nodular Scleritis:</b> Severe deep granulomatous scleral inflammation $\rightarrow$ <span class="bz">intense "boring" pain waking patient at night</span>; violaceous (no blanching).
+          <ul>
+            <li><b>#1 Systemic Association:</b> <span class="bz">Rheumatoid Arthritis</span> (causes Scleritis, Episcleritis, Corneal melts, Sjögren's; <span class="trp">🚫 NOT ischemic optic atrophy!</span>).</li>
+          </ul>
+        </li>
+        <li><b>Blunt Scleral Rupture:</b> Weakest site = Superonasal limbus at <span class="bz">Canal of Schlemm</span> (blunt hit from down &amp; out ruptures sclera <b>Up &amp; In</b>!). Sure sign = <span class="bz">Prolapsed intraocular contents</span>.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>4.2 The 5 Ocular Staphylomas (Ectasia Lined by Uvea)</h3>
+      <table>
+        <tr><th>Type</th><th>Site &amp; Uveal Lining</th><th>Key Cause &amp; Exam Pearl</th></tr>
+        <tr><td><b>1. Anterior</b></td><td>Pseudocornea lined by <b>Iris</b></td><td>Perforated / sloughed corneal ulcer (High IOP).</td></tr>
+        <tr><td><b>2. Intercalary</b></td><td>At <b>Limbus</b> (&le;2 mm) lined by <b>Iris root</b></td><td>Subtype of <b>Ciliary/Anterior scleral staphyloma</b>; peripheral wound/scleritis.</td></tr>
+        <tr><td><b>3. Ciliary</b></td><td><b>2–8 mm behind limbus</b> lined by <b>Ciliary body</b></td><td>Scleritis, absolute glaucoma.</td></tr>
+        <tr><td><b>4. Equatorial</b></td><td>At equator (<b>Vortex vein</b> exits) lined by <b>Choroid</b></td><td>Absolute glaucoma, scleritis.</td></tr>
+        <tr><td><b>5. Posterior</b></td><td>Posterior pole lined by <b>Choroid</b></td><td>#1 Cause = <span class="bz">Pathological High Myopia</span>.<br><span class="bz">ONLY staphyloma with NORMAL IOP!</span></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 5 ==================== -->
+<div id="ch5" class="sec">
+  <div class="sec-hdr"><span>5. THE VITREOUS HUMOR</span><span>★★★★</span></div>
+  <div class="g2">
+    <div>
+      <ul>
+        <li><b>Anatomy:</b> Avascular gel (99% water, collagen, hyaluronic acid); Volume = <span class="bz">4 mL</span>.</li>
+        <li><b>Muscae Volitantes:</b> Floaters in myopia/senility. Acute PVD causes <span class="bz">Photopsia (flashes)</span> + floaters $\rightarrow$ risk of Retinal Detachment.</li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li><b>Vitreous Hemorrhage Causes:</b>
+          <ul>
+            <li><b>#1 Overall Cause (Adults):</b> <span class="bz">Proliferative Diabetic Retinopathy (PDR)</span>!</li>
+            <li><b>#1 Cause in Young Adults:</b> <span class="bz">Ocular Trauma</span> (and <i>Eales' disease</i>).</li>
+          </ul>
+        </li>
+        <li><b>Signs &amp; Rx:</b> Sudden painless visual loss + <span class="bz">Dim/Absent Red Reflex</span> $\rightarrow$ do <span class="bz">B-Scan Ultrasound</span> (rule out RD) $\rightarrow$ Bed rest (head elevated 45°) $\rightarrow$ <b>Pars Plana Vitrectomy (PPV)</b> if non-clearing or RD.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

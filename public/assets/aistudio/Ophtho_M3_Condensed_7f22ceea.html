@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ophtho Ultra-Condensed — Module 3 (Dr. Al-Khayyat: Lens & Cataract)</title>
+<style>
+  :root {
+    --bg: #f8fafc; --card: #ffffff; --text: #0f172a; --muted: #475569;
+    --border: #e2e8f0; --accent: #059669; --th-bg: #f1f5f9;
+    --buzz-bg: #fef08a; --buzz-txt: #854d0e;
+    --trap-bg: #ffe4e6; --trap-txt: #be123c;
+    --mech-bg: #d1fae5; --mech-txt: #065f46;
+  }
+  body.dark {
+    --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8;
+    --border: #334155; --accent: #34d399; --th-bg: #0f172a;
+    --buzz-bg: #713f12; --buzz-txt: #fef08a;
+    --trap-bg: #4c0519; --trap-txt: #fda4af;
+    --mech-bg: #064e3b; --mech-txt: #6ee7b7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.42;
+    padding: 12px; font-size: 13px; transition: 0.2s;
+  }
+  .top-bar {
+    background: linear-gradient(135deg, #064e3b, #059669); color: #fff;
+    padding: 12px 16px; border-radius: 8px; margin-bottom: 10px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .top-bar h1 { font-size: 17px; font-weight: 800; }
+  .top-bar p { font-size: 11.5px; opacity: 0.85; }
+  .btn-toggle {
+    background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);
+    padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 11.5px; font-weight: 700;
+  }
+  .nav {
+    display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 12px;
+    position: sticky; top: 6px; z-index: 99; background: var(--bg); padding: 5px 0;
+  }
+  .nav a {
+    background: var(--card); color: var(--text); border: 1px solid var(--border);
+    text-decoration: none; padding: 4px 10px; border-radius: 5px; font-size: 11px; font-weight: 700;
+  }
+  .nav a:hover { border-color: var(--accent); color: var(--accent); }
+  .sec {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 14px; margin-bottom: 14px;
+  }
+  .sec-hdr {
+    font-size: 15px; font-weight: 800; color: var(--accent);
+    border-bottom: 2px solid var(--accent); padding-bottom: 5px; margin-bottom: 10px;
+    display: flex; justify-content: space-between;
+  }
+  h3 {
+    font-size: 13px; font-weight: 800; margin: 10px 0 6px 0;
+    color: var(--text); border-left: 3px solid var(--accent); padding-left: 6px;
+  }
+  ul, ol { padding-left: 16px; margin-bottom: 6px; }
+  li { margin-bottom: 3px; }
+  .g2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 10px; }
+  .g4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; }
+  .card-mini {
+    border: 1px solid var(--border); border-radius: 6px; padding: 7px 9px; background: var(--bg);
+  }
+  .card-mini b { color: var(--accent); display: block; font-size: 12px; margin-bottom: 2px; }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 12px; }
+  th, td { border: 1px solid var(--border); padding: 5px 7px; text-align: left; vertical-align: top; }
+  th { background: var(--th-bg); font-weight: 700; }
+  .bz { background: var(--buzz-bg); color: var(--buzz-txt); padding: 0 4px; border-radius: 3px; font-weight: 700; }
+  .trp { background: var(--trap-bg); color: var(--trap-txt); padding: 1px 5px; border-radius: 3px; font-weight: 700; font-size: 11.5px; }
+  .mech { background: var(--mech-bg); color: var(--mech-txt); padding: 4px 8px; border-radius: 5px; margin: 5px 0; font-size: 12px; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div>
+    <h1>⚡ OPHTHALMOLOGY ULTRA-CONDENSED — MODULE 3</h1>
+    <p>Dr. Fouad Al-Khayyat: The Crystalline Lens &amp; Cataract (100% Bank + 80-Q Lens File Integrated, Zero Fluff)</p>
+  </div>
+  <button class="btn-toggle" onclick="document.body.classList.toggle('dark')">🌓 Dark / Light</button>
+</div>
+
+<div class="nav">
+  <a href="#terms">🔤 Terminology</a>
+  <a href="#mm">🧠 Mind Map</a>
+  <a href="#ch1">1. Anomalies &amp; Ectopia</a>
+  <a href="#ch2">2. Congenital &amp; Leukocoria</a>
+  <a href="#ch3">3. Senile &amp; Secondary</a>
+  <a href="#ch4">4. Cataract Surgery &amp; PCO</a>
+</div>
+
+<!-- ==================== TERMINOLOGY ==================== -->
+<div id="terms" class="sec">
+  <div class="sec-hdr"><span>🔤 HIGH-YIELD KEYWORDS &amp; TERMINOLOGY</span><span>★★★★★</span></div>
+  <div class="g4">
+    <div class="card-mini"><b>Leukocoria (White Reflex)</b>White pupillary reflex. <b>#1 Overall in children = Congenital Cataract</b>; <b>#1 Life-threatening = Retinoblastoma</b>.</div>
+    <div class="card-mini"><b>Phacodonesis &amp; Iridodonesis</b>• <b>Phacodonesis:</b> Tremulous lens (zonular tear / subluxation).<br>• <b>Iridodonesis:</b> Tremulous iris (Aphakia, subluxation, hypermature cataract).</div>
+    <div class="card-mini"><b>Intumescent vs. Morgagnian</b>• <b>Intumescent:</b> Swollen lens $\rightarrow$ shallow AC $\rightarrow$ <b>Phacomorphic glaucoma</b>.<br>• <b>Morgagnian:</b> Liquefied cortex + sunken nucleus $\rightarrow$ <b>Phacolytic glaucoma</b>.</div>
+    <div class="card-mini"><b>Vossius Ring vs. Glaukomflecken</b>• <b>Vossius Ring:</b> Iris pigment imprint on anterior lens capsule (<b>Blunt trauma</b>).<br>• <b>Glaukomflecken:</b> Anterior subcapsular opacities post-<b>Acute Angle-Closure Glaucoma</b>.</div>
+    <div class="card-mini"><b>Second Sight (Index Myopia)</b>Nuclear sclerosis increases lens refractive index $\rightarrow$ myopic shift $\rightarrow$ presbyopic patient reads without reading glasses!</div>
+    <div class="card-mini"><b>Glaucoma Inversus</b>Pupillary block glaucoma from anteriorly subluxated/spherical lens. <b>Improved by Mydriatics (Atropine)</b>; worsened by Miotics!</div>
+    <div class="card-mini"><b>After-Cataract (PCO) &amp; Elschnig</b><b>Posterior Capsule Opacification:</b> #1 late complication of ECCE/Phaco. Proliferating epithelial pearls = <b>Elschnig's pearls</b>. Rx: <b>Nd:YAG laser</b>.</div>
+    <div class="card-mini"><b>Optic Capture &amp; Striate Keratopathy</b>• <b>Optic Capture:</b> Decentered IOL (1 haptic in sulcus, 1 in bag).<br>• <b>Striate Keratopathy:</b> Post-op corneal edema + Descemet folds.</div>
+  </div>
+</div>
+
+<!-- ==================== MIND MAP ==================== -->
+<div id="mm" class="sec">
+  <div class="sec-hdr"><span>🧠 BIG-PICTURE MIND MAP (1-MINUTE OVERVIEW)</span><span>⚡</span></div>
+  <div class="g4">
+    <div class="card-mini">
+      <b>1. ANATOMY &amp; ANOMALIES</b>
+      • <b>Lens:</b> Avascular, grows throughout life! Power = 17D. <b>A-scan biometry</b> measures axial length for IOL.<br>
+      • <b>Coloboma:</b> Equator notching + iris coloboma/giant tear.<br>
+      • <b>Lenticonus:</b> Ant = <b>Alport</b>; Post = <b>Lowe</b>.<br>
+      • <b>Microspherophakia:</b> <b>Weill-Marchesani</b>.<br>
+      • <b>Subluxation:</b> Marfan, Homocystinuria, Weill-Marchesani (🚫 <i>NOT Laurence-Moon-Biedl!</i>).
+    </div>
+    <div class="card-mini">
+      <b>2. CONGENITAL &amp; LEUKOCORIA</b>
+      • <b>Idiopathic:</b> 33%.<br>
+      • <b>Lamellar (Zonular):</b> AD, riders; Galactosemia, Hypocalcemia.<br>
+      • <b>Posterior Polar:</b> At <b>Nodal Point</b> $\rightarrow$ severe vision drop!<br>
+      • <b>Leukocoria DD:</b> Cataract, Retinoblastoma (13q14), ROP, PHPV, Toxocara (🚫 <i>NOT Buphthalmos, Optic atrophy, or Choroidal melanoma!</i>).<br>
+      • <b>Rx:</b> Operate <b>immediately (at 2 wks)</b> to prevent <b>Amblyopia</b>!
+    </div>
+    <div class="card-mini">
+      <b>3. SENILE &amp; SECONDARY</b>
+      • <b>Nuclear:</b> Index myopia ("Second sight").<br>
+      • <b>Cortical:</b> Spoke-like; Mature = entire cortex opaque (HM vision).<br>
+      • <b>PSC:</b> Glare in bright sunlight/reading; caused by <b>Steroids (#1)</b>, Uveitis, High Myopia, RP.<br>
+      • <b>Specific:</b> <i>Snowflake</i> = Young Type 1 DM; <i>Shield</i> = Atopic dermatitis (10%); <i>Rosette</i> = Blunt trauma; <i>Sunflower</i> = Wilson's; <i>Granules</i> = Chlorpromazine.
+    </div>
+    <div class="card-mini">
+      <b>4. GLAUCOMA &amp; SURGERY</b>
+      • <b>Phacomorphic:</b> Intumescent $\rightarrow$ closed angle.<br>
+      • <b>Phacolytic:</b> Hypermature $\rightarrow$ open angle. Rx: <b>Cataract Extraction!</b><br>
+      • <b>Phacoemulsification (#1):</b> <b>3 mm</b> incision $\rightarrow$ Capsulorrhexis $\rightarrow$ Hydrodissection $\rightarrow$ Sculpt/Crack $\rightarrow$ Emulsify $\rightarrow$ <b>PCIOL in Capsular Bag</b>.<br>
+      • <b>Vitreous Loss:</b> Anterior vitrectomy + <b>ACIOL</b>.<br>
+      • <b>PCO (Elschnig):</b> <b>Nd:YAG Laser Capsulotomy</b>.
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 1 ==================== -->
+<div id="ch1" class="sec">
+  <div class="sec-hdr"><span>1. LENS PHYSIOLOGY, CONGENITAL ANOMALIES &amp; ECTOPIA LENTIS</span><span>★★★★</span></div>
+  <div class="g2">
+    <div>
+      <h3>1.1 Applied Anatomy &amp; Developmental Anomalies</h3>
+      <ul>
+        <li><b>Core Facts:</b> Avascular, derived from surface ectoderm; <span class="bz">continues to grow throughout lifetime</span>! Affects refraction via: Sclerosis, Subluxation, or Dislocation.</li>
+        <li><b>A-Scan Ultrasound Biometry:</b> Calculates IOL power by measuring <span class="bz">Axial Length of the eye</span> (+ Keratometry). (<i>Note: Fluorescein angiography is NOT part of routine cataract workup!</i>).</li>
+        <li><b>Lens Coloboma:</b> Localized <span class="bz">flattening/notching of lens equator</span> due to zonular absence (associated with iris coloboma &amp; giant retinal tear).</li>
+        <li><b>Anterior Lenticonus:</b> Cone protrusion of anterior pole $\rightarrow$ <span class="bz">Alport Syndrome</span>.</li>
+        <li><b>Posterior Lenticonus &amp; Microphakia:</b> Bilateral $\rightarrow$ <span class="bz">Lowe Syndrome</span>.</li>
+        <li><b>Microspherophakia:</b> Small spherical lens $\rightarrow$ pupillary block glaucoma $\rightarrow$ <span class="bz">Weill-Marchesani Syndrome</span> (<span class="trp">🚫 NOT Alport!</span>).</li>
+      </ul>
+    </div>
+    <div>
+      <h3>1.2 Ectopia Lentis (Subluxation &amp; Dislocation)</h3>
+      <ul>
+        <li><b>Systemic Causes of Displaced Lens:</b> <b>Marfan Syndrome</b>, <b>Weill-Marchesani Syndrome</b>, <b>Homocystinuria</b>, Trauma. (<span class="trp">🚫 Displaced lens does NOT occur in Laurence-Moon-Biedl Syndrome!</span>).</li>
+        <li><b>Signs of Lens Subluxation:</b> <span class="bz">Phacodonesis</span>, <span class="bz">Iridodonesis</span>, <b>Irregular AC depth</b>, high astigmatism, and <b>Uniocular Diplopia</b> (lens equator visible in pupil; diplopia disappears on covering the injured eye!). (<span class="trp">🚫 "Intact all zonules" is FALSE!</span>).</li>
+        <li><b>Tremulous Iris (Iridodonesis) Seen In:</b> <b>Aphakia, Lens subluxation, Posterior lens dislocation, Hypermature shrunken cataract</b>.</li>
+        <li><b>Glaucoma Inversus (Inverse Glaucoma):</b> Pupillary block from anteriorly subluxated/dislocated lens or microspherophakia.
+          <ul>
+            <li><b>Rx:</b> <span class="bz">Improved with Mydriatics / Cycloplegics (Atropine)</span> + Iridectomy / Lens extraction (<span class="trp">🚫 Miotics [Pilocarpine] worsen it and are contraindicated!</span>).</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 2 ==================== -->
+<div id="ch2" class="sec">
+  <div class="sec-hdr"><span>2. CONGENITAL CATARACT &amp; LEUKOCORIA DIFFERENTIAL</span><span>★★★★★</span></div>
+  <div class="g2">
+    <div>
+      <h3>2.1 Congenital Cataract (Types &amp; Associations)</h3>
+      <ul>
+        <li><b>Etiology:</b> <span class="bz">33% (1/3) are Idiopathic</span>; 1/3 Hereditary; 1/3 Maternal/Metabolic (Rubella, Galactosemia, Hypocalcemia, Lowe, Fabry).</li>
+        <li><b>Clinical Signs:</b> <span class="bz">Leukocoria (#1 cause of white reflex in children!)</span>, <b>Nystagmus</b>, <b>Squint (Strabismus)</b>, poor fixation. (<span class="trp">🚫 Proptosis is NOT a sign!</span>).</li>
+        <li><b>Morphological Types (80-Q File Mastery):</b>
+          <ul>
+            <li><b>Lamellar (Zonular):</b> <b>Autosomal Dominant</b>; bilateral opacity with <span class="bz">"Riders"</span>. Linked to <span class="bz">Galactosemia</span> &amp; <span class="bz">Hypocalcemia</span>.</li>
+            <li><b>Posterior Polar:</b> Lies right at the <span class="bz">Nodal Point</span> $\rightarrow$ <b>markedly affects vision (worse in daylight!)</b>. Linked to persistent hyaloid remnants, PHPV, posterior lenticonus (<span class="trp">🚫 NOT Fabry disease &amp; does NOT cause glaucoma!</span>).</li>
+            <li><b>Anterior Polar:</b> Pyramidal opacity + persistent pupillary membrane.</li>
+            <li><b>Coronary (Supranuclear):</b> <b>Sporadic</b> round deep cortical opacities.</li>
+            <li><b>Central Pulverulent:</b> Non-progressive spheroidal nuclear opacities.</li>
+            <li><b>Sutural:</b> Follows Y-suture; <b>X-linked</b>.</li>
+            <li><b>Blue-Dot:</b> Common &amp; <b>innocuous</b> | <b>Spoke-like:</b> <b>Fabry disease</b>.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3>2.2 Leukocoria DD &amp; Treatment of Congenital Cataract</h3>
+      <ul>
+        <li><b>Differential Diagnosis of Leukocoria (Amaurotic Cat's Eye):</b>
+          <ol>
+            <li><span class="bz">Congenital Cataract</span> (#1 most common overall in children).</li>
+            <li><span class="bz">Retinoblastoma</span> (#1 intraocular tumor in children; must rule out! <b>13q14 deletion</b>; 75% calcified on X-ray/CT; Flexner-Wintersteiner rosettes; large unilateral $\rightarrow$ <b>Enucleation</b>).</li>
+            <li><b>Retinopathy of Prematurity (ROP)</b> &amp; <b>Persistent Hyperplastic Primary Vitreous (PHPV)</b>.</li>
+            <li><b>Ocular Toxocariasis</b>, <b>Coats' Disease</b>, <b>Total Retinal Detachment</b>, <b>Endophthalmitis</b>, &amp; After-cataract.</li>
+          </ol>
+          <span class="trp">🚫 Leukocoria is NOT seen in: Congenital Glaucoma (Buphthalmos), Optic Atrophy, Acute Dacryocystitis, or Choroidal Malignant Melanoma!</span>
+        </li>
+        <li><b>Treatment of Congenital Cataract:</b>
+          <ul>
+            <li><b>Timing:</b> Dense cataract involving visual axis detected at birth / 2 weeks $\rightarrow$ <span class="bz">Operate IMMEDIATELY (at 2 weeks)</span> to prevent irreversible <b>Amblyopia</b>!</li>
+            <li><b>Lines of Rx:</b> (1) Surgical: <b>Lensectomy / Aspiration + Posterior Capsulotomy + Anterior Vitrectomy</b>, (2) Optical: IOL (if age-appropriate), Contact lenses, or Glasses, (3) <b>Amblyopia Rx: Occlusion (patching) of good eye</b>.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 3 ==================== -->
+<div id="ch3" class="sec">
+  <div class="sec-hdr"><span>3. SENILE, METABOLIC, TRAUMATIC &amp; COMPLICATED CATARACTS</span><span>★★★★★</span></div>
+  <table>
+    <tr>
+      <th>Cataract Type</th>
+      <th>Key Pathophysiology &amp; Morphology</th>
+      <th>Visual Complaint &amp; Exam Buzzwords</th>
+    </tr>
+    <tr>
+      <td><b>1. Nuclear Senile</b></td>
+      <td>Central nuclear sclerosis/yellowing $\rightarrow$ increases refractive index $\rightarrow$ <span class="bz">Index Myopia</span>.</td>
+      <td><span class="bz">"Second Sight"</span> (presbyopic patient reads better without glasses!) + gradual change in glasses.</td>
+    </tr>
+    <tr>
+      <td><b>2. Cortical Senile</b></td>
+      <td>Vacuoles &amp; water clefts $\rightarrow$ radial wedge-shaped <span class="bz">spoke-like opacities</span>.</td>
+      <td>Glare, fixed black spots, uniocular diplopia.</td>
+    </tr>
+    <tr>
+      <td><b>3. Posterior Subcapsular (PSC)</b></td>
+      <td>Axial opacity just anterior to posterior capsule (near Nodal Point).<br><b>Causes:</b> <span class="bz">Topical/Systemic Steroids (#1!)</span>, <b>Chronic Anterior Uveitis, High Myopia, Retinitis Pigmentosa</b>.</td>
+      <td><span class="bz">Worse vision in bright daylight/sunlight, glare, &amp; difficulty reading</span> (due to pupillary miosis!).</td>
+    </tr>
+    <tr>
+      <td><b>4. Christmas-Tree</b></td>
+      <td>Polychromatic needle-like deep cortical crystals (may coexist with other opacities; Myotonic dystrophy).</td>
+      <td>Glittering multi-colored needles on slit-lamp.</td>
+    </tr>
+    <tr>
+      <td><b>5. Diabetic Cataract</b></td>
+      <td>• <b>Young Type 1 DM:</b> Rapid bilateral <span class="bz">Snowflake punctate opacities</span>.<br>• <b>Adult DM:</b> Cortical &amp; subcapsular opacities.</td>
+      <td>Acute hyperglycemia also causes reversible <b>Index Myopia</b>.</td>
+    </tr>
+    <tr>
+      <td><b>6. Specific Syndromic / Drug</b></td>
+      <td>• <b>Atopic Dermatitis (10%):</b> Bilateral anterior subcapsular <span class="bz">Shield Cataract</span>.<br>• <b>Wilson's Disease (Chalcosis):</b> Copper <span class="bz">Sunflower Cataract</span>.<br>• <b>Drugs:</b> <span class="bz">Chlorpromazine</span> = central anterior capsular granules | <b>Acute Glaucoma</b> = <span class="bz">Glaukomflecken</span>.</td>
+      <td><b>Blunt Concussion Trauma:</b> <span class="bz">Rosette-shaped (flower-shaped) posterior cataract</span> + <span class="bz">Vossius Ring</span> on anterior capsule! Physical agent = <b>Ionizing radiation</b> (post-maxillary tumor radiotherapy).</td>
+    </tr>
+    <tr>
+      <td><b>7. Complicated (Secondary)</b></td>
+      <td>Local intraocular disease: <b>Chronic Iridocyclitis (#1), High Myopia, Retinitis Pigmentosa, Retinal Detachment, Retinoblastoma</b>. (<span class="trp">🚫 NOT caused by Blepharitis, Disciform keratitis, or Electric shock!</span>).</td>
+      <td>Posterior subcapsular rosette opacity with <span class="bz">Polychromatic luster</span>.</td>
+    </tr>
+  </table>
+
+  <h3>3.2 Stages of Senile Cortical Cataract &amp; Lens-Induced Glaucoma ★★★★★</h3>
+  <div class="g2">
+    <div>
+      <ul>
+        <li><b>1. Immature (ISC):</b> Partial cortical opacities; iris shadow present.</li>
+        <li><b>2. Intumescent (Swollen):</b> Hydrated swollen lens $\rightarrow$ <span class="bz">Shallow Anterior Chamber</span> $\rightarrow$ causes <span class="bz">Phacomorphic Glaucoma</span> (secondary acute closed-angle glaucoma via pupillary block).</li>
+        <li><b>3. Mature (MSC):</b> <span class="bz">Cortical cataract involving the ENTIRE cortex</span> (completely white opaque lens).
+          <ul>
+            <li><b>Criteria:</b> Vision reduced to <b>Hand Movements (HM)</b>, <b>Absent Red Reflex</b>, <b>Absent Iris Shadow</b>.</li>
+            <li><b>Testing HM Eye:</b> Macular function = <span class="bz">Color Perception</span> | Visual field = <span class="bz">Light Projection</span> (<span class="trp">🚫 Light perception is NOT a field test!</span>).</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li><b>4. Hypermature (HMC):</b>
+          <ul>
+            <li><span class="bz">Morgagnian Cataract:</span> Liquefied cortex + <b>lens nucleus sinks inferiorly</b>.</li>
+            <li><span class="bz">Phacolytic Glaucoma:</span> Leaking lens proteins engulfed by macrophages clog open trabecular meshwork.</li>
+          </ul>
+        </li>
+        <li><b>Summary of Lens-Induced Glaucomas:</b> Include Phacomorphic, Phacolytic, Phacoanaphylactic, and Lens dislocation. (<span class="trp">🚫 Least likely / does NOT occur in: Posterior Subcapsular, Posterior Polar, Nuclear Sclerosis, or Neovascular glaucoma!</span>).</li>
+        <li><b>Definitive Rx of Phacomorphic &amp; Phacolytic Glaucoma:</b> Control IOP medically $\rightarrow$ <span class="bz">Urgent Cataract Extraction</span>!</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 4 ==================== -->
+<div id="ch4" class="sec">
+  <div class="sec-hdr"><span>4. CATARACT SURGERY: TECHNIQUES &amp; COMPLICATIONS</span><span>★★★★★</span></div>
+  <div class="g2">
+    <div>
+      <h3>4.1 Indications &amp; Surgical Techniques</h3>
+      <ul>
+        <li><b>Primary Indication:</b> Early cataract that <span class="bz">compromises patient's daily activities</span> (<span class="trp">🚫 Do NOT wait until cataract matures!</span>).</li>
+        <li><b>Absolute Contraindication:</b> Active <span class="bz">Chronic Dacryocystitis</span> (risk of pneumococcal endophthalmitis!).</li>
+        <li><b>Prophylaxis Before/After Surgery:</b> Treat peripheral <span class="bz">Lattice Degeneration</span> to prevent Retinal Detachment!</li>
+        <li><b>1. ICCE:</b> Removes entire lens + capsule (<span class="bz">NO lens capsule left behind!</span>).</li>
+        <li><b>2. ECCE:</b> Nucleus expressed <b>intact as a single piece</b> through large incision $\rightarrow$ cortical cleanup $\rightarrow$ polishing posterior capsule $\rightarrow$ IOL haptics placed <span class="bz">inside the Capsular Bag</span> (avoids IOL decentration). (<span class="trp">🚫 "Sculpting of nucleus" is Phaco, NOT ECCE!</span>).</li>
+        <li><b>3. <span class="bz">Phacoemulsification</span> (Preferred #1 — Earliest Visual Rehabilitation!):</b>
+          <ul>
+            <li><b>Incision Size:</b> <span class="bz">3 mm</span> sutureless incision (faster healing, less astigmatism; <span class="trp">🚫 NOT better than ECCE for extremely hard cataracts!</span>).</li>
+            <li><b>Exact Sequence of Steps:</b> (1) <span class="bz">Capsulorrhexis</span> (continuous curvilinear opening in ant. capsule) $\rightarrow$ (2) <span class="bz">Hydrodissection</span> (separating lens from capsule with fluid) $\rightarrow$ (3) Sculpting &amp; Cracking $\rightarrow$ (4) <span class="bz">Emulsification of each quadrant</span> $\rightarrow$ (5) Cortical aspiration $\rightarrow$ (6) <b>PCIOL in Capsular Bag</b>.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>4.2 Intraoperative &amp; Postoperative Complications ★★★★★</h3>
+      <ul>
+        <li><b>1. Intraoperative Complications:</b>
+          <ul>
+            <li><b>Accidental Aspiration of Posterior Capsule:</b> Ruptures hyaloid face $\rightarrow$ <span class="bz">Vitreous Loss</span> $\rightarrow$ Rx: Anterior vitrectomy + constrict pupil + peripheral iridectomy + glide insertion of <span class="bz">Anterior Chamber IOL (ACIOL)</span> (<span class="trp">🚫 Do NOT do pars plana vitrectomy before ACIOL!</span>).</li>
+            <li><b>Dropped Nuclear Fragment (&gt;20–30%) posteriorly:</b> Refer for <span class="bz">Pars Plana Vitrectomy (PPV)</span>.</li>
+            <li><b>Suprachoroidal (Expulsive) Hemorrhage:</b> Immediate wound closure + IV <b>Hyperosmotic agent (Mannitol)</b>; 7–14d later drain blood + PPV + air-fluid exchange (<span class="trp">🚫 Do NOT repeat hyperosmotic agent at 7–14d!</span>).</li>
+          </ul>
+        </li>
+        <li><b>2. Early Post-op:</b>
+          <ul>
+            <li><b>Iris Prolapse:</b> Iris visible in wound (caused by <span class="bz">inappropriate management of vitreous loss</span>).</li>
+            <li><b>Striate Keratopathy:</b> Corneal edema + Descemet folds (persistent cases / <b>Fuchs' endothelial dystrophy</b> $\rightarrow$ <span class="bz">Penetrating Keratoplasty [PKP]</span>).</li>
+            <li><b>Acute Endophthalmitis (1:1,000; 24–72h):</b> From <span class="bz">patient's external flora</span>. Pain, hypopyon, absent red reflex $\rightarrow$ <b>Intravitreal Antibiotics</b> + <b>PPV if vision is PL</b>.</li>
+          </ul>
+        </li>
+        <li><b>3. Late Post-op — <span class="bz">Posterior Capsule Opacification (PCO / After-Cataract)</span>:</b>
+          <ul>
+            <li><b>#1 Most common cause of decreased vision after ECCE / Phaco!</b></li>
+            <li><b>Types:</b> Fibrosis type (2–6 months) vs. <span class="bz">Elschnig's Pearls</span> (years later).</li>
+            <li><b>Rx of Choice:</b> <span class="bz">Nd:YAG Laser Capsulotomy</span>. (<i>Complications:</i> Uncommon CME, and Retinal Detachment in <b>High Myopia</b>).</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

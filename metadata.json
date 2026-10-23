@@ -1,0 +1,6 @@
+{
+  "name": "OphthoMaster — Comprehensive Ophthalmology Study & QBank Hub",
+  "description": "Master medical study platform combining ultra-condensed modules from all professors, interactive 156-question exam bank with rationales, buzzword decoders, mind maps, and flashcards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

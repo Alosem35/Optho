@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thamar Ophthalmology QBank (Batches 20–24) — Modules 1 & 2</title>
+<style>
+  :root {
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --primary: #0f172a;
+    --accent: #2563eb;
+    --accent-soft: #dbeafe;
+    --mod2: #0d9488;
+    --mod2-soft: #ccfbf1;
+    --correct: #16a34a;
+    --correct-bg: #dcfce7;
+    --wrong: #dc2626;
+    --wrong-bg: #fee2e2;
+    --review-bg: #f8fafc;
+    --border: #cbd5e1;
+    --text: #1e293b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    padding: 14px;
+    padding-top: 72px;
+    font-size: 14px;
+  }
+  .sticky-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(15, 23, 42, 0.96); color: #fff;
+    padding: 10px 16px; display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); backdrop-filter: blur(6px);
+    flex-wrap: wrap; gap: 10px;
+  }
+  .sticky-title { font-weight: 800; font-size: 14px; color: #93c5fd; }
+  .score-box { display: flex; gap: 14px; align-items: center; font-size: 13px; font-weight: 700; }
+  .score-pill { background: #1e293b; padding: 4px 10px; border-radius: 6px; border: 1px solid #334155; }
+  .reset-btn {
+    background: #ef4444; color: #fff; border: none; padding: 5px 12px;
+    border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 12px;
+  }
+  .reset-btn:hover { background: #dc2626; }
+
+  .module-banner {
+    background: linear-gradient(135deg, #0f172a, #1d4ed8);
+    color: #fff; padding: 20px; border-radius: 12px; margin: 16px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+  }
+  .module-banner.mod2 { background: linear-gradient(135deg, #0f172a, #0f766e); }
+  .module-banner h1 { font-size: 20px; margin-bottom: 4px; }
+  .module-banner p { font-size: 13px; opacity: 0.9; }
+
+  .nav-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+  .nav-pill {
+    background: #fff; color: var(--primary); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 700;
+  }
+  .nav-pill:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  .topic-section {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px; margin-bottom: 24px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  }
+  .topic-header {
+    font-size: 17px; font-weight: 800; color: var(--primary);
+    border-bottom: 3px solid var(--accent); padding-bottom: 8px; margin-bottom: 14px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .topic-header.mod2-hdr { border-bottom-color: var(--mod2); }
+
+  .study-review {
+    background: var(--review-bg); border-left: 5px solid var(--accent);
+    padding: 14px; border-radius: 8px; margin-bottom: 18px;
+  }
+  .study-review.mod2-rev { border-left-color: var(--mod2); }
+  .sr-title {
+    font-weight: 800; font-size: 13px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 8px; display: block; letter-spacing: 0.4px;
+  }
+  .study-review.mod2-rev .sr-title { color: var(--mod2); }
+  .study-review ul { padding-left: 18px; }
+  .study-review li { margin-bottom: 5px; font-size: 13.5px; }
+  .buzz { background: #fef08a; padding: 1px 5px; border-radius: 4px; font-weight: 700; color: #854d0e; }
+
+  .q-card {
+    border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px;
+    margin-bottom: 14px; background: #fff; transition: all 0.2s;
+  }
+  .q-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .tag {
+    background: var(--accent-soft); color: #1e40af; font-size: 11px;
+    font-weight: 800; padding: 3px 8px; border-radius: 5px;
+  }
+  .tag.repeat { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+  .tag.mod2-tag { background: var(--mod2-soft); color: #115e59; }
+  .q-stem { font-weight: 700; font-size: 14.5px; margin-bottom: 10px; color: #0f172a; }
+  .options { display: flex; flex-direction: column; gap: 7px; }
+  .opt-btn {
+    text-align: left; background: #f8fafc; border: 1px solid #cbd5e1;
+    padding: 9px 12px; border-radius: 7px; cursor: pointer; font-size: 13.5px;
+    color: #1e293b; font-weight: 500; transition: all 0.15s;
+  }
+  .opt-btn:hover:not(.disabled) { background: #e2e8f0; border-color: #94a3b8; }
+  .opt-btn.correct {
+    background: var(--correct-bg) !important; border-color: var(--correct) !important;
+    color: #14532d !important; font-weight: 700;
+  }
+  .opt-btn.wrong {
+    background: var(--wrong-bg) !important; border-color: var(--wrong) !important;
+    color: #7f1d1d !important; text-decoration: line-through;
+  }
+  .opt-btn.disabled { cursor: default; }
+  .rationale {
+    display: none; margin-top: 10px; padding: 10px 12px; border-radius: 7px;
+    background: #eff6ff; border-left: 4px solid var(--accent); font-size: 13px; color: #1e3a8a;
+  }
+  .rationale.show { display: block; }
+</style>
+</head>
+<body>
+
+<div class="sticky-bar">
+  <div class="sticky-title">🎯 Thamar Med QBank (Batches 20–24) • Modules 1 &amp; 2</div>
+  <div class="score-box">
+    <span class="score-pill" id="score-text">Answered: 0 / 61 | Correct: 0 (0%)</span>
+    <button class="reset-btn" onclick="resetAll()">🔄 Reset All</button>
+  </div>
+</div>
+
+<div class="nav-pills">
+  <a href="#m1-t1" class="nav-pill">M1.1: Intro &amp; Physiology</a>
+  <a href="#m1-t2" class="nav-pill">M1.2: Conjunctiva &amp; Dry Eye</a>
+  <a href="#m1-t3" class="nav-pill">M1.3: The Cornea</a>
+  <a href="#m1-t4" class="nav-pill">M1.4: Errors of Refraction</a>
+  <a href="#m2-t1" class="nav-pill">M2.1: Lacrimal &amp; Orbit</a>
+  <a href="#m2-t2" class="nav-pill">M2.2: Uveal Tract</a>
+  <a href="#m2-t3" class="nav-pill">M2.3: Sclera</a>
+  <a href="#m2-t4" class="nav-pill">M2.4: Vitreous</a>
+</div>
+
+<!-- ================================================================= -->
+<!-- MODULE 1: DR. MOHAMMED AL-ANSI -->
+<!-- ================================================================= -->
+<div class="module-banner">
+  <h1>📘 MODULE 1: DR. MOHAMMED AL-ANSI</h1>
+  <p>Topics: Introduction &amp; Physiology • Conjunctiva &amp; Dry Eye • The Cornea • Errors of Refraction</p>
+</div>
+
+<!-- TOPIC 1.1: INTRODUCTION -->
+<div id="m1-t1" class="topic-section">
+  <div class="topic-header">
+    <span>1.1 Introduction, Basic Anatomy &amp; Ocular Physiology</span>
+    <span style="font-size:12px; color:#64748b;">5 Questions</span>
+  </div>
+
+  <div class="study-review">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (Introduction)</span>
+    <ul>
+      <li><b>Light Control vs. Light Reception:</b> The <span class="buzz">Iris</span> acts as the adjustable diaphragm controlling the amount of light entering the eye (via sphincter and dilator pupillae muscles), whereas <span class="buzz">Photoreceptor cells (Rods &amp; Cones)</span> are located in the outer neural <span class="buzz">Retina</span>. Photoreceptors are completely <b>absent at the Optic Disc (Blind spot)</b>, and <b>Cones are maximally concentrated at the avascular Fovea Centralis</b>.</li>
+      <li><b>Ocular Chambers &amp; Aqueous Pathway:</b> The eye is divided into the <b>Anterior Segment</b> (Anterior Chamber = in front of iris; <span class="buzz">Posterior Chamber = behind the iris and in front of the lens/zonules</span>) and the <b>Posterior Segment</b> (behind the lens, containing the vitreous). Aqueous humor is secreted by the <b>Ciliary processes (pars plicata)</b> into the Posterior Chamber → flows through the pupil into the Anterior Chamber → drains mainly (~85–90%) via the conventional pathway through the <b>Trabecular Meshwork into <span class="buzz">Schlemm's Canal</span></b> (and 10–15% via the uveoscleral outflow).</li>
+      <li><b>Routine Diagnostic Mydriatic:</b> Short-acting antimuscarinic <span class="buzz">Tropicamide (0.5%–1%)</span> is the drug of choice for routine fundus examination because of its rapid onset (20–30 min) and short duration (4–6 hours), unlike Atropine which lasts 7–14 days.</li>
+    </ul>
+  </div>
+
+  <!-- Q1 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Final - Q11</span>
+    </div>
+    <div class="q-stem">1. The part of the eye that controls the amount of light entering:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Iris</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Lens</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Cornea</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Retina</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Iris).</b><br><b>Rationale:</b> The iris regulates pupillary aperture size via the parasympathetic sphincter pupillae (miosis in bright light) and sympathetic dilator pupillae (mydriasis in dim light), thereby controlling the amount of light reaching the retina.</div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Final - Q12</span>
+    </div>
+    <div class="q-stem">2. The part of the eye where photoreceptor cells are found:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Retina</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Lens</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Iris</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Choroid</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Retina).</b><br><b>Rationale:</b> Rods and cones are the outer neurosensory photoreceptor cells of the retina that convert light energy into electrical neural impulses (phototransduction).</div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Midterm - Q12</span>
+    </div>
+    <div class="q-stem">3. The posterior chamber is present in:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Before iris</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. After iris</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Before retina</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. After lens</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (After iris).</b><br><b>Rationale:</b> The posterior chamber is the narrow aqueous-filled space located immediately <b>behind (after) the iris</b> and in front of the crystalline lens and zonular fibers. (Behind the lens is the vitreous cavity/posterior segment).</div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q16</span>
+    </div>
+    <div class="q-stem">4. Aqueous humor drains mainly through:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Uveal tract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Schlemm's canal</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Zonular fibers</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Retinal vessels</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Schlemm's canal).</b><br><b>Rationale:</b> About 85–90% of aqueous humor drains through the conventional trabecular pathway (Trabecular meshwork → Schlemm's canal → Aqueous veins → Episcleral veins).</div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Final - Q5</span>
+    </div>
+    <div class="q-stem">5. The most commonly used mydriatic drug before eye examination is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Timolol</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Tropicamide</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Atropine</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Pilocarpine</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Tropicamide).</b><br><b>Rationale:</b> Tropicamide (0.5–1%) is the standard diagnostic mydriatic for ophthalmoscopy due to its fast onset (20 min) and short duration (~4–6 hrs), avoiding prolonged cycloplegia.</div>
+  </div>
+</div>
+
+<!-- TOPIC 1.2: CONJUNCTIVA & DRY EYE -->
+<div id="m1-t2" class="topic-section">
+  <div class="topic-header">
+    <span>1.2 Conjunctiva &amp; Dry Eye Syndrome (Xerosis)</span>
+    <span style="font-size:12px; color:#64748b;">18 Questions</span>
+  </div>
+
+  <div class="study-review">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (Conjunctiva &amp; Dry Eye)</span>
+    <ul>
+      <li><b>Viral Conjunctivitis:</b> Most commonly caused by <span class="buzz">Adenovirus</span>. Look for: child/adult with recent <b>fever &amp; sore throat</b> + <b>excessive watery lacrimation</b> + <b>follicles in lower palpebral conjunctiva</b> + <span class="buzz">tender preauricular lymphadenopathy</span>.</li>
+      <li><b>Bacterial &amp; Neonatal Conjunctivitis:</b>
+        <ul>
+          <li><b>Ophthalmia Neonatorum:</b> Most dangerous causative organism is <span class="buzz">Neisseria gonorrhoeae (Gonococci)</span> because it penetrates intact corneal epithelium causing rapid perforation.</li>
+          <li><b>Membranous Conjunctivitis:</b> Caused by <span class="buzz">Corynebacterium diphtheriae</span>; true membrane formation + purulent secretion + cicatrization/paralysis leading to <b>squint</b>.</li>
+          <li><b>Eye Bandage Contraindication:</b> Patching the eye is <b>strictly contraindicated in <span class="buzz">Purulent / Mucopurulent Conjunctivitis</span></b> (retains pus and raises temperature, causing corneal melting).</li>
+        </ul>
+      </li>
+      <li><b>Trachoma (<i>Chlamydia trachomatis</i> A–C):</b>
+        <ul>
+          <li><b>WHO Classification (FISTO):</b> <b>TF</b> (Follicular), <b>TI</b> (Intense), <b>TS</b> (Scarring / Arlt's line), <b>TT</b> (Trichiasis), <b>CO</b> (Corneal Opacity). <span class="buzz">Pannus</span> and <span class="buzz">Trantas spots</span> are <b>NOT</b> in the WHO FISTO classification!</li>
+          <li><b>Treatment Fact:</b> <span class="buzz">Medical treatment (Oral Azithromycin / Topical Tetracycline) is effective</span> in active stages; surgery is only needed for cicatricial TT/CO.</li>
+        </ul>
+      </li>
+      <li><b>Vernal Keratoconjunctivitis (Spring Catarrh / VKC):</b> Bilateral recurrent allergic inflammation in young boys during <b>hot weather</b> with <b>intense itching</b> and <span class="buzz">thick white ropy (mucoid) discharge</span> (<b>NOT mucopurulent</b> and <b>NOT pseudomembranous</b>!).
+        <ul>
+          <li><i>Palpebral sign:</i> <span class="buzz">Large flat-topped Cobblestone (giant) papillae</span> on upper tarsus.</li>
+          <li><i>Bulbar/Limbal sign:</i> Gelatinous nodules with chalky white <span class="buzz">Horner-Trantas dots</span> (degenerated eosinophils).</li>
+          <li><i>Corneal complication:</i> <span class="buzz">Shield ulcer</span> &amp; Keratoconus.</li>
+        </ul>
+      </li>
+      <li><b>Phlyctenular Conjunctivitis:</b> Delayed Type IV cell-mediated <span class="buzz">hypersensitivity to endogenous antigens</span> (Tuberculoprotein or Staphylococcal antigens).</li>
+      <li><b>Pterygium:</b> Non-neoplastic degenerative fibrovascular wing caused by chronic <span class="buzz">Ultraviolet (UV) rays exposure</span> (<b>NOT a benign tumor</b> and <b>NOT linked to immunocompromise</b>!).</li>
+      <li><b>Dry Eye &amp; Xerosis:</b>
+        <ul>
+          <li><b>Sjögren's Syndrome:</b> Autoimmune triad of Dry Eyes (<span class="buzz">Xerophthalmia / Keratoconjunctivitis sicca</span>) + Dry Mouth (Xerostomia) + Rheumatoid Arthritis.</li>
+          <li><b>Bitot's Spots:</b> Foamy triangular keratinized plaques on bulbar conjunctiva caused by <span class="buzz">Vitamin A deficiency</span>.</li>
+          <li><b>Diagnosis &amp; Treatment:</b> Diagnosed by <span class="buzz">Schirmer Test</span> (&lt;5 mm in 5 min); mild dry eye is treated first-line with <span class="buzz">Topical lubricants (artificial tears)</span>.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 24 Midterm - Q9</span>
+    </div>
+    <div class="q-stem">6. A young child with fever and sore throat developed lacrimation. Examination shows follicles in lower palpebral conjunctiva and tender preauricular lymph nodes. The most probable diagnosis is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Trachoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Staphylococcal conjunctivitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Adenoviral conjunctivitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Phlyctenular conjunctivitis</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Adenoviral conjunctivitis).</b><br><b>Rationale:</b> Fever + pharyngitis (sore throat) + watery tearing + inferior tarsal follicles + tender preauricular lymphadenopathy is the classic presentation of Adenoviral Pharyngoconjunctival Fever.</div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Midterm - Q2</span>
+    </div>
+    <div class="q-stem">7. The most common cause of viral conjunctivitis is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Herpes simplex virus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Adenovirus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Varicella-zoster virus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Cytomegalovirus</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Adenovirus).</b><br><b>Rationale:</b> Adenovirus accounts for 65–90% of all cases of viral conjunctivitis worldwide.</div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Midterm - Q15</span>
+    </div>
+    <div class="q-stem">8. In viral epidemic keratoconjunctivitis, the characteristic discharge is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Copious purulent discharge</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Copious mucopurulent discharge</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Excessive watery lacrimation</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Mucoid ropy white discharge</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Excessive watery lacrimation).</b><br><b>Rationale:</b> Viral conjunctivitis produces a serous/watery discharge, whereas purulent = gonococcal, mucopurulent = bacterial, and ropy white mucoid = vernal (allergic) conjunctivitis.</div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Midterm - Q17</span>
+    </div>
+    <div class="q-stem">9. In ophthalmia neonatorum, the most dangerous common causative organism is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. E. coli</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Gonococci</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Xerosis bacillus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Herpes simplex virus</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Gonococci).</b><br><b>Rationale:</b> <i>Neisseria gonorrhoeae</i> causes hyperacute purulent ophthalmia neonatorum within 2–4 days of birth and can penetrate intact corneal epithelium, leading to rapid corneal ulceration and perforation.</div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Midterm - Q16</span>
+    </div>
+    <div class="q-stem">10. In membranous conjunctivitis:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Purulent secretion occurs due to diphtheria</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Can be complicated by squint</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Involves membrane formation</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. All of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (All of the above).</b><br><b>Rationale:</b> Diphtheritic membranous conjunctivitis forms a true fibrinous membrane over the tarsal conjunctiva, followed by purulent sloughing, symblepharon, and post-diphtheritic cranial nerve/extraocular muscle palsy or cicatrization resulting in squint.</div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Final - Q1</span>
+    </div>
+    <div class="q-stem">11. Bandage of the eyes is used in the following except:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Corneal abrasion</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Corneal ulcer</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Purulent conjunctivitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. After glaucoma surgery</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Purulent conjunctivitis).</b><br><b>Rationale:</b> Bandaging is strictly contraindicated in purulent or mucopurulent conjunctivitis because it traps bacterial toxins and pus against the cornea and elevates temperature, promoting corneal ulceration.</div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="q-card" data-answer="E">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Midterm - Q2</span>
+    </div>
+    <div class="q-stem">12. WHO classification of trachoma includes all of the following except:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. TF - Follicular inflammation</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. TI - Intense inflammation</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. TT - Trichiasis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. TS - Scarring</button>
+      <button class="opt-btn" onclick="checkAns(this, 'E')">E. Pannus</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: E (Pannus).</b><br><b>Rationale:</b> The simplified WHO grading system for Trachoma (FISTO) consists of 5 signs: TF, TI, TS, TT, and CO (Corneal Opacity). Pannus is not a separate grading category in FISTO.</div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 21 Final - Q12</span>
+    </div>
+    <div class="q-stem">13. All about trachoma are false except:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Presence of Tranta's spots</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. All need surgical treatment</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Medical treatment is effective</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Medical treatment is effective).</b><br><b>Rationale:</b> Active trachoma responds effectively to medical antibiotic therapy (oral Azithromycin or topical Tetracycline). Trantas spots belong to Vernal Keratoconjunctivitis, not Trachoma.</div>
+  </div>
+
+  <!-- Q14 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 24 Midterm - Q18</span>
+      <span class="tag">Batch 22 Midterm - Q1</span>
+    </div>
+    <div class="q-stem">14. A recurrent bilateral conjunctivitis occurring with the onset of hot weather in young boys with symptoms of burning, itching, and lacrimation with large flat-topped cobblestone papillae raised areas in the palpebral conjunctiva is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Trachoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Vernal keratoconjunctivitis (Spring catarrh)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Phlyctenular conjunctivitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Mucopurulent / Bacterial conjunctivitis</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Vernal keratoconjunctivitis).</b> <i>(Note: Option B in Batch 24 Midterm; Option D in Batch 22 Midterm).</i><br><b>Rationale:</b> Young boy + hot weather (spring/summer) + intense itching + flat-topped giant cobblestone papillae on the upper tarsal conjunctiva is the classic presentation of Palpebral VKC.</div>
+  </div>
+
+  <!-- Q15 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Midterm - Q2</span>
+    </div>
+    <div class="q-stem">15. Tranta's spots are noticed in cases of:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Active trachoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Bulbar spring catarrh</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Conical phlycten</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Vitamin A deficiency</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Bulbar spring catarrh).</b><br><b>Rationale:</b> Horner-Trantas spots are chalky-white dots of degenerated eosinophils and epithelial cells seen at the limbus in bulbar/limbal Vernal Keratoconjunctivitis (Spring catarrh).</div>
+  </div>
+
+  <!-- Q16 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Midterm - Q3</span>
+    </div>
+    <div class="q-stem">16. Which of the following is NOT a feature of vernal keratoconjunctivitis:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Papillae on the tarsal conjunctiva</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Shield ulcers</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Horner-Trantas dots</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Pseudomembrane formation</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (Pseudomembrane formation).</b><br><b>Rationale:</b> Tarsal giant papillae, corneal shield ulcers, and limbal Horner-Trantas dots are the classic triad of VKC. Pseudomembranes are characteristic of severe Adenoviral or bacterial infections, not VKC.</div>
+  </div>
+
+  <!-- Q17 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q27</span>
+    </div>
+    <div class="q-stem">17. All are true about vernal keratoconjunctivitis EXCEPT:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Seasonal occurrence</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Intense itching</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Mucopurulent discharge</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Giant papillae on tarsal conjunctiva</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Mucopurulent discharge).</b><br><b>Rationale:</b> VKC is an allergic disorder characterized by thick, stringy, white ropy mucoid discharge rich in eosinophils, NOT mucopurulent discharge (which indicates bacterial infection).</div>
+  </div>
+
+  <!-- Q18 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 24 Midterm - Q17</span>
+      <span class="tag">Batch 20 Final - Q2</span>
+    </div>
+    <div class="q-stem">18. Phlyctenular conjunctivitis is due to:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Bacterial / Mixed infection</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Hypersensitivity to exogenous antigen</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Hypersensitivity to endogenous antigen</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Mechanical injury / Extended wear contact lenses</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Hypersensitivity to endogenous antigen).</b> <i>(Option C in Batch 24 Midterm; Option D in Batch 20 Final).</i><br><b>Rationale:</b> Phlyctenular keratoconjunctivitis is a delayed Type IV cell-mediated hypersensitivity reaction to endogenous bacterial antigens (primarily Staphylococcal proteins or Tuberculoprotein).</div>
+  </div>
+
+  <!-- Q19 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 23 Midterm - Q12</span>
+      <span class="tag">Batch 20 Midterm - Q16</span>
+    </div>
+    <div class="q-stem">19. Pterygium is most commonly associated with (caused by):</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Exposure to Ultraviolet (UV) rays</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Exposure to infrared rays / Allergies</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Exposure to ionizing radiation / Bacterial infection</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Trauma</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Exposure to Ultraviolet rays).</b> <i>(Option A in Batch 23 Midterm; Option C in Batch 20 Midterm).</i><br><b>Rationale:</b> Chronic exposure to solar Ultraviolet (UV) radiation in hot, dry, sunny climates induces elastotic degeneration of the bulbar conjunctiva, leading to Pterygium.</div>
+  </div>
+
+  <!-- Q20 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Midterm - Q11</span>
+    </div>
+    <div class="q-stem">20. Pterygium:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Benign tumor of the conjunctiva</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Common in immunocompromised</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Both</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. None</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (None).</b><br><b>Rationale:</b> Pterygium is a non-neoplastic elastotic degenerative encroachment of the conjunctiva onto the cornea (NOT a tumor, and NOT associated with immunocompromise; squamous cell carcinoma/OSSN is associated with HIV/immunocompromise).</div>
+  </div>
+
+  <!-- Q21 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Final - Q3</span>
+    </div>
+    <div class="q-stem">21. Bitot's spots may be caused by:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Vitamin A deficiency</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Vitamin B deficiency</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Vitamin C deficiency</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. All of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Vitamin A deficiency).</b><br><b>Rationale:</b> Bitot's spots (stage X1B of WHO xerophthalmia) are triangular foamy keratinized plaques on the temporal bulbar conjunctiva pathognomonic of Vitamin A deficiency.</div>
+  </div>
+
+  <!-- Q22 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 23 Final - Q29</span>
+      <span class="tag">Batch 22 Final - Q16</span>
+    </div>
+    <div class="q-stem">22. A woman with dry eyes, dry mouth, and keratoconjunctivitis sicca (xerophthalmia) most likely has:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Systemic lupus erythematosus / Photophobia</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Sjögren's syndrome (Xerophthalmia)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Vitamin A deficiency / Scleritis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Angular conjunctivitis / Retinopathy</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Sjögren's syndrome / Xerophthalmia).</b><br><b>Rationale:</b> Autoimmune lymphocytic destruction of lacrimal and salivary glands in Sjögren's syndrome produces the classic sicca complex: Xerophthalmia (Keratoconjunctivitis sicca) and Xerostomia (dry mouth).</div>
+  </div>
+
+  <!-- Q23 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Final - Q29</span>
+    </div>
+    <div class="q-stem">23. The test used to diagnose dry eye is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Schirmer test</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Fluorescein stain</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Amsler grid</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Tonometry</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Schirmer test).</b><br><b>Rationale:</b> Schirmer test quantitatively measures aqueous tear production using a filter paper strip in the lower fornix for 5 minutes.</div>
+  </div>
+
+  <!-- Q24 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Final - Q17</span>
+    </div>
+    <div class="q-stem">24. Treatment of mild dry eye:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Topical lubricants</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Oral steroids</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Artificial tears with steroids</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Immunosuppressants</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Topical lubricants).</b><br><b>Rationale:</b> First-line therapy for mild keratoconjunctivitis sicca (dry eye) is tear film replacement using preservative-free topical lubricants (artificial tears).</div>
+  </div>
+</div>
+
+<!-- TOPIC 1.3: THE CORNEA -->
+<div id="m1-t3" class="topic-section">
+  <div class="topic-header">
+    <span>1.3 The Cornea (Keratitis, Ulcers, Keratoconus &amp; Opacities)</span>
+    <span style="font-size:12px; color:#64748b;">18 Questions</span>
+  </div>
+
+  <div class="study-review">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (The Cornea)</span>
+    <ul>
+      <li><b>Corneal Nutrition:</b> Supplied by <b>Air</b> (oxygen), <b>Aqueous humor</b> (glucose), and <b>Perilimbal capillaries</b>. <span class="buzz">Vitreous humor</span> is <b>NOT</b> a source of nutrition to the cornea!</li>
+      <li><b>Intact Epithelium Invaders:</b> Only 4 bacteria can penetrate an intact corneal epithelium: <span class="buzz">Corynebacterium diphtheriae</span>, <span class="buzz">Neisseria gonorrhoeae</span>, <i>N. meningitidis</i>, and <i>Haemophilus</i>.</li>
+      <li><b>Specific Bacterial &amp; Protozoan Ulcers:</b>
+        <ul>
+          <li><b>Commonest cause of Typical Hypopyon Corneal Ulcer (Ulcus serpens):</b> <span class="buzz">Streptococcus pneumoniae (Pneumococcus)</span> (linked to chronic dacryocystitis).</li>
+          <li><b>Commonest bacterium in Contact Lens Wearers:</b> <span class="buzz">Pseudomonas aeruginosa</span>.</li>
+          <li><b>Acanthamoeba Keratitis (Contact lens + tap water):</b> Severe pain out of proportion + <span class="buzz">Ring-shaped corneal stromal infiltrate</span>.</li>
+        </ul>
+      </li>
+      <li><b>Herpes Simplex Keratitis (HSK):</b>
+        <ul>
+          <li><b>Recurrent features:</b> <span class="buzz">Branching Dendritic ulcer with terminal bulbs</span>, <span class="buzz">Geographic ulcer</span> (if steroids were misused), and <span class="buzz">Disciform stromal keratitis</span>. (<span class="buzz">Superficial punctate keratitis</span> is <b>NOT</b> a feature of recurrent HSK!).</li>
+          <li><b>Key Diagnostic Sign:</b> <span class="buzz">Loss of corneal sensation (Corneal hypoesthesia)</span> due to CN V1 damage.</li>
+          <li><b>Treatment &amp; Contraindication:</b> Treated with <span class="buzz">Topical Acyclovir 3% ointment</span>. <b>Topical <span class="buzz">Steroids are STRICTLY CONTRAINDICATED</span> in dendritic ulcer!</b></li>
+        </ul>
+      </li>
+      <li><b>Corneal Scars, Depositions &amp; Perforation:</b>
+        <ul>
+          <li><span class="buzz">Leucoma Adherent:</span> Dense white corneal scar with cicatrization and <b>iris incarceration</b> following a perforated ulcer.</li>
+          <li><span class="buzz">Seidel Test:</span> Positive test indicates <b>anterior chamber aqueous leakage due to corneal perforation/fistula</b>.</li>
+          <li><span class="buzz">Band Keratopathy:</span> Subepithelial deposition of <b>Calcium salts</b>.</li>
+          <li><span class="buzz">Salmon Patches:</span> Deep stromal vascularization seen in syphilitic <b>Interstitial Keratitis</b>.</li>
+        </ul>
+      </li>
+      <li><b>Keratoconus (Top Tested Topic — 9 Questions in Batches 20–24!):</b>
+        <ul>
+          <li><b>Pathology:</b> Non-inflammatory <span class="buzz">central thinning and conical bulging</span> of the cornea presenting in young adults (~20–22 yrs) with gradual visual loss and high irregular myopic astigmatism.</li>
+          <li><b>Signs:</b> <span class="buzz">Scissoring red reflex</span> on retinoscopy, <span class="buzz">Fleischer ring</span> (epithelial iron deposition at cone base), <span class="buzz">Munson's sign</span> (V-shaped lower lid indentation on down-gaze), and <span class="buzz">Acute Hydrops</span> (sudden corneal edema due to <b>rupture of Descemet's membrane</b>).</li>
+          <li><b>Gold Standard Investigation:</b> <span class="buzz">Corneal Topography</span>.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Q25 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Final - Q4</span>
+    </div>
+    <div class="q-stem">25. Not a source of nutrition to the cornea:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Air</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Aqueous humour</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Perilimbal capillaries</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Vitreous</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (Vitreous).</b><br><b>Rationale:</b> The avascular cornea receives oxygen from atmospheric air via the tear film, glucose from the aqueous humor, and peripheral nutrients from perilimbal capillaries. The vitreous lies behind the lens and has no contact with the cornea.</div>
+  </div>
+
+  <!-- Q26 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 24 Midterm - Q15</span>
+      <span class="tag">Batch 20 Midterm - Q1</span>
+    </div>
+    <div class="q-stem">26. Which of the following organisms can penetrate intact corneal epithelium?</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Staphylococcus aureus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Corynebacterium diphtheriae</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Pseudomonas aeruginosa (pyocyanea)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Streptococcus pneumoniae / pyogenes</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Corynebacterium diphtheriae).</b> <i>(Option B in Batch 24 Midterm; Option D in Batch 20 Midterm).</i><br><b>Rationale:</b> Only <i>Corynebacterium diphtheriae, Neisseria gonorrhoeae, Neisseria meningitidis,</i> and <i>Haemophilus/Listeria</i> can invade an intact healthy corneal epithelium.</div>
+  </div>
+
+  <!-- Q27 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Midterm - Q3</span>
+    </div>
+    <div class="q-stem">27. The commonest cause of hypopyon corneal ulcer is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Moraxella</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Gonococcus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Pneumococcus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Staphylococcus</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Pneumococcus).</b><br><b>Rationale:</b> <i>Streptococcus pneumoniae (Pneumococcus)</i> is the classic causative organism of typical hypopyon corneal ulcer (ulcus serpens), often secondary to chronic dacryocystitis.</div>
+  </div>
+
+  <!-- Q28 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q34</span>
+    </div>
+    <div class="q-stem">28. The most common bacterium causing contact lens-associated corneal ulcer is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Staphylococcus aureus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Pseudomonas aeruginosa</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Streptococcus pneumoniae</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Moraxella</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Pseudomonas aeruginosa).</b><br><b>Rationale:</b> <i>Pseudomonas aeruginosa</i> adheres to contact lenses and biofilm, causing fulminant liquefactive stromal necrosis in contact lens wearers.</div>
+  </div>
+
+  <!-- Q29 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q25</span>
+    </div>
+    <div class="q-stem">29. Acanthamoeba keratitis classically may show:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Ring-shaped corneal infiltrate</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Dendritic ulcer</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Hypopyon only</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Punctate epithelial erosions</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Ring-shaped corneal infiltrate).</b><br><b>Rationale:</b> Acanthamoeba keratitis occurs in contact lens users exposed to tap water/swimming and classically presents with severe pain out of proportion to signs and a central paracentral ring-shaped stromal infiltrate.</div>
+  </div>
+
+  <!-- Q30 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 23 Midterm - Q1</span>
+      <span class="tag">Batch 22 Final - Q18</span>
+    </div>
+    <div class="q-stem">30. What is the characteristic clinical finding in Herpes Simplex epithelial keratitis (branching corneal opacity):</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Subepithelial infiltrates</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Dendritic ulcer with terminal bulbs (HSV infection)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Geographic ulcer without branching</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Bull's-eye maculopathy</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Dendritic ulcer with terminal bulbs).</b><br><b>Rationale:</b> Epithelial replication of HSV-1 creates a dichotomous linear branching ulcer with swollen terminal end-bulbs that stains green with fluorescein and red at the margins with Rose Bengal.</div>
+  </div>
+
+  <!-- Q31 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 24 Midterm - Q8</span>
+    </div>
+    <div class="q-stem">31. All are features of recurrent herpes simplex keratitis except:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Dendritic ulcer</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Disciform keratitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Superficial punctate keratitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Geographic ulcer</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Superficial punctate keratitis).</b><br><b>Rationale:</b> Recurrent HSK manifests as dendritic ulcer, geographic (amoeboid) ulcer, or stromal disciform keratitis. Transient superficial punctate keratitis is seen in primary ocular herpes or adenoviral/dry eye conditions, not as a hallmark of recurrent HSK.</div>
+  </div>
+
+  <!-- Q32 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q30</span>
+    </div>
+    <div class="q-stem">32. Loss of corneal sensation is commonly seen in:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Bacterial corneal ulcer</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Viral herpetic ulcer</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Fungal ulcer</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Acanthamoeba ulcer</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Viral herpetic ulcer).</b><br><b>Rationale:</b> HSV and VZV replicate within trigeminal nerve fibers (CN V1), destroying the sub-basal corneal nerve plexus and producing diagnostic corneal hypoesthesia/anesthesia.</div>
+  </div>
+
+  <!-- Q33 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 24 Midterm - Q23</span>
+      <span class="tag">Batch 20 Midterm - Q14</span>
+    </div>
+    <div class="q-stem">33. Effective treatment of dendritic ulcer of the cornea is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Steroid drops / Surface anesthesia</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Acyclovir ointment</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Antibiotic drops / Systemic corticosteroids</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Artificial tears</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Acyclovir ointment).</b> <i>(Option B in Batch 24 Midterm; Option D in Batch 20 Midterm).</i><br><b>Rationale:</b> Topical Acyclovir 3% eye ointment applied 5 times daily is the first-line antiviral therapy for HSV dendritic keratitis.</div>
+  </div>
+
+  <!-- Q34 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Midterm - Q17</span>
+    </div>
+    <div class="q-stem">34. Steroid is contraindicated in:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Adenoviral keratoconjunctivitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Dendritic ulcer</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Chemical burn of cornea</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Post cataract extraction</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Dendritic ulcer).</b><br><b>Rationale:</b> Topical corticosteroids suppress local immunity in active epithelial HSV (dendritic ulcer), promotingunchecked viral replication, conversion into a large geographic ulcer, stromal melting, and perforation.</div>
+  </div>
+
+  <!-- Q35 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 24 Midterm - Q13</span>
+    </div>
+    <div class="q-stem">35. A dense corneal scar with cicatrization and iris involvement is called:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Nebula</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Macula</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Leucoma adherent</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Corneal opacity</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Leucoma adherent).</b><br><b>Rationale:</b> Following a perforated corneal ulcer, the iris plugs the perforation site and heals into the dense white stromal scar, forming a Leucoma Adherent.</div>
+  </div>
+
+  <!-- Q36 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 23 Midterm - Q20</span>
+      <span class="tag">Batch 23 Final - Q24</span>
+    </div>
+    <div class="q-stem">36. A positive Seidel test is indicative of (used to detect):</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Anterior chamber leakage due to corneal perforation</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Increased intraocular pressure / Tear film breakup</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Lens dislocation / Corneal topography</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Retinal detachment / Aqueous production</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Anterior chamber leakage due to corneal perforation).</b> <i>(Option A in Batch 23 Midterm; Option B in Batch 23 Final).</i><br><b>Rationale:</b> In the Seidel test, concentrated fluorescein applied to the cornea is diluted by a stream of leaking aqueous humor (turning bright green under blue light), confirming a full-thickness corneal perforation or wound leak.</div>
+  </div>
+
+  <!-- Q37 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 24 Midterm - Q14</span>
+      <span class="tag">Batch 22 Final - Q10</span>
+    </div>
+    <div class="q-stem">37. Band keratopathy is commonly a deposition of (calcium deposition is seen in):</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Uric acid / Pinguecula</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Calcium salts (Band keratopathy)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Cholesterol / Pterygium</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Iron</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Calcium salts / Band keratopathy).</b><br><b>Rationale:</b> Band-shaped keratopathy is a calcific degeneration characterized by hydroxyapatite (calcium phosphate/carbonate) salt deposition in Bowman's layer and superficial stroma.</div>
+  </div>
+
+  <!-- Q38 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Final - Q10</span>
+    </div>
+    <div class="q-stem">38. Salmon patches occur in:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Interstitial keratitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Retinoblastoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Epithelial keratitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Deep keratitis</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Interstitial keratitis).</b><br><b>Rationale:</b> In congenital syphilitic interstitial keratitis, dense brush-like deep stromal vascularization gives the cornea a dull reddish-pink appearance known as a "Salmon patch" of Hutchinson.</div>
+  </div>
+
+  <!-- Q39 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 23 Midterm - Q8</span>
+      <span class="tag">Batch 22 Final - Q24</span>
+    </div>
+    <div class="q-stem">39. Keratoconus is characterized by (Thinning and bulging of the cornea is seen in):</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Thinning and bulging of the cornea (Keratoconus)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Thickening of the cornea / Band keratopathy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Deposits in the cornea / Arcus senilis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Inflammation of the cornea / Scleritis</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Thinning and bulging of the cornea — Keratoconus).</b><br><b>Rationale:</b> Keratoconus is a progressive, non-inflammatory bilateral ectasia characterized by central stromal thinning and conical apical protrusion.</div>
+  </div>
+
+  <!-- Q40 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 24 Midterm - Q1</span>
+      <span class="tag">Batch 20 Midterm - Q6</span>
+    </div>
+    <div class="q-stem">40. A 20–22-year-old adult patient presents with gradual decreased visual acuity (6/60). On examination/retinoscopy there is high astigmatism and a scissoring red reflex. The probable diagnosis is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Keratitis / Keratoglobus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Keratoconus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Open angle glaucoma / Optic neuritis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. High myopia</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Keratoconus).</b><br><b>Rationale:</b> Young adult + gradual visual loss + irregular astigmatism + scissoring reflex on retinoscopy is the classic clinical vignette of Keratoconus.</div>
+  </div>
+
+  <!-- Q41 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 23 Final - Q31</span>
+      <span class="tag">Batch 20 Midterm - Q18</span>
+    </div>
+    <div class="q-stem">41. Which sign is characteristic of keratoconus (Fleischer ring is found in)?</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Kayser-Fleischer ring / Chalcosis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Fleischer ring (Keratoconus)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Brushfield spots / Argyrosis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Keratic precipitates / Buphthalmos</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Fleischer ring — Keratoconus).</b> <i>(Option B in Batch 23 Final; Option A in Batch 20 Midterm).</i><br><b>Rationale:</b> Fleischer ring is an epithelial iron deposit ring from tear pooling around the base of the cone in Keratoconus.</div>
+  </div>
+
+  <!-- Q42 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Final - Q5</span>
+    </div>
+    <div class="q-stem">42. Munson's sign is seen in:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Corneal fistula</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Corneal dystrophy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Keratoconus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Corneal facet</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Keratoconus).</b><br><b>Rationale:</b> Munson's sign is a V-shaped indentation of the lower eyelid produced by the conical cornea when the patient looks downward.</div>
+  </div>
+
+  <!-- Q43 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Final - Q6</span>
+    </div>
+    <div class="q-stem">43. Rupture of Descemet's membrane with acute hydrops occurs in:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Keratoconus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Uveitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Arcus senilis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Keratitis</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Keratoconus).</b><br><b>Rationale:</b> Acute corneal hydrops is a complication of advanced Keratoconus caused by a spontaneous tear in Descemet's membrane, allowing aqueous humor to flood the corneal stroma.</div>
+  </div>
+
+  <!-- Q44 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q3</span>
+    </div>
+    <div class="q-stem">44. The gold standard investigation for keratoconus is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Slit lamp exam</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Pachymetry</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Corneal topography</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Keratometry</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Corneal topography).</b><br><b>Rationale:</b> Corneal topography (and tomography/Pentacam) maps anterior and posterior corneal curvature, making it the gold standard for detecting early/subclinical keratoconus and monitoring progression.</div>
+  </div>
+</div>
+
+<!-- TOPIC 1.4: ERRORS OF REFRACTION -->
+<div id="m1-t4" class="topic-section">
+  <div class="topic-header">
+    <span>1.4 Optics &amp; Errors of Refraction</span>
+    <span style="font-size:12px; color:#64748b;">6 Questions</span>
+  </div>
+
+  <div class="study-review">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (Errors of Refraction)</span>
+    <ul>
+      <li><b>Primary Cause of Refractive Errors:</b> Change in the anteroposterior <span class="buzz">Axial Length</span> of the globe (Long globe = Axial Myopia; Short globe = Axial Hypermetropia).</li>
+      <li><b>Optical Lens Corrections (Memorize!):</b>
+        <ul>
+          <li><b>Myopia (Nearsightedness):</b> Parallel rays focus <i>in front of</i> the retina → corrected with <span class="buzz">Concave (Minus / Diverging) lenses</span>. High/pathological myopia predisposes to <span class="buzz">Rhegmatogenous Retinal Detachment</span> and <span class="buzz">Posterior Staphyloma</span>.</li>
+          <li><b>Hypermetropia / Hyperopia (Farsightedness):</b> Parallel rays focus <i>behind</i> the retina → corrected with <span class="buzz">Convex (Plus / Converging) lenses</span>. Predisposes to <span class="buzz">Acute Angle-Closure Glaucoma</span> and <span class="buzz">Accommodative Esotropia</span> in children.</li>
+          <li><b>Astigmatism:</b> Corrected with <span class="buzz">Cylindrical lenses</span> (or rigid contact lenses if irregular).</li>
+          <li><b>Presbyopia:</b> Age-related loss of accommodation after age 40 → primary optical treatment is <span class="buzz">Bifocal (or Plus reading) glasses</span>.</li>
+        </ul>
+      </li>
+      <li><b>Unilateral Aphakia (Top Repeated Exam Question!):</b> Can be corrected by <b>PCIOL, ACIOL, Contact lenses, or Refractive surgery</b>, <span class="buzz">EXCEPT Glasses (Spectacles)</span>! Why? Because +10 D aphakic glasses magnify the retinal image by <b>25–30% (Aniseikonia)</b>, causing intolerable <b>binocular diplopia</b> when the fellow eye is phakic.</li>
+    </ul>
+  </div>
+
+  <!-- Q45 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Final - Q2</span>
+    </div>
+    <div class="q-stem">45. The primary cause of refractive errors (myopia, hypermetropia, astigmatism) is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Change in corneal curvature</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Change in axial length</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Lens dislocation</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Retinal detachment</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Change in axial length).</b><br><b>Rationale:</b> Axial length variation (normal ~24 mm; 1 mm change = ~3 D) is the most common anatomical determinant of refractive errors.</div>
+  </div>
+
+  <!-- Q46 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Midterm - Q10</span>
+    </div>
+    <div class="q-stem">46. Myopia is best corrected by:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Convex lenses</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Concave lenses</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Cylindrical lenses</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Multifocal lenses</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Concave lenses).</b><br><b>Rationale:</b> Concave (minus) lenses diverge incoming parallel light rays so the focal point moves backward onto the myopic retina.</div>
+  </div>
+
+  <!-- Q47 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 23 Final - Q10</span>
+      <span class="tag">Batch 20 Final - Q19</span>
+    </div>
+    <div class="q-stem">47. High myopia predisposes to:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Glaucoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Retinal detachment</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Optic neuritis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Macular hole</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Retinal detachment).</b><br><b>Rationale:</b> Axial elongation in high myopia causes peripheral retinal thinning, lattice degeneration, and premature posterior vitreous detachment, predisposing to retinal tears and rhegmatogenous retinal detachment. (In Batch 20 Final Q19, RD is caused by malignant melanoma, diabetic retinopathy, AND high myopia = All of the above).</div>
+  </div>
+
+  <!-- Q48 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 23 Final - Q19</span>
+      <span class="tag">Batch 22 Final - Q23</span>
+    </div>
+    <div class="q-stem">48. Hyperopia / Hypermetropia (farsightedness) is corrected with which lens?</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Concave lens</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Convex lens</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Cylindrical lens</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Bifocal lens</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Convex lens).</b><br><b>Rationale:</b> Convex (plus) spherical lenses converge light rays to bring the focal point forward from behind the eye onto the retina.</div>
+  </div>
+
+  <!-- Q49 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q4</span>
+    </div>
+    <div class="q-stem">49. The primary optical treatment for presbyopia is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Contact lenses</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Bifocal glasses</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Concave glasses</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Cylindrical glasses</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Bifocal glasses).</b><br><b>Rationale:</b> Presbyopia is the age-related decline in near accommodation; bifocal (or reading convex) spectacles provide the additional plus power needed for near tasks.</div>
+  </div>
+
+  <!-- Q50 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 24 Midterm - Q16</span>
+      <span class="tag">Batch 22 Midterm - Q4</span>
+    </div>
+    <div class="q-stem">50. Unilateral aphakia can be corrected by all the following except:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Contact lenses / Anterior chamber IOL</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Posterior chamber Intraocular lens (IOL)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Glasses (Spectacles)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Refractive surgery</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Glasses).</b> <i>(Option C in Batch 24 Midterm; Option D in Batch 22 Midterm).</i><br><b>Rationale:</b> High-plus aphakic spectacles magnify the retinal image by ~25–30%. In unilateral aphakia, this creates severe aniseikonia and intractable binocular diplopia.</div>
+  </div>
+</div>
+
+<!-- ================================================================= -->
+<!-- MODULE 2: DR. IBRAHIM AL-SOUFI -->
+<!-- ================================================================= -->
+<div class="module-banner mod2">
+  <h1>📗 MODULE 2: DR. IBRAHIM AL-SOUFI</h1>
+  <p>Topics: Lacrimal System &amp; Orbit • Uveal Tract • Sclera • Vitreous</p>
+</div>
+
+<!-- TOPIC 2.1: LACRIMAL SYSTEM & ORBIT -->
+<div id="m2-t1" class="topic-section">
+  <div class="topic-header mod2-hdr">
+    <span>2.1 Lacrimal System &amp; The Orbit</span>
+    <span style="font-size:12px; color:#64748b;">5 Questions</span>
+  </div>
+
+  <div class="study-review mod2-rev">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (Lacrimal &amp; Orbit)</span>
+    <ul>
+      <li><b>Most Common Cause of Proptosis Worldwide:</b> <span class="buzz">Thyroid Eye Disease (Graves' Orbitopathy)</span> is the #1 cause of both unilateral and bilateral proptosis in adults.</li>
+      <li><b>Orbital Cellulitis vs. Preseptal Cellulitis vs. Cavernous Sinus Thrombosis:</b>
+        <ul>
+          <li><b>Orbital Cellulitis:</b> Infection <i>posterior</i> to the orbital septum (usually secondary to ethmoiditis). Presents with <span class="buzz">painful red eye, eyelid edema, proptosis, and ophthalmoplegia (restricted eye movements)</span> + rapid vision loss if optic nerve is compressed.</li>
+          <li><b>Complete loss of vision with rapid onset:</b> Occurs in <span class="buzz">Panophthalmitis, severe Orbital Cellulitis, and Cavernous Sinus Thrombosis</span>.</li>
+        </ul>
+      </li>
+      <li><b>Orbital Pseudotumor:</b> Best described as an <span class="buzz">idiopathic non-neoplastic inflammatory condition of the orbit</span> presenting with painful proptosis; responds dramatically to systemic steroids.</li>
+      <li><b>Orbital Floor "Blow-Out" Fracture:</b> Blunt trauma by a round object fractures the inferior orbital wall, entrapping the inferior rectus/oblique muscles and typically causing <span class="buzz">Diplopia (double vision)</span>, enophthalmos, and infraorbital numbness (<b>NOT proptosis or ptosis</b>!).</li>
+    </ul>
+  </div>
+
+  <!-- Q51 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 23 Final - Q22</span>
+    </div>
+    <div class="q-stem">51. The most common cause of proptosis worldwide is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Orbital cellulitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Cavernous sinus thrombosis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Thyroid eye disease</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Orbital tumor</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Thyroid eye disease).</b><br><b>Rationale:</b> Thyroid-associated orbitopathy (Graves' disease) is the most common cause of both unilateral and bilateral proptosis in adults.</div>
+  </div>
+
+  <!-- Q52 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 23 Final - Q23</span>
+    </div>
+    <div class="q-stem">52. Painful red eye with eyelid edema, proptosis, and ophthalmoplegia most likely indicates:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Orbital cellulitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Preseptal cellulitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Cavernous sinus thrombosis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Endophthalmitis</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Orbital cellulitis).</b><br><b>Rationale:</b> Proptosis and painful ophthalmoplegia (restricted ocular motility) distinguish post-septal Orbital Cellulitis from Preseptal Cellulitis (which lacks proptosis and has normal motility).</div>
+  </div>
+
+  <!-- Q53 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 20 Final - Q8</span>
+    </div>
+    <div class="q-stem">53. Complete loss of vision with rapid onset occurs in:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Panophthalmitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Orbital cellulitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Cavernous sinus thrombosis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. All of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (All of the above).</b><br><b>Rationale:</b> Panophthalmitis, compressive/ischemic optic neuropathy from severe Orbital Cellulitis, and Cavernous Sinus Thrombosis can all cause rapid, complete blindness.</div>
+  </div>
+
+  <!-- Q54 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 23 Midterm - Q9</span>
+    </div>
+    <div class="q-stem">54. Orbital pseudotumor is best described as:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. A malignant tumor in the orbit</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. An idiopathic inflammatory condition of the orbit</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. A bacterial infection of the orbit</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. A congenital anomaly</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (An idiopathic inflammatory condition of the orbit).</b><br><b>Rationale:</b> Idiopathic Orbital Inflammatory Disease (Orbital pseudotumor) is a non-neoplastic, non-infectious inflammatory lesion of the orbit.</div>
+  </div>
+
+  <!-- Q55 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 23 Midterm - Q16</span>
+    </div>
+    <div class="q-stem">55. A "blow out" fracture typically causes which of the following symptoms:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Proptosis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Diplopia (double vision)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Ptosis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Loss of vision</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Diplopia — double vision).</b><br><b>Rationale:</b> Blow-out fracture of the orbital floor traps the inferior rectus and inferior oblique muscles in the maxillary sinus, causing vertical binocular diplopia and enophthalmos.</div>
+  </div>
+</div>
+
+<!-- TOPIC 2.2: UVEAL TRACT -->
+<div id="m2-t2" class="topic-section">
+  <div class="topic-header mod2-hdr">
+    <span>2.2 The Uveal Tract (Uveitis, Behçet, Rubeosis &amp; Endophthalmitis)</span>
+    <span style="font-size:12px; color:#64748b;">9 Questions</span>
+  </div>
+
+  <div class="study-review mod2-rev">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (Uveal Tract)</span>
+    <ul>
+      <li><b>Etiology of Uveitis:</b>
+        <ul>
+          <li><b>Primary / Most Common Overall Cause of Uveitis:</b> <span class="buzz">Idiopathic (~50%)</span>.</li>
+          <li><b>Most Common Systemic Disease Associated with Acute Anterior Uveitis:</b> HLA-B27 seronegative spondyloarthropathies, specifically <span class="buzz">Ankylosing Spondylitis</span>.</li>
+        </ul>
+      </li>
+      <li><b>Clinical Features of Acute Iridocyclitis (Anterior Uveitis):</b>
+        <ul>
+          <li><b>Constant Symptom:</b> <span class="buzz">Diminution of vision</span> (due to aqueous flare, KPs, and ciliary spasm — <b>NOT night blindness</b>!).</li>
+          <li><b>Granulomatous Uveitis Sign:</b> <span class="buzz">Koeppe's nodules</span> (small nodules at the pupillary border of the iris) and Busacca's nodules (on iris stroma).</li>
+          <li><b>Behçet's Disease:</b> Characterized by <span class="buzz">bilateral recurrent iridocyclitis + recurrent mobile hypopyon + recurrent oral, conjunctival, and genital ulcerations</span>.</li>
+        </ul>
+      </li>
+      <li><b>Treatment of Acute Iridocyclitis:</b>
+        <ul>
+          <li><b>Most Commonly Used Anti-inflammatory Drug:</b> <span class="buzz">Corticosteroids</span>.</li>
+          <li><b>Role of Atropine (Cycloplegic/Mydriatic):</b> <span class="buzz">Relieves pain (paralyzes ciliary muscle spasm) AND prevents/breaks posterior synechiae</span> (adhesions between iris and anterior lens capsule).</li>
+        </ul>
+      </li>
+      <li><b>Rubeosis Iridis (Iris Neovascularization):</b> Caused by severe retinal ischemia, most commonly <span class="buzz">Proliferative Diabetic Retinopathy AND Central Retinal Vein Occlusion (CRVO)</span> → leads to Neovascular Glaucoma.</li>
+      <li><b>Endophthalmitis Definition:</b> Purulent <span class="buzz">inflammation of the internal structures/cavities of the eye</span> (aqueous, vitreous, retina, uvea) sparing the sclera.</li>
+    </ul>
+  </div>
+
+  <!-- Q56 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 22 Final - Q9</span>
+    </div>
+    <div class="q-stem">56. The primary cause of uveitis is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Infection</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Autoimmune</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Trauma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Idiopathic</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (Idiopathic).</b><br><b>Rationale:</b> Roughly 50% of all anterior uveitis cases have no identifiable systemic or infectious cause and are classified as idiopathic.</div>
+  </div>
+
+  <!-- Q57 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 23 Midterm - Q14</span>
+    </div>
+    <div class="q-stem">57. Uveitis is most commonly associated with which of the following systemic diseases:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Hypertension</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Rheumatoid arthritis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Ankylosing spondylitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Diabetes mellitus</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Ankylosing spondylitis).</b><br><b>Rationale:</b> HLA-B27-positive Ankylosing Spondylitis is the most common systemic disease associated with acute anterior uveitis. (Rheumatoid arthritis is classically associated with Scleritis and Sjögren's dry eye, not primary iritis).</div>
+  </div>
+
+  <!-- Q58 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 20 Midterm - Q9</span>
+    </div>
+    <div class="q-stem">58. The constant symptom in acute iridocyclitis is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Night blindness</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Diminution of vision</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Diminution of vision).</b><br><b>Rationale:</b> Blurred/diminished vision is a constant symptom in acute iridocyclitis due to plasmoid aqueous flare, inflammatory cells, KPs, and spasm of accommodation.</div>
+  </div>
+
+  <!-- Q59 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 20 Final - Q9</span>
+    </div>
+    <div class="q-stem">59. Koeppe's nodules are found in:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Granulomatous uveitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Exudative uveitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Posterior uveitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. None of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Granulomatous uveitis).</b><br><b>Rationale:</b> Koeppe's nodules (at the pupillary border) and Busacca's nodules (on the iris surface) are cellular aggregates characteristic of granulomatous anterior uveitis (e.g., Sarcoidosis, TB).</div>
+  </div>
+
+  <!-- Q60 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 20 Final - Q11</span>
+    </div>
+    <div class="q-stem">60. Behcet's disease is characterized by:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Bilateral recurrent iridocyclitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Recurrent oral, conjunctival, and genital ulcerations</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Recurrent hypopyon</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. All of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (All of the above).</b><br><b>Rationale:</b> Behçet's disease is an HLA-B51 obliterative vasculitis presenting with the classic triad of recurrent oral aphthous ulcers, genital ulcers, and bilateral relapsing iridocyclitis with mobile hypopyon.</div>
+  </div>
+
+  <!-- Q61 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 22 Final - Q21</span>
+    </div>
+    <div class="q-stem">61. The most commonly used drug in uveitis is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Corticosteroids</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Antibiotics</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Antivirals</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Antifungals</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Corticosteroids).</b><br><b>Rationale:</b> Topical, periocular, or systemic corticosteroids are the mainstay anti-inflammatory therapy for uveitis.</div>
+  </div>
+
+  <!-- Q62 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 20 Midterm - Q8</span>
+    </div>
+    <div class="q-stem">62. Atropine in the treatment of acute iridocyclitis:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Prevents anterior synechia</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Relieves pain and prevents posterior synechia</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. None of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Relieves pain and prevents posterior synechia).</b><br><b>Rationale:</b> Atropine paralyzes the inflamed ciliary muscle (relieving aching pain) and dilates the pupil to prevent/break adhesions between the iris and anterior lens capsule (posterior synechiae).</div>
+  </div>
+
+  <!-- Q63 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 20 Final - Q7</span>
+    </div>
+    <div class="q-stem">63. Rubeosis iridis is caused by:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Diabetes</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Central retinal vein occlusion</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Both</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. None of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Both).</b><br><b>Rationale:</b> Retinal hypoxia in Proliferative Diabetic Retinopathy and Ischemic CRVO triggers VEGF release, which diffuses anteriorly to cause neovascularization of the iris (Rubeosis iridis) and Neovascular Glaucoma.</div>
+  </div>
+
+  <!-- Q64 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 20 Final - Q12</span>
+    </div>
+    <div class="q-stem">64. Endophthalmitis means:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Inflammation of internal structures of the eye</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Inflammation of external parts of the eye</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Inflammation of all eye structures</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. All of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Inflammation of internal structures of the eye).</b><br><b>Rationale:</b> Endophthalmitis is purulent inflammation of the intraocular cavities (aqueous and vitreous) and inner coats (uvea/retina) without scleral or extraocular involvement (inflammation of all eye coats + orbit is Panophthalmitis).</div>
+  </div>
+</div>
+
+<!-- TOPIC 2.3: THE SCLERA -->
+<div id="m2-t3" class="topic-section">
+  <div class="topic-header mod2-hdr">
+    <span>2.3 The Sclera</span>
+    <span style="font-size:12px; color:#64748b;">1 Question</span>
+  </div>
+
+  <div class="study-review mod2-rev">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (The Sclera)</span>
+    <ul>
+      <li><b>Blue Sclera:</b> Caused by congenital thinning/abnormal collagen of the sclera allowing dark uveal/choroidal pigment to show through. Classic systemic associations: <span class="buzz">Osteogenesis Imperfecta</span> and <span class="buzz">Ehlers-Danlos Syndrome</span> (also Marfan syndrome and Buphthalmos).</li>
+      <li><b>Scleritis vs. Episcleritis:</b> Scleritis causes severe boring pain that wakes the patient at night and is strongly associated with <span class="buzz">Rheumatoid Arthritis</span>; Episcleritis is benign, superficial, and blanches with phenylephrine.</li>
+      <li><b>Ocular Staphylomas:</b> Ectasia of outer fibrous coat lined by uvea. <span class="buzz">Posterior Staphyloma</span> occurs in Pathological High Myopia and is the <b>only staphyloma with normal IOP</b>.</li>
+    </ul>
+  </div>
+
+  <!-- Q65 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 23 Final - Q38</span>
+    </div>
+    <div class="q-stem">65. Blue sclera is a feature of:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Retinoblastoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Wilson's disease</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Ehlers-Danlos / Osteogenesis imperfecta</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Keratoconus</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Ehlers-Danlos / Osteogenesis imperfecta).</b><br><b>Rationale:</b> Defective Type I/III collagen synthesis in Osteogenesis Imperfecta and Ehlers-Danlos syndrome leads to an abnormally thin, translucent sclera through which the underlying dark choroid is visible as a blue hue.</div>
+  </div>
+</div>
+
+<!-- TOPIC 2.4: THE VITREOUS -->
+<div id="m2-t4" class="topic-section">
+  <div class="topic-header mod2-hdr">
+    <span>2.4 The Vitreous Humor</span>
+    <span style="font-size:12px; color:#64748b;">2 Questions</span>
+  </div>
+
+  <div class="study-review mod2-rev">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (The Vitreous)</span>
+    <ul>
+      <li><b>Vitreous Hemorrhage:</b>
+        <ul>
+          <li><b>Most Common Cause Overall:</b> <span class="buzz">Proliferative Diabetic Retinopathy (PDR)</span> (rupture of fragile neovascular vessels into the vitreous cavity). (In young adults, <b>Trauma</b> and Eales' disease are most common).</li>
+          <li><b>Clinical Presentation:</b> Causes <span class="buzz">sudden, painless loss of vision</span> (alongside CRAO and Retinal Detachment), floaters, and an <b>absent/dim red reflex</b> with obscured fundus view. Investigated by <b>B-scan ultrasonography</b>.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Q66 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 23 Final - Q35</span>
+    </div>
+    <div class="q-stem">66. The most common cause of vitreous hemorrhage is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Retinal detachment</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Trauma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Proliferative diabetic retinopathy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Hypertensive retinopathy</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Proliferative diabetic retinopathy).</b><br><b>Rationale:</b> Fragile retinal neovascularization (NVD/NVE) in Proliferative Diabetic Retinopathy is the leading overall cause of spontaneous vitreous hemorrhage.</div>
+  </div>
+
+  <!-- Q67 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod2-tag">Batch 21 Final - Q2</span>
+    </div>
+    <div class="q-stem">67. Causes of sudden loss of vision include:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Central retinal artery occlusion (CRAO)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Severe vitreous hemorrhage</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Both A and B</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Both A and B).</b><br><b>Rationale:</b> Both Central Retinal Artery Occlusion (CRAO) and dense Vitreous Hemorrhage are classic causes of sudden, painless monocular loss of vision.</div>
+  </div>
+</div>
+
+<script>
+  let answeredCount = 0;
+  let correctCount = 0;
+  const totalQuestions = document.querySelectorAll('.q-card').length;
+
+  function updateScoreDisplay() {
+    const pct = answeredCount === 0 ? 0 : Math.round((correctCount / answeredCount) * 100);
+    document.getElementById('score-text').textContent =
+      `Answered: ${answeredCount} / ${totalQuestions} | Correct: ${correctCount} (${pct}%)`;
+  }
+
+  function checkAns(btn, selectedLetter) {
+    const card = btn.closest('.q-card');
+    if (card.classList.contains('answered')) return;
+    card.classList.add('answered');
+
+    const correctLetter = card.getAttribute('data-answer');
+    const buttons = card.querySelectorAll('.opt-btn');
+
+    buttons.forEach(b => {
+      b.classList.add('disabled');
+      const letter = b.textContent.trim().charAt(0);
+      if (letter === correctLetter) {
+        b.classList.add('correct');
+      }
+    });
+
+    answeredCount++;
+    if (selectedLetter === correctLetter) {
+      correctCount++;
+    } else {
+      btn.classList.add('wrong');
+    }
+
+    card.querySelector('.rationale').classList.add('show');
+    updateScoreDisplay();
+  }
+
+  function resetAll() {
+    answeredCount = 0;
+    correctCount = 0;
+    document.querySelectorAll('.q-card').forEach(card => {
+      card.classList.remove('answered');
+      card.querySelectorAll('.opt-btn').forEach(b => {
+        b.classList.remove('correct', 'wrong', 'disabled');
+      });
+      card.querySelector('.rationale').classList.remove('show');
+    });
+    updateScoreDisplay();
+  }
+
+  updateScoreDisplay();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ophtho Ultra-Condensed — Module 4 (Dr. Nabil Sabr)</title>
+<style>
+  :root {
+    --bg: #f8fafc; --card: #ffffff; --text: #0f172a; --muted: #475569;
+    --border: #e2e8f0; --accent: #7c3aed; --th-bg: #f1f5f9;
+    --buzz-bg: #fef08a; --buzz-txt: #854d0e;
+    --trap-bg: #ffe4e6; --trap-txt: #be123c;
+    --mech-bg: #f3e8ff; --mech-txt: #6b21a8;
+  }
+  body.dark {
+    --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8;
+    --border: #334155; --accent: #a78bfa; --th-bg: #0f172a;
+    --buzz-bg: #713f12; --buzz-txt: #fef08a;
+    --trap-bg: #4c0519; --trap-txt: #fda4af;
+    --mech-bg: #3b0764; --mech-txt: #d8b4fe;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.42;
+    padding: 12px; font-size: 13px; transition: 0.2s;
+  }
+  .top-bar {
+    background: linear-gradient(135deg, #2e1065, #7c3aed); color: #fff;
+    padding: 12px 16px; border-radius: 8px; margin-bottom: 10px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .top-bar h1 { font-size: 17px; font-weight: 800; }
+  .top-bar p { font-size: 11.5px; opacity: 0.85; }
+  .btn-toggle {
+    background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);
+    padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 11.5px; font-weight: 700;
+  }
+  .nav {
+    display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 12px;
+    position: sticky; top: 6px; z-index: 99; background: var(--bg); padding: 5px 0;
+  }
+  .nav a {
+    background: var(--card); color: var(--text); border: 1px solid var(--border);
+    text-decoration: none; padding: 4px 10px; border-radius: 5px; font-size: 11px; font-weight: 700;
+  }
+  .nav a:hover { border-color: var(--accent); color: var(--accent); }
+  .sec {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 14px; margin-bottom: 14px;
+  }
+  .sec-hdr {
+    font-size: 15px; font-weight: 800; color: var(--accent);
+    border-bottom: 2px solid var(--accent); padding-bottom: 5px; margin-bottom: 10px;
+    display: flex; justify-content: space-between;
+  }
+  h3 {
+    font-size: 13px; font-weight: 800; margin: 10px 0 6px 0;
+    color: var(--text); border-left: 3px solid var(--accent); padding-left: 6px;
+  }
+  ul, ol { padding-left: 16px; margin-bottom: 6px; }
+  li { margin-bottom: 3px; }
+  .g2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 10px; }
+  .g4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; }
+  .card-mini {
+    border: 1px solid var(--border); border-radius: 6px; padding: 7px 9px; background: var(--bg);
+  }
+  .card-mini b { color: var(--accent); display: block; font-size: 12px; margin-bottom: 2px; }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 12px; }
+  th, td { border: 1px solid var(--border); padding: 5px 7px; text-align: left; vertical-align: top; }
+  th { background: var(--th-bg); font-weight: 700; }
+  .bz { background: var(--buzz-bg); color: var(--buzz-txt); padding: 0 4px; border-radius: 3px; font-weight: 700; }
+  .trp { background: var(--trap-bg); color: var(--trap-txt); padding: 1px 5px; border-radius: 3px; font-weight: 700; font-size: 11.5px; }
+  .mech { background: var(--mech-bg); color: var(--mech-txt); padding: 4px 8px; border-radius: 5px; margin: 5px 0; font-size: 12px; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div>
+    <h1>⚡ OPHTHALMOLOGY ULTRA-CONDENSED — MODULE 4</h1>
+    <p>Dr. Nabil Sabr: Optic Nerve &amp; Neuro • Eyelid Disorders (75-Q File) • Strabismus &amp; Motility (100% Bank Yield)</p>
+  </div>
+  <button class="btn-toggle" onclick="document.body.classList.toggle('dark')">🌓 Dark / Light</button>
+</div>
+
+<div class="nav">
+  <a href="#terms">🔤 Terminology</a>
+  <a href="#mm">🧠 Mind Map</a>
+  <a href="#ch1">1. Optic Nerve &amp; Neuro</a>
+  <a href="#ch2">2. Eyelid Disorders</a>
+  <a href="#ch3">3. Strabismus &amp; Amblyopia</a>
+</div>
+
+<!-- ==================== TERMINOLOGY ==================== -->
+<div id="terms" class="sec">
+  <div class="sec-hdr"><span>🔤 HIGH-YIELD KEYWORDS &amp; TERMINOLOGY</span><span>★★★★★</span></div>
+  <div class="g4">
+    <div class="card-mini"><b>RAPD (Marcus Gunn Pupil)</b>Afferent pupillary defect on swinging flashlight test $\rightarrow$ diagnostic of <b>Optic Nerve disease (Optic Neuritis!)</b>. (🚫 <i>Never in cataract or hysteria!</i>).</div>
+    <div class="card-mini"><b>Argyll Robertson vs. Adie's Pupil</b>• <b>Argyll Robertson:</b> Small pupil; <b>reacts to near, NOT to light</b> (Light-near dissociation; <i>Neurosyphilis</i>).<br>• <b>Adie's Tonic:</b> <b>Dilated</b> pupil.</div>
+    <div class="card-mini"><b>Scotoma vs. Hemianopia</b>• <b>Scotoma:</b> Area of reduced/absent vision within an intact field.<br>• <b>Hemianopia:</b> Loss of half visual field (Bitemporal vs Homonymous).</div>
+    <div class="card-mini"><b>Amaurosis Fugax</b>Transient painless monocular vision loss (curtain-like, seconds to minutes) seen in <b>Papilledema</b> &amp; Carotid TIA.</div>
+    <div class="card-mini"><b>Madarosis, Poliosis &amp; Tylosis</b>Complications of <b>Ulcerative Blepharitis</b>:<br>• <b>Madarosis:</b> Loss of lashes.<br>• <b>Poliosis:</b> White lashes.<br>• <b>Tylosis:</b> Notched thickened lid margin.</div>
+    <div class="card-mini"><b>Trichiasis vs. Distichiasis</b>• <b>Trichiasis:</b> Posterior misdirection of normal lashes (&gt;4 lashes rubbing cornea).<br>• <b>Distichiasis:</b> <b>Accessory 2nd row of lashes</b> from Meibomian orifices behind <b>Gray line</b>.</div>
+    <div class="card-mini"><b>Phoria vs. Tropia</b>• <b>Phoria:</b> Latent squint (Exophoria = outward, common in Myopia/Presbyopia).<br>• <b>Tropia:</b> Manifest squint (Esotropia = inward; Exotropia = outward).</div>
+    <div class="card-mini"><b>Amblyopia &amp; Evisceration</b>• <b>Amblyopia:</b> Reduced vision without organic lesion (#1 cause = <b>Strabismus</b>).<br>• <b>Evisceration:</b> Evacuation of inner eye contents <b>leaving Sclera &amp; Optic nerve intact</b>.</div>
+  </div>
+</div>
+
+<!-- ==================== MIND MAP ==================== -->
+<div id="mm" class="sec">
+  <div class="sec-hdr"><span>🧠 BIG-PICTURE MIND MAP (1-MINUTE OVERVIEW)</span><span>⚡</span></div>
+  <div class="g4">
+    <div class="card-mini">
+      <b>1. OPTIC NERVE &amp; PATHWAY</b>
+      • <b>Pathway:</b> Chiasm = <b>Bitemporal</b>; Optic Tract = <b>Homonymous</b>; Temporal lobe = <b>Upper ("Pie in sky")</b>.<br>
+      • <b>Optic Neuritis:</b> Young female (MS), <b>sudden visual loss + pain on movement + RAPD</b>. Retrobulbar = "Neither sees anything". Rx: <b>Prednisolone</b>.<br>
+      • <b>Papilledema:</b> Raised ICP, bilateral, <b>Vision NORMAL early</b>, Enlarged blind spot.<br>
+      • <b>Atrophy:</b> Primary (Chalky white — MS/Retrobulbar) vs Secondary (Dirty gray — post-Papilledema) vs Consecutive (Waxy — RP, CRAO).
+    </div>
+    <div class="card-mini">
+      <b>2. PUPIL &amp; CRANIAL NERVES</b>
+      • <b>Horner Syndrome:</b> Sympathetic palsy $\rightarrow$ <b>Ptosis (Müller) + Miosis (anisocoria worse in dark) + Enophthalmos + Anhidrosis</b>.<br>
+      • <b>Mydriasis:</b> CN III palsy, Datura, 4th stage anesthesia, AACG (🚫 <i>NOT Pontine hemorrhage!</i>).<br>
+      • <b>CN III Palsy:</b> Down &amp; out + Ptosis + Mydriasis. <b>Pupil involved = Intracranial PCom Aneurysm!</b> Pupil spared = DM (#1 CN palsy in DM!).
+    </div>
+    <div class="card-mini">
+      <b>3. EYELIDS (75-Q FILE)</b>
+      • <b>Anatomy:</b> Covers <b>1/6</b> cornea; <b>Gray line</b> splits lamellae. LPS = CN III; Orbicularis = CN VII.<br>
+      • <b>Blepharitis:</b> 25% baby shampoo. Ulcerative = bleeding ulcers $\rightarrow$ Madarosis, Poliosis, Tylosis.<br>
+      • <b>Chalazion:</b> Painless Meibomian lipogranuloma (epithelioid/giant cells) $\rightarrow$ Hot compress / Vertical incision. (<i>Recurrent in elderly = <b>Meibomian gland carcinoma</b>!</i>).<br>
+      • <b>Ptosis:</b> #1 Congenital = <b>Myogenic</b>. Check <b>Levator function</b>! Severe = <b>Fascia lata sling</b>.
+    </div>
+    <div class="card-mini">
+      <b>4. STRABISMUS &amp; MOTILITY</b>
+      • <b>Muscles:</b> All from orbital apex <b>EXCEPT Inferior Oblique</b>! <b>SO = Intorts (CN IV)</b>; <b>LR = Abducts (CN VI)</b>.<br>
+      • <b>Concomitant:</b> <b>Primary = Secondary deviation</b>; no diplopia. <b>1st step = Proper Refraction (Glasses)</b> + <b>Occlusion for Amblyopia</b>.<br>
+      • <b>Paralytic:</b> <b>Secondary &gt; Primary deviation</b>; <b>Binocular Diplopia</b>.<br>
+      • <b>Pseudo-esotropia:</b> Epicanthus, Myopia.
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 1 ==================== -->
+<div id="ch1" class="sec">
+  <div class="sec-hdr"><span>1. OPTIC NERVE &amp; NEURO-OPHTHALMOLOGY</span><span>★★★★★</span></div>
+  <div class="g2">
+    <div>
+      <h3>1.1 Visual Pathway, Pupils &amp; Horner's Syndrome</h3>
+      <ul>
+        <li><b>Optic Nerve (CN II):</b> Formed by axons of <b>Retinal Ganglion Cells</b>; extends up to <b>Optic Chiasma</b>; total length = <b>5 cm</b> (4 parts; <span class="trp">🚫 "Intracanalicular part is 5 cm" is FALSE — it is 5 mm!</span>). Disc diameter = <b>1.5 mm</b> (lacks photoreceptors). Best function test = <span class="bz">Perimetry</span>.</li>
+        <li><b>Visual Field Defects (Image &amp; MCQ Mastery):</b>
+          <ul>
+            <li><b>Central Optic Chiasma</b> (Pituitary tumor, Acromegaly, Cushing's) $\rightarrow$ <span class="bz">Bitemporal Hemianopia</span> (<span class="trp">🚫 Not associated with Adie's pupil!</span>).</li>
+            <li><b>Optic Tract</b> (or Occipital cortex) $\rightarrow$ Contralateral <span class="bz">Homonymous Hemianopia</span>.</li>
+            <li><b>Left Temporal Lobe Clot (Meyer's loop)</b> $\rightarrow$ <span class="bz">Right Upper Temporal Quadrantanopia ("Pie in the sky")</span>.</li>
+            <li><b>Right Frontal Lobe Mass (Foster-Kennedy)</b> $\rightarrow$ <b>Right Optic Atrophy + Left Papilledema</b>.</li>
+          </ul>
+        </li>
+        <li><b>Pupillary Reflex Pathway &amp; Abnormalities:</b>
+          <ul>
+            <li><b>Normal Pupil:</b> Round/oval, equal, reacts to light &amp; accommodation. Light fibers pass through optic tract to <span class="bz">Pretectal Nuclei</span>.</li>
+            <li><b>Mydriasis (Dilated Pupil):</b> Seen in <b>CN III palsy, Datura poisoning, 4th stage of anesthesia, Adie's pupil, Acute Glaucoma, Optic atrophy</b>. (<span class="trp">🚫 NEVER in Pontine Hemorrhage! Pontine hemorrhage &amp; Morphine cause Pinpoint Miosis!</span>). Shortest-acting diagnostic mydriatic = <span class="bz">Tropicamide</span>.</li>
+            <li><b>Light-Near Dissociation:</b> <span class="bz">Argyll Robertson Pupil</span> (small pupil; reacts to near, NOT light — Neurosyphilis).</li>
+            <li><b>RAPD (<span class="bz">Marcus Gunn Pupil</span>):</b> Classic in <span class="bz">Optic Neuritis</span>, Papillitis, Optic atrophy, Orbital abscess (<span class="trp">🚫 NEVER in Hysteria or Cataract!</span>).</li>
+          </ul>
+        </li>
+        <li><b>Horner's Syndrome (Oculosympathetic Palsy) ★★★★★:</b>
+          <ul>
+            <li><b>Causes:</b> Pancoast lung apex tumor, Carotid dissection, Brainstem stroke, Neck trauma/thyroid surgery.</li>
+            <li><b>Classic Tetrad:</b> (1) <b>Mild Ptosis</b> (paralysis of <span class="bz">Müller's muscle</span>), (2) <b>Miosis</b> (<span class="bz">Anisocoria INCREASES in the dark!</span>), (3) <b>Apparent Enophthalmos</b>, (4) <b>Ipsilateral Anhidrosis</b>. (<span class="trp">🚫 NEVER causes Exophthalmos/Proptosis, Mydriasis, Diplopia, or Cycloplegia!</span>).</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>1.2 Optic Neuritis vs. Papilledema &amp; Optic Atrophy ★★★★★</h3>
+      <table>
+        <tr><th>Feature</th><th>Papilledema (Passive Edema)</th><th>Optic Neuritis (Papillitis / Retrobulbar)</th></tr>
+        <tr><td><b>Etiology</b></td><td><b>Raised ICP</b> (Brain tumor, <b>IIH in obese female on tetracycline/acne drug</b>, Grade 4 HTN).</td><td><b>Multiple Sclerosis (#1!)</b>, Viral, Herpes zoster, Uveitis, <span class="bz">Ethambutol toxicity</span>.</td></tr>
+        <tr><td><b>Laterality &amp; Pain</b></td><td><b>Bilateral</b>; headache/vomiting (<span class="trp">🚫 NO pain on eye movement!</span>).</td><td><b>Unilateral</b>; <span class="bz">Sudden vision loss + Pain on moving the eye (up &amp; in)</span>! (<span class="trp">🚫 No vomiting!</span>).</td></tr>
+        <tr><td><b>Vision &amp; Pupil</b></td><td><span class="bz">Vision NORMAL early!</span> (+ transient <span class="bz">Amaurosis fugax</span>). Normal pupil.</td><td><b>Marked vision drop (6/60)</b> + color loss + <span class="bz">Positive RAPD (Marcus Gunn pupil)</span>!</td></tr>
+        <tr><td><b>Fundus &amp; Field</b></td><td>Blurred margins, hyperemia, elevation &gt;3D (<span class="trp">🚫 No cupping!</span>). Field: <span class="bz">Enlarged Blind Spot</span>!</td><td><b>Papillitis:</b> Blurred hyperemic disc.<br><b>Retrobulbar:</b> <span class="bz">"Doctor sees nothing, patient sees nothing"</span>. Field: <b>Central Scotoma</b>.</td></tr>
+        <tr><td><b>Rx</b></td><td>Brain MRI/MRV + LP + <b>Acetazolamide</b>.</td><td><span class="bz">IV / Oral Prednisolone (Steroids)</span>.</td></tr>
+      </table>
+
+      <h3>1.3 The 4 Types of Optic Atrophy ★★★★★</h3>
+      <ul>
+        <li><b>1. Primary Optic Atrophy:</b> <span class="bz">Chalky-white disc with sharp margins</span> (lesion behind lamina cribrosa without prior edema) $\rightarrow$ follows <span class="bz">Retrobulbar Neuritis (MS)</span>, Pituitary/chiasmal tumors, Trauma, Toxic, Tabes dorsalis (Neurological disease).</li>
+        <li><b>2. Secondary Optic Atrophy:</b> <span class="bz">Dirty grayish-white disc with blurred margins</span> &amp; obliterated cup $\rightarrow$ follows <span class="bz">Chronic Papilledema</span> or <span class="bz">Papillitis</span>.</li>
+        <li><b>3. Consecutive Optic Atrophy:</b> <span class="bz">Waxy-yellow disc</span> + attenuated vessels $\rightarrow$ follows retinal/choroidal disease: <span class="bz">Retinitis Pigmentosa</span>, <span class="bz">CRAO</span>, <b>High Myopia, Chorioretinitis</b> (<span class="trp">🚫 NOT CRVO!</span>).</li>
+        <li><b>4. Glaucomatous Optic Atrophy:</b> Deep <span class="bz">vertically oval cup</span> (normal C/D = <b>0.3</b>), overhanging margins, broken vessels, visible lamina cribrosa (<span class="trp">🚫 NOT waxy yellow!</span>).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 2 ==================== -->
+<div id="ch2" class="sec">
+  <div class="sec-hdr"><span>2. EYELID DISORDERS (BANK + 75-Q FILE MASTERY)</span><span>★★★★★</span></div>
+  <div class="g2">
+    <div>
+      <h3>2.1 Eyelid Anatomy, Oedema &amp; Blepharitis</h3>
+      <ul>
+        <li><b>Core Anatomy (75-Q File):</b>
+          <ul>
+            <li>Upper lid covers upper <span class="bz">1/6 of cornea</span>. Blood supply = <b>Ophthalmic &amp; Lacrimal arteries</b>. Sensory = <b>CN V</b>.</li>
+            <li><span class="bz">Gray Line:</span> Separates anterior lamella (skin/orbicularis) from posterior lamella (tarsus/conjunctiva).</li>
+            <li><b>Orbicularis Oculi (CN VII):</b> Closes lid; originates from medial palpebral ligament $\rightarrow$ inserts into <b>lateral palpebral ligament</b>; <b>Orbital portion</b> surrounds orbital margin; lacrimal portion aids tear drainage (<span class="trp">🚫 Paralysis causes Lagophthalmos/Ectropion, NEVER Ptosis!</span>).</li>
+            <li><b>Levator Palpebrae Superioris (LPS — CN III):</b> Originates from <span class="bz">orbital roof near apex</span> $\rightarrow$ inserts into <b>upper border of tarsus, upper lid skin, &amp; superior fornix</b> (<span class="trp">🚫 NOT bulbar conjunctiva or lower lid!</span>). Elevates lid (normal function = <span class="bz">13–15 mm</span>); paralysis $\rightarrow$ <b>Ptosis</b>.</li>
+            <li><b>Glands:</b> <span class="bz">Meibomian</span> = modified sebaceous in tarsus (20–30 orifices) | <span class="bz">Zeis</span> = modified sebaceous at lash follicles | <b>Moll</b> = modified sweat.</li>
+          </ul>
+        </li>
+        <li><b>Eyelid Oedema:</b> <b>Myxoedema</b> = bilateral non-pitting in hypothyroidism | <b>Acute Allergic</b> = unilateral painless pitting + chemosis after insect bite (<span class="trp">🚫 No vesiculation/crusting!</span>) | <b>Atopic Dermatitis</b> = chronic thickening/fissuring in asthma/hay fever (linked to <b>Staph blepharitis</b>) | <b>Systemic bilateral</b> = Renal disease, CHF (<span class="trp">🚫 NOT hyperthyroid exophthalmos!</span>).</li>
+        <li><b>Blepharitis:</b>
+          <ul>
+            <li><b>Squamous (Seborrhoeic):</b> Shiny anterior margin with <b>greasy scales</b> (no ulcers on removal). Rx: 25% baby shampoo + <span class="bz">correct refractive errors</span>!</li>
+            <li><b>Ulcerative (Staphylococcal):</b> Hard yellow crusts $\rightarrow$ <span class="bz">painful bleeding ulcers at lash bases on removal</span>! <b>Complications:</b> <span class="bz">Madarosis</span> (lash loss), <span class="bz">Trichiasis</span>, <span class="bz">Poliosis</span> (white lashes), <span class="bz">Tylosis</span> (lid notching), &amp; ulcerative keratitis (<span class="trp">🚫 NOT caused by Morax-Axenfeld &amp; NOT treated by Electrolysis!</span>).</li>
+            <li><b>Posterior (Meibomianitis):</b> Rx = <span class="bz">Warm compresses</span> (melt sebum) + Tear substitutes + Oral <b>Doxycycline / Tetracycline / Azithromycin</b> (<span class="trp">🚫 NOT Penicillin!</span>). First-line lid hygiene = <span class="bz">25% baby shampoo</span> + antibiotic/steroid ointment.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>2.2 Lid Swellings, Cysts &amp; Tumours (75-Q File) ★★★★★</h3>
+      <ul>
+        <li><b>External Hordeolum (<span class="bz">Stye</span>):</b> Acute suppurative inflammation of <span class="bz">Zeis / Moll gland &amp; lash follicle</span>. Rx: Warm compresses + epilate lash + antibiotic drops.</li>
+        <li><b>Internal Hordeolum:</b> Acute suppurative inflammation of <b>Meibomian gland</b>.</li>
+        <li><b><span class="bz">Chalazion</span> (Meibomian Lipogranuloma):</b>
+          <ul>
+            <li>Chronic painless firm round nodule in tarsal plate. Histology: Fat spaces surrounded by <span class="bz">epithelioid &amp; giant cells</span>.</li>
+            <li><b>Complications:</b> Astigmatism, Mechanical ptosis, Internal hordeolum (<span class="trp">🚫 NEVER causes anterior uveitis!</span>).</li>
+            <li><b>Rx:</b> 1st-line = <span class="bz">Hot compression</span> | Surgical = <span class="bz">Vertical conjunctival incision &amp; curettage</span>.</li>
+            <li><span class="trp">⚠️ Recurrent Chalazion in Elderly (&gt;60y):</span> Biopsy to rule out <span class="bz">Meibomian Gland (Sebaceous) Carcinoma</span> (firm yellow nodule, mitotic figures)!</li>
+          </ul>
+        </li>
+        <li><b>High-Yield Cysts &amp; Tumours (75-Q File):</b>
+          <ul>
+            <li><b>Cyst of Moll:</b> Translucent anterior lid margin cyst | <b>Cyst of Zeis:</b> Opaque cheesy sebaceous cyst | <b>Xanthelasma:</b> Yellow medial plaques (<span class="bz">Hypercholesterolaemia</span>).</li>
+            <li><b>Molluscum Contagiosum:</b> Waxy umbilicated nodules in AIDS (small eosinophilic inclusion bodies) $\rightarrow$ causes <span class="bz">chronic follicular conjunctivitis</span>.</li>
+            <li><b>Benign Tumours:</b> <b>#1 Benign = <span class="bz">Viral Wart (Squamous Papilloma)</span></b> (elongated inward-bent rete ridges) | <b>Keratoacanthoma:</b> Fast-growing rolled edges + central keratin crater (involutes in 1y) | <b>Seborrhoeic keratosis:</b> Greasy 'stuck-on' | <b>Actinic keratosis:</b> #1 pre-malignant skin lesion | <b>Cutaneous horn:</b> Overlies actinic keratosis / SCC | <b>Pyogenic granuloma:</b> Fast-growing bleeding pinkish pedunculated mass post-surgery/chalazion | <b>Naevi:</b> <i>Junctional</i> = flat, darkens at puberty; <i>Compound</i> = intradermal + junctional.</li>
+            <li><b>Vascular:</b> <b>Capillary Haemangioma:</b> Blanches on pressure, swells on crying; linked to <span class="bz">Kasabach-Merritt</span> (thrombocytopenia) &amp; <span class="bz">Maffucci syndrome</span> | <b>Port-Wine Stain (Sturge-Weber):</b> Purple, does NOT blanch; <span class="bz">30% have ipsilateral Glaucoma</span>!</li>
+            <li><b>#1 Malignant Eyelid Tumour:</b> <span class="bz">Basal Cell Carcinoma (BCC)</span>!</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div>
+      <h3>2.3 Trichiasis, Distichiasis, Entropion &amp; Ectropion ★★★★</h3>
+      <ul>
+        <li><b>Trichiasis:</b> Posterior misdirection of normal lashes (#1 cause = <b>Trachoma</b>, ulcerative blepharitis) $\rightarrow$ inferior punctate epitheliopathy &amp; corneal pannus.
+          <ul>
+            <li><b>Rx by Lash Count:</b> Epilation = temporary (<b>recurs within weeks</b>; indicated in acute corneal ulcer) | <b>&lt;4 lashes</b> = <span class="bz">Electrolysis</span> | <b>Many lashes (8–10)</b> = <span class="bz">Cryotherapy</span> or <b>Lid splitting + Cryo / Van Millingen's operation</b> | Resistant crop = <b>Surgery (Snellen's / Wedge resection)</b>.</li>
+          </ul>
+        </li>
+        <li><b>Distichiasis:</b> Congenital (AD) accessory <b>2nd row of lashes</b> from Meibomian orifices behind gray line. Rx: <span class="bz">Division into lamellae &amp; Cryotherapy</span>.</li>
+        <li><b>Entropion (Inward turning):</b> 4 Types = <b>Involutional/Senile</b> (#1 in elderly $\rightarrow$ Rx: <span class="bz">plication of inferior lid retractors / Weiss procedure</span>), <b>Cicatricial</b> (Trachoma), <b>Spastic</b>, <b>Congenital</b>. (<span class="trp">🚫 There is NO "Paralytic Entropion"!</span>).</li>
+        <li><b>Ectropion (Outward turning):</b> 4 Types = <b>Involutional/Senile</b> (horizontal lid laxity), <b>Paralytic</b> (<b>CN VII Facial palsy</b>), <b>Cicatricial</b> (facial acid/thermal burns — <span class="bz">ONLY type affecting Upper Eyelid!</span>), <b>Mechanical</b>. (<span class="trp">🚫 No Congenital Ectropion in 75-Q file; Upper lid ectropion is NEVER senile or paralytic!</span>).</li>
+        <li><b>Lagophthalmos (Incomplete closure):</b> Caused by <b>CN VII palsy</b> (1st-line Rx = <span class="bz">frequent ocular lubrication</span>), Proptosis, Cicatricial ectropion, Symblepharon, Lid coloboma (<span class="trp">🚫 NEVER caused by CN III palsy, CN V palsy, or Entropion!</span>). Complication = <b>Exposure Keratitis</b>.</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>2.4 Ptosis (Drooping of Upper Eyelid) ★★★★★</h3>
+      <ul>
+        <li><b>Causes of Ptosis:</b>
+          <ol>
+            <li><b>Congenital (#1 Bilateral &amp; Congenital cause = <span class="bz">Myogenic</span>!)</b>: Associated with Blepharophimosis, Telecanthus, Epicanthus (<span class="trp">🚫 NOT NLD obstruction!</span>). Complications = Ocular torticollis, Amblyopia (<span class="trp">🚫 NOT complicated cataract!</span>).</li>
+            <li><b>Neurogenic (Paralytic):</b> <b>CN III palsy</b> (with mydriasis) &amp; <b>Horner's syndrome</b> (with miosis).</li>
+            <li><b>Myogenic Acquired:</b> <span class="bz">Myasthenia Gravis</span> (diurnal fatigue; Ice-pack/Tensilon test).</li>
+            <li><b>Aponeurotic (Senile)</b>, <b>Mechanical</b> (Chalazion), &amp; <b>Traumatic</b>.</li>
+          </ol>
+        </li>
+        <li><b>Differential Diagnosis (Pseudoptosis):</b> Enophthalmos/Microphthalmos/Phthisis bulbi, Hypotropia, Dermatochalasis (redundant old skin), Contralateral lid retraction (Graves'), Blepharospasm.</li>
+        <li><b>Evaluation &amp; Surgical Rx:</b>
+          <ul>
+            <li><b>#1 Most Important Exam in Congenital Ptosis:</b> <span class="bz">Amount of Levator Muscle Function</span>!</li>
+            <li><b>Treat as early as possible:</b> <span class="bz">Severe Unilateral Congenital Ptosis</span> (to prevent Amblyopia!).</li>
+            <li><b>Mild (&gt;8 mm levator function / Horner's):</b> <span class="bz">Fasanella-Servat Operation</span>.</li>
+            <li><b>Moderate (5–8 mm function):</b> <b>Levator Resection</b>.</li>
+            <li><b>Severe with NO levator function (&lt;4 mm):</b> <span class="bz">Fascia Lata Brow Suspension (Sling) Operation</span>!</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 3 ==================== -->
+<div id="ch3" class="sec">
+  <div class="sec-hdr"><span>3. STRABISMUS (SQUINT), MOTILITY, AMBLYOPIA &amp; NYSTAGMUS</span><span>★★★★★</span></div>
+  <div class="g2">
+    <div>
+      <h3>3.1 Extraocular Muscle Rules &amp; Nerve Palsies</h3>
+      <ul>
+        <li><b>Origin Rule:</b> All extraocular muscles emerge from the orbital apex <span class="bz">EXCEPT the Inferior Oblique</span>! (<span class="trp">🚫 Ciliary muscle is intraocular, NOT extraocular!</span>).</li>
+        <li><b>Innervation (<span class="bz">LR6 · SO4 · R3</span>):</b>
+          <ul>
+            <li><b>Superior Oblique (CN IV — Trochlear):</b> Emerges from <b>dorsal brain</b>; primary <span class="bz">Intorter</span> (+ depression &amp; abduction). Palsy $\rightarrow$ diplopia during reading + <b>extorsion</b> (<span class="trp">🚫 NOT encyclotorsion!</span>) + diplopia disappears on covering <b>either eye</b>.</li>
+            <li><b>Lateral Rectus (CN VI — Abducens):</b> Abducts. Palsy $\rightarrow$ <b>Binocular Diplopia</b> (increases on looking toward paralyzed side!) + convergent squint. In a 55yo diabetic with CN VI palsy $\rightarrow$ <b>1st step = Brain MRI</b>.</li>
+            <li><b>CN III (Oculomotor):</b> Supplies SR (Elevation, intorsion, adduction), IR, MR, IO (Elevation, extorsion, abduction), &amp; LPS.
+              <ul>
+                <li><b>Complete CN III Palsy:</b> Ptosis + Eye <span class="bz">Down and Out</span> + Mydriasis (<span class="trp">🚫 NOT up &amp; out, NOT miosis!</span>).</li>
+                <li><b>Pupil-Involved CN III Palsy = <span class="bz">Posterior Communicating Artery (PCom) Intracranial Aneurysm</span></b> (Surgical emergency!).</li>
+                <li><b>Pupil-Sparing CN III Palsy = <span class="bz">Diabetes Mellitus</span></b> (#1 cranial nerve palsy in DM!).</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><b>Binocular Vision Grades:</b> Grade 1 = Simultaneous perception | <span class="bz">Grade 2 = Fusion</span> | Grade 3 = Stereopsis. <b>Versions</b> = binocular movements in the <b>same direction</b>.</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>3.2 Concomitant vs. Paralytic Squint, Amblyopia &amp; Nystagmus</h3>
+      <table>
+        <tr><th>Feature</th><th>Concomitant Squint</th><th>Paralytic Squint</th></tr>
+        <tr><td><b>Angle &amp; Motility</b></td><td>Constant angle in all gazes; <b>Full motility</b>.<br><span class="bz">Primary Deviation = Secondary Deviation</span>!</td><td>Angle increases in paralyzed gaze; <b>Limited motility</b>.<br><span class="bz">Secondary Deviation &gt; Primary Deviation</span>!</td></tr>
+        <tr><td><b>Symptoms &amp; Causes</b></td><td>Childhood; <b>NO diplopia</b>; high risk of <b>Amblyopia</b>.<br>• #1 Crossed eyes in 1st year = <b>Infantile Esotropia</b>.<br>• #1 after 2y = <b>Accommodative Esotropia</b> (due to <b>excessive accommodation in Hypermetropia</b>!).<br>• Must rule out <b>Retinoblastoma</b>!</td><td>Adults; <span class="bz">Binocular Diplopia</span> + abnormal head tilt.<br>Causes: CN III/IV/VI palsy, Trauma, Tumor, Graves'.</td></tr>
+      </table>
+      <ul>
+        <li><b>Apparent Squint (Pseudo-esotropia):</b> Caused by <span class="bz">Epicanthus</span>, broad nasal bridge, <b>Negative angle alpha (High Myopia)</b>. Rx: Reassurance only.</li>
+        <li><b>Squint Tests &amp; Management Sequence:</b>
+          <ul>
+            <li><b>Angle of Squint Test:</b> <span class="bz">Hirschberg Test</span> | <b>Color Vision:</b> <b>Ishihara test</b>.</li>
+            <li><b>1st Step in a 3yo Child with Convergent Squint:</b> <span class="bz">Proper Cycloplegic Refraction (Glasses)!</span> (Some childhood squints are treated by glasses/medical Rx alone; <span class="trp">🚫 NOT all need surgery, and NEVER give steroids!</span>).</li>
+          </ul>
+        </li>
+        <li><b>Amblyopia ("Lazy Eye"):</b> #1 Primary cause = <span class="bz">Strabismus</span> (also High Anisometropia &amp; Congenital Cataract/Ptosis).
+          <ul>
+            <li><b>Best Treatment:</b> <span class="bz">Occlusion Therapy (Patching the good/sound eye)</span> before age 8y! (Max full-time occlusion period = <span class="bz">1 week per year of child's age</span>; <span class="trp">🚫 NOT indicated in alternating or apparent squint!</span>).</li>
+          </ul>
+        </li>
+        <li><b>Clinical Nystagmus:</b> <b>Pendular</b> (equal velocity — sensory deprivation from congenital cataract/macular scar) vs. <b>Jerky</b> (slow drift + fast corrective phase — cerebellar/vestibular).</li>
+        <li><b>Destructive Eye Operations:</b>
+          <ul>
+            <li><span class="bz">Evisceration:</span> Removal of all inner intraocular contents <b>leaving Sclera &amp; Optic Nerve intact</b> (Rx of choice in <b>Panophthalmitis</b>!).</li>
+            <li><b>Enucleation:</b> Excision of <b>entire eyeball</b> (Retinoblastoma, Melanoma, Painful blind eye; fit artificial prosthetic eye after <span class="bz">12–24 weeks / 6–8 wks</span>).</li>
+            <li><b>Exenteration:</b> Removal of globe + all orbital contents, periosteum &amp; lids.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

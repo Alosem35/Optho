@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thamar Ophthalmology QBank (Batches 20–24) — Modules 3 & 4</title>
+<style>
+  :root {
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --primary: #0f172a;
+    --mod3: #7c3aed;
+    --mod3-soft: #ede9fe;
+    --mod4: #ea580c;
+    --mod4-soft: #ffedd5;
+    --correct: #16a34a;
+    --correct-bg: #dcfce7;
+    --wrong: #dc2626;
+    --wrong-bg: #fee2e2;
+    --review-bg: #f8fafc;
+    --border: #cbd5e1;
+    --text: #1e293b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    padding: 14px;
+    padding-top: 72px;
+    font-size: 14px;
+  }
+  .sticky-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(15, 23, 42, 0.96); color: #fff;
+    padding: 10px 16px; display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); backdrop-filter: blur(6px);
+    flex-wrap: wrap; gap: 10px;
+  }
+  .sticky-title { font-weight: 800; font-size: 14px; color: #c4b5fd; }
+  .score-box { display: flex; gap: 14px; align-items: center; font-size: 13px; font-weight: 700; }
+  .score-pill { background: #1e293b; padding: 4px 10px; border-radius: 6px; border: 1px solid #334155; }
+  .reset-btn {
+    background: #ef4444; color: #fff; border: none; padding: 5px 12px;
+    border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 12px;
+  }
+  .reset-btn:hover { background: #dc2626; }
+
+  .module-banner {
+    background: linear-gradient(135deg, #2e1065, #6d28d9);
+    color: #fff; padding: 20px; border-radius: 12px; margin: 16px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+  }
+  .module-banner.mod4 { background: linear-gradient(135deg, #431407, #c2410c); }
+  .module-banner h1 { font-size: 20px; margin-bottom: 4px; }
+  .module-banner p { font-size: 13px; opacity: 0.9; }
+
+  .nav-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+  .nav-pill {
+    background: #fff; color: var(--primary); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 700;
+  }
+  .nav-pill:hover { background: var(--mod3); color: #fff; border-color: var(--mod3); }
+
+  .topic-section {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px; margin-bottom: 24px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  }
+  .topic-header {
+    font-size: 17px; font-weight: 800; color: var(--primary);
+    border-bottom: 3px solid var(--mod3); padding-bottom: 8px; margin-bottom: 14px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .topic-header.mod4-hdr { border-bottom-color: var(--mod4); }
+
+  .study-review {
+    background: var(--review-bg); border-left: 5px solid var(--mod3);
+    padding: 14px; border-radius: 8px; margin-bottom: 18px;
+  }
+  .study-review.mod4-rev { border-left-color: var(--mod4); }
+  .sr-title {
+    font-weight: 800; font-size: 13px; text-transform: uppercase;
+    color: var(--mod3); margin-bottom: 8px; display: block; letter-spacing: 0.4px;
+  }
+  .study-review.mod4-rev .sr-title { color: var(--mod4); }
+  .study-review ul { padding-left: 18px; }
+  .study-review li { margin-bottom: 5px; font-size: 13.5px; }
+  .buzz { background: #fef08a; padding: 1px 5px; border-radius: 4px; font-weight: 700; color: #854d0e; }
+
+  .q-card {
+    border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px;
+    margin-bottom: 14px; background: #fff; transition: all 0.2s;
+  }
+  .q-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .tag {
+    background: var(--mod3-soft); color: #5b21b6; font-size: 11px;
+    font-weight: 800; padding: 3px 8px; border-radius: 5px;
+  }
+  .tag.repeat { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+  .tag.mod4-tag { background: var(--mod4-soft); color: #9a3412; }
+  .q-stem { font-weight: 700; font-size: 14.5px; margin-bottom: 10px; color: #0f172a; }
+  .options { display: flex; flex-direction: column; gap: 7px; }
+  .opt-btn {
+    text-align: left; background: #f8fafc; border: 1px solid #cbd5e1;
+    padding: 9px 12px; border-radius: 7px; cursor: pointer; font-size: 13.5px;
+    color: #1e293b; font-weight: 500; transition: all 0.15s;
+  }
+  .opt-btn:hover:not(.disabled) { background: #e2e8f0; border-color: #94a3b8; }
+  .opt-btn.correct {
+    background: var(--correct-bg) !important; border-color: var(--correct) !important;
+    color: #14532d !important; font-weight: 700;
+  }
+  .opt-btn.wrong {
+    background: var(--wrong-bg) !important; border-color: var(--wrong) !important;
+    color: #7f1d1d !important; text-decoration: line-through;
+  }
+  .opt-btn.disabled { cursor: default; }
+  .rationale {
+    display: none; margin-top: 10px; padding: 10px 12px; border-radius: 7px;
+    background: #f5f3ff; border-left: 4px solid var(--mod3); font-size: 13px; color: #3b0764;
+  }
+  .rationale.mod4-rat { background: #fff7ed; border-left-color: var(--mod4); color: #7c2d12; }
+  .rationale.show { display: block; }
+</style>
+</head>
+<body>
+
+<div class="sticky-bar">
+  <div class="sticky-title">🎯 Thamar Med QBank (Batches 20–24) • Modules 3 &amp; 4</div>
+  <div class="score-box">
+    <span class="score-pill" id="score-text">Answered: 0 / 54 | Correct: 0 (0%)</span>
+    <button class="reset-btn" onclick="resetAll()">🔄 Reset All</button>
+  </div>
+</div>
+
+<div class="nav-pills">
+  <a href="#m3-t1" class="nav-pill">M3.1: Cataract Types &amp; Signs</a>
+  <a href="#m3-t2" class="nav-pill">M3.2: Lens-Glaucoma &amp; Dislocation</a>
+  <a href="#m3-t3" class="nav-pill">M3.3: Cataract Surgery &amp; PCO</a>
+  <a href="#m4-t1" class="nav-pill">M4.1: Optic Nerve &amp; Pupil</a>
+  <a href="#m4-t2" class="nav-pill">M4.2: Eyelids</a>
+  <a href="#m4-t3" class="nav-pill">M4.3: Strabismus &amp; Motility</a>
+</div>
+
+<!-- ================================================================= -->
+<!-- MODULE 3: DR. FOUAD AL-KHAYAT (CATARACT & LENS) -->
+<!-- ================================================================= -->
+<div class="module-banner">
+  <h1>🟪 MODULE 3: DR. FOUAD AL-KHAYAT</h1>
+  <p>Topics: Congenital, Senile &amp; Secondary Cataracts • Lens-Induced Glaucoma &amp; Ectopia Lentis • Cataract Surgery, IOL &amp; YAG Laser</p>
+</div>
+
+<!-- TOPIC 3.1: CATARACT ETIOLOGY, MORPHOLOGY & CLINICAL SIGNS -->
+<div id="m3-t1" class="topic-section">
+  <div class="topic-header">
+    <span>3.1 Cataract Etiology, Morphology &amp; Clinical Presentations</span>
+    <span style="font-size:12px; color:#64748b;">12 Questions</span>
+  </div>
+
+  <div class="study-review">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (Cataract Types &amp; Signs)</span>
+    <ul>
+      <li><b>Visual Symptoms by Anatomical Location of Cataract (High-Yield!):</b>
+        <ul>
+          <li><span class="buzz">Central / Posterior Polar / Posterior Subcapsular Cataract (PSC):</span> Causes **markedly diminished vision in bright daylight (sunlight)**, **glare**, and **difficulty in near reading**! Why? Because both bright light and near accommodation cause **pupillary constriction (miosis)**, forcing all light rays to pass strictly through the opaque central/axial zone. Furthermore, <span class="buzz">Posterior Polar Cataract</span> affects vision the most because it sits right at the **Nodal Point** (optical center) of the eye.</li>
+          <li><span class="buzz">Nuclear Sclerotic Cataract ("Second Sight"):</span> Increases the refractive index of the lens nucleus → causes **Index Myopia** (gradual shift in glasses prescription), allowing presbyopic elderly patients to read near print without reading glasses!</li>
+        </ul>
+      </li>
+      <li><b>Secondary / Complicated &amp; Specific Cataract Associations (Memorize!):</b>
+        <ul>
+          <li><b>Topical / Systemic Corticosteroids:</b> Classically cause <span class="buzz">Posterior Subcapsular Cataract (PSC)</span>.</li>
+          <li><b>Blunt Ocular Trauma (Concussion):</b> Classically causes a flower/star-like <span class="buzz">Rosette-shaped (stellate) cataract</span> (and Vossius pigment ring on anterior capsule).</li>
+          <li><b>Wilson's Disease (Hepatolenticular degeneration / Chalcosis):</b> Copper deposition causes <span class="buzz">Sunflower Cataract</span> (+ Kayser-Fleischer corneal ring).</li>
+          <li><b>Causes of Secondary/Complicated Cataract:</b> Chronic <b>Uveitis (Iridocyclitis)</b> (#1 local cause), <b>Retinitis Pigmentosa</b>, High Myopia, <b>Retinal Detachment</b>, <b>Retinoblastoma</b>, <b>Diabetic Retinopathy / DM</b>, Trauma, and Steroids. (<span class="buzz">Blepharitis</span> NEVER causes cataract!).</li>
+        </ul>
+      </li>
+      <li><b>Leukocoria (White Pupillary Reflex) &amp; Absent Red Reflex:</b>
+        <ul>
+          <li><b>Most Common Cause of Leukocoria in Children:</b> <span class="buzz">Congenital Cataract</span>.</li>
+          <li><b>Leukocoria Differential Diagnosis:</b> Congenital Cataract, <b>Retinoblastoma</b> (also abolishes red reflex!), Total Retinal Detachment, Endophthalmitis, Persistent Hyperplastic Primary Vitreous (PHPV), Retinopathy of Prematurity (ROP), Coats' disease, Toxocariasis, and After-cataract.</li>
+          <li><b>What does NOT cause Leukocoria?</b> <span class="buzz">Congenital Glaucoma (Buphthalmos)</span> (causes large hazy cornea, not white pupil) and <span class="buzz">Optic Atrophy</span> (pupil remains jet-black!).</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Q1 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 22 Midterm - Q6</span>
+      <span class="tag">Batch 20 Final - Q13</span>
+    </div>
+    <div class="q-stem">1. Diminished vision in daylight is seen in:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Central cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Peripheral cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Peripheral corneal opacity</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Peripheral retinal degenerations</button>
+      <button class="opt-btn" onclick="checkAns(this, 'E')">E. Retinitis pigmentosa</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Central cataract).</b><br><b>Rationale:</b> In bright daylight, the pupil constricts (miosis) around the central opacity, blocking light entry and worsening vision (hemeralopia/day blindness). In dim light, the pupil dilates around the central cataract, improving vision.</div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Midterm - Q20</span>
+    </div>
+    <div class="q-stem">2. Which of the following most affects vision?</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Posterior polar cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Anterior subcapsular cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Nuclear cataract</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Posterior polar cataract).</b><br><b>Rationale:</b> Posterior polar cataract is situated directly at the Nodal Point (optical center) of the eye where all principal rays cross; hence even a small opacity causes severe visual loss.</div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Midterm - Q11</span>
+    </div>
+    <div class="q-stem">3. The main visual complaint in patients with posterior subcapsular cataract is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Loss of peripheral vision</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Glare and difficulty in reading</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Distorted vision</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Double vision</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Glare and difficulty in reading).</b><br><b>Rationale:</b> Posterior subcapsular cataract (PSC) lies along the visual axis near the nodal point. Near reading triggers accommodation-induced miosis, and bright lights scatter off the plaque, causing disabling glare and near vision loss.</div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Midterm - Q18</span>
+    </div>
+    <div class="q-stem">4. Second sight:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Presbyopic patients read better due to index hypermetropia</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Presbyopic patients read better due to index myopia</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Defective distant vision improves due to cataract changes</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. None</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Presbyopic patients read better due to index myopia).</b><br><b>Rationale:</b> Nuclear sclerosis increases the refractive index of the lens nucleus, producing "index myopia" (myopic shift) that compensates for presbyopia and allows elderly patients to read without glasses.</div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 21 Final - Q9</span>
+    </div>
+    <div class="q-stem">5. Gradual change in glasses indicates:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Keratoconus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Glaucoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Squint</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Cataract).</b><br><b>Rationale:</b> Progressive lens sclerosis in senile cataract causes a gradual refractive shift (index myopia or hypermetropia), leading to frequent gradual changes in spectacle prescription.</div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Midterm - Q10</span>
+    </div>
+    <div class="q-stem">6. The most common type of cataract occurring due to topical steroid use is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Posterior polar</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Posterior subcapsular</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Central</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Cortical</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Posterior subcapsular).</b><br><b>Rationale:</b> Prolonged topical or systemic corticosteroid therapy classically induces a Posterior Subcapsular Cataract (PSC).</div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 24 Midterm - Q24</span>
+    </div>
+    <div class="q-stem">7. Rosette-shaped cataract is characteristic of:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Congenital cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Diabetic cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Traumatic cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Senile cataract</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Traumatic cataract).</b><br><b>Rationale:</b> Blunt concussion trauma forces fluid between the lens suture lines, producing a feathery petal-like "Rosette-shaped" cataract in the posterior cortex.</div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q26</span>
+    </div>
+    <div class="q-stem">8. Sunflower cataract is classically associated with:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Wilson's disease</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Myotonic dystrophy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Diabetes mellitus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Age-related cataract</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Wilson's disease).</b><br><b>Rationale:</b> Copper deposition in the anterior lens capsule in Wilson's disease (or intraocular copper foreign body / chalcosis) forms a golden-brown petal-like Sunflower cataract.</div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Midterm - Q12</span>
+    </div>
+    <div class="q-stem">9. All of the following are causes of secondary cataract except:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Uveitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Trauma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Blepharitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Corticosteroids</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Blepharitis).</b><br><b>Rationale:</b> Uveitis, trauma, and corticosteroids all cause secondary/complicated cataracts. Blepharitis is a superficial eyelid margin inflammation that does not affect the crystalline lens.</div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 21 Final - Q3</span>
+    </div>
+    <div class="q-stem">10. Which of the following can cause cataract?</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Retinoblastoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Diabetic retinopathy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Both A and B</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Both A and B).</b><br><b>Rationale:</b> Both intraocular tumors (Retinoblastoma) and diabetes/diabetic retinopathy cause secondary complicated cataract due to disturbed intraocular metabolism.</div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Midterm - Q19</span>
+    </div>
+    <div class="q-stem">11. In children, white reflex (leukocoria) most commonly occurs in:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Retinoblastoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Congenital cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Corneal opacity</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Persistent hyperplastic primary vitreous</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Congenital cataract).</b><br><b>Rationale:</b> Congenital cataract is the single most common overall cause of leukocoria in children, whereas Retinoblastoma is the most serious life-threatening cause that must be ruled out.</div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q7</span>
+    </div>
+    <div class="q-stem">12. Leukocoria (white pupillary reflex) is found in all EXCEPT:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Retinoblastoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Retinal detachment</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Congenital cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Congenital glaucoma</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (Congenital glaucoma).</b><br><b>Rationale:</b> Congenital glaucoma (Buphthalmos) presents with photophobia, epiphora, and a large hazy cornea (>13 mm), NOT leukocoria.</div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Final - Q14</span>
+    </div>
+    <div class="q-stem">13. White pupillary reflex is seen in all of the following except:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Optic atrophy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Retinoblastoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Total retinal detachment</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Endophthalmitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'E')">E. After cataract</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Optic atrophy).</b><br><b>Rationale:</b> In optic atrophy, the ocular media (cornea, lens, vitreous) remain completely clear, so the pupil appears black and the red reflex remains red (though the optic disc itself looks pale on fundoscopy).</div>
+  </div>
+
+  <!-- Q14 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q8</span>
+    </div>
+    <div class="q-stem">14. Absence of a red reflex suggests:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Retinoblastoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Glaucoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Refractive error</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Optic neuritis</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Retinoblastoma).</b><br><b>Rationale:</b> An intraocular tumor mass (Retinoblastoma) or dense media opacity (mature cataract, vitreous hemorrhage) blocks the normal orange-red fundal reflex.</div>
+  </div>
+</div>
+
+<!-- TOPIC 3.2: LENS-INDUCED GLAUCOMA & DISPLACED LENS -->
+<div id="m3-t2" class="topic-section">
+  <div class="topic-header">
+    <span>3.2 Lens-Induced Glaucoma, AC Depth &amp; Lens Dislocation</span>
+    <span style="font-size:12px; color:#64748b;">5 Questions</span>
+  </div>
+
+  <div class="study-review">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (Lens-Induced Glaucoma &amp; Ectopia Lentis)</span>
+    <ul>
+      <li><b>Stages of Cortical Senile Cataract &amp; Anterior Chamber (AC) Depth:</b>
+        <ul>
+          <li><b>Immature / <span class="buzz">Intumescent (Swollen) Cataract</span>:</b> The cortex absorbs water and swells → pushes the iris forward → causes a <span class="buzz">Shallow Anterior Chamber</span> and precipitates <span class="buzz">Phacomorphic Glaucoma</span> (secondary acute angle-closure / pupillary block glaucoma)!</li>
+          <li><b>Mature Cataract:</b> Entire cortex is opaque white; lens volume returns to normal → <b>Normal AC depth</b>.</li>
+          <li><b>Hypermature (Morgagnian) Cataract:</b> Liquefied cortical lens proteins leak through an intact capsule → engulfed by macrophages that clog the open trabecular meshwork → causes <span class="buzz">Phacolytic Glaucoma</span> (secondary open-angle glaucoma with a <b>Deep AC</b>).</li>
+        </ul>
+      </li>
+      <li><b>Which Cataract Does NOT Cause Glaucoma?</b> <span class="buzz">Posterior Polar Cataract</span> (and Posterior Subcapsular Cataract) are thin localized opacities that neither swell nor leak protein, so they do <b>NOT</b> cause lens-induced glaucoma! (Whereas <b>Traumatic</b> and <b>Intumescent</b> cataracts do).</li>
+      <li><b>Definitive Treatment of Phacolytic / Phacomorphic Glaucoma:</b> Lower IOP medically first, followed by urgent <span class="buzz">Cataract Extraction</span> (removes the offending lens!).</li>
+      <li><b>Syndromes Associated with Displaced Lens (Ectopia Lentis — Subluxation/Dislocation):</b>
+        <ul>
+          <li><b>Marfan Syndrome</b> (upward &amp; temporal subluxation), <b>Homocystinuria</b> (downward &amp; nasal), <b>Weill-Marchesani Syndrome</b> (microspherophakia with anterior dislocation), Ehlers-Danlos, and Trauma.</li>
+          <li><b>Exam Trap:</b> <span class="buzz">Laurence-Moon-Biedl Syndrome</span> is associated with Retinitis Pigmentosa (polydactyly, obesity, hypogonadism), <b>NOT</b> lens dislocation!</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Q15 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 24 Midterm - Q3</span>
+    </div>
+    <div class="q-stem">15. Most common cause of phacomorphic glaucoma:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Mature cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Intumescent cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Hypermature cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Posterior subcapsular cataract</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Intumescent cataract).</b><br><b>Rationale:</b> An intumescent (swollen, hydrated) cataract increases anteroposterior lens thickness, causing pupillary block and secondary angle closure (Phacomorphic glaucoma). (Hypermature cataract causes Phacolytic glaucoma).</div>
+  </div>
+
+  <!-- Q16 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Midterm - Q14</span>
+    </div>
+    <div class="q-stem">16. Shallow anterior chamber (A/C) can occur in:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Mature cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Immature cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Hypermature cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. All of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Immature cataract).</b><br><b>Rationale:</b> During the immature (intumescent) stage, the lens absorbs water and swells, pushing the iris anteriorly and shallowing the anterior chamber. (Mature cataract has normal AC depth; hypermature shrunken cataract has a deep AC).</div>
+  </div>
+
+  <!-- Q17 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 21 Final - Q6</span>
+    </div>
+    <div class="q-stem">17. All the following cataracts can cause glaucoma except:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Traumatic cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Posterior polar cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Intumescent cataract</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Posterior polar cataract).</b><br><b>Rationale:</b> Traumatic cataract (lens particle/phacoanaphylactic) and intumescent cataract (phacomorphic) cause secondary glaucoma, whereas a localized posterior polar cataract does not alter lens volume or leak protein.</div>
+  </div>
+
+  <!-- Q18 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Midterm - Q4</span>
+    </div>
+    <div class="q-stem">18. Phakolytic glaucoma is best treated by:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Cataract extraction</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Fistulizing operation</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Cyclo-destructive procedure</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Miotics and beta blockers</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Cataract extraction).</b><br><b>Rationale:</b> Phacolytic glaucoma is caused by trabecular obstruction from leaking hypermature lens proteins; definitive cure requires removing the hypermature lens (cataract extraction) after initial medical IOP reduction.</div>
+  </div>
+
+  <!-- Q19 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 22 Midterm - Q8</span>
+      <span class="tag">Batch 20 Final - Q15</span>
+    </div>
+    <div class="q-stem">19. Displaced lens occurs in the following EXCEPT:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Marfan syndrome</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Laurence-Moon-Biedl syndrome</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Weill-Marchesani syndrome</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Homocystinuria</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Laurence-Moon-Biedl syndrome).</b><br><b>Rationale:</b> Marfan, Weill-Marchesani, and Homocystinuria are the classic systemic causes of congenital ectopia lentis (lens subluxation/dislocation). Laurence-Moon-Biedl syndrome causes pigmentary retinopathy, not lens displacement.</div>
+  </div>
+</div>
+
+<!-- TOPIC 3.3: CATARACT SURGERY, IOL & YAG LASER -->
+<div id="m3-t3" class="topic-section">
+  <div class="topic-header">
+    <span>3.3 Cataract Surgery, IOL Placement &amp; Post-Op YAG Laser</span>
+    <span style="font-size:12px; color:#64748b;">3 Questions</span>
+  </div>
+
+  <div class="study-review">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (Cataract Surgery &amp; PCO)</span>
+    <ul>
+      <li><b>Primary Indication for Cataract Extraction Today:</b> We do <b>NOT</b> wait for a cataract to mature! Surgery is indicated whenever an <span class="buzz">early/immature cataract compromises the patient's daily visual activities</span> (or for medical/fundus view indications).</li>
+      <li><b>Ideal Intraocular Lens (IOL) Position:</b> After Phacoemulsification or ECCE, the ideal anatomical site for Posterior Chamber IOL (PCIOL) implantation is inside the <span class="buzz">Capsular Bag ("In-the-bag" placement)</span>.</li>
+      <li><b>Posterior Capsule Opacification (PCO / "After-Cataract"):</b>
+        <ul>
+          <li><b>Pathology:</b> The most common late complication after ECCE/Phacoemulsification (due to proliferation of equatorial lens epithelial cells onto the posterior capsule forming <b>Elschnig's pearls</b> or fibrosis).</li>
+          <li><b>Treatment of Choice (Top Repeated Question — 4 Exams!):</b> Non-invasive laser opening of the posterior capsule (Posterior Capsulotomy) using the photodisruptive <span class="buzz">Nd:YAG Laser</span>!</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Q20 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Midterm - Q18</span>
+    </div>
+    <div class="q-stem">20. Indication of cataract extraction is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Patient should wait until cataract matures</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Early cataract but it compromises patient daily activities</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Anterior polar cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. None of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Early cataract but it compromises patient daily activities).</b><br><b>Rationale:</b> With modern phacoemulsification, cataract extraction is indicated as soon as visual impairment interferes with the patient's occupation, driving, reading, or daily lifestyle.</div>
+  </div>
+
+  <!-- Q21 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q17</span>
+    </div>
+    <div class="q-stem">21. The ideal position for an intraocular lens (IOL) after phacoemulsification is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Anterior chamber</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Posterior chamber</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Capsular bag</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Iris fixated</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Capsular bag).</b><br><b>Rationale:</b> Placing the PCIOL directly inside the intact capsular bag ("in-the-bag") provides the most stable centration, physiological optical position, and lowest risk of uveitis or glaucoma.</div>
+  </div>
+
+  <!-- Q22 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 4 Exams!</span>
+      <span class="tag">Batch 23 Midterm - Q15</span>
+      <span class="tag">Batch 22 Midterm - Q3 &amp; Q17</span>
+      <span class="tag">Batch 20 Final - Q16</span>
+    </div>
+    <div class="q-stem">22. Which laser is used for posterior capsulotomy (treatment of After-cataract / Posterior capsule opacification in post-cataract surgery)?</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Diode laser (or To remove cataract completely)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Carbon dioxide laser (or Open-angle glaucoma)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Excimer laser (or Retinal detachment)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. YAG laser (To treat posterior capsule opacification / After cataract)</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (Nd:YAG laser — To treat posterior capsule opacification / After cataract).</b><br><b>Rationale:</b> Nd:YAG laser photodisruption creates a clear central opening in an opacified posterior lens capsule (After-cataract / PCO) following ECCE or Phacoemulsification.</div>
+  </div>
+</div>
+
+<!-- ================================================================= -->
+<!-- MODULE 4: DR. NABIL SABR (OPTIC NERVE, EYELIDS & STRABISMUS) -->
+<!-- ================================================================= -->
+<div class="module-banner mod4">
+  <h1>🟧 MODULE 4: DR. NABIL SABR</h1>
+  <p>Topics: Optic Nerve, Visual Pathway &amp; Pupil • Eyelid Disorders • Strabismus, Extraocular Muscles &amp; Amblyopia</p>
+</div>
+
+<!-- TOPIC 4.1: OPTIC NERVE, VISUAL PATHWAY & PUPIL -->
+<div id="m4-t1" class="topic-section">
+  <div class="topic-header mod4-hdr">
+    <span>4.1 Optic Nerve, Visual Pathway &amp; Pupillary Abnormalities</span>
+    <span style="font-size:12px; color:#64748b;">18 Questions</span>
+  </div>
+
+  <div class="study-review mod4-rev">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (Optic Nerve &amp; Neuro-Ophthalmology)</span>
+    <ul>
+      <li><b>Optic Disc Anatomy:</b> Axons of ganglion cells exit at the Optic Disc, which completely <span class="buzz">lacks photoreceptor cells</span> (producing the physiological blind spot). Color vision (a sensitive test of optic nerve function!) is tested using <span class="buzz">Ishihara pseudoisochromatic plates</span>.</li>
+      <li><b>Optic Neuritis (Papillitis / Retrobulbar Neuritis) vs. Papilledema (Top Tested Comparison!):</b>
+        <ul>
+          <li><b>Optic Neuritis:</b> Young female (20–40 yrs, linked to <b>Multiple Sclerosis</b>) presenting with <span class="buzz">rapid/sudden unilateral vision loss + pain on eye movement</span> (especially looking up/in due to superior/medial rectus origin pulling on the optic nerve sheath at the annulus of Zinn) + <span class="buzz">Relative Afferent Pupillary Defect (RAPD / Marcus Gunn pupil)</span> + dyschromatopsia (red desaturation). Drug known to cause toxic optic neuritis: anti-TB drug <span class="buzz">Ethambutol</span>!</li>
+          <li><b>Papilledema:</b> Passive bilateral optic disc swelling caused by <span class="buzz">Raised Intracranial Pressure (ICP)</span> (or Malignant Stage 4 Hypertension). Features: Headache, transient obscurations (amaurosis fugax), bilateral disc hyperemia/blurred margins, and <span class="buzz">Visual field defect (Enlarged Blind Spot)</span>. <b>Crucial Exam Rule:</b> <span class="buzz">Vision loss is NOT a feature of early-stage papilledema</span> (visual acuity remains 6/6 early on!).</li>
+          <li><b>Optic Atrophy Types:</b> Chronic Papilledema or Papillitis heals with gliosis and dirty-gray obscured disc margins called <span class="buzz">Secondary Optic Atrophy</span>; Retrobulbar neuritis, MS, or chiasmal compression causes chalky-white sharply demarcated <span class="buzz">Primary Optic Atrophy</span>; Retinitis pigmentosa or CRAO causes waxy <span class="buzz">Consecutive Optic Atrophy</span>.</li>
+          <li><b>Giant Cell (Temporal) Arteritis:</b> Causes arteritic Anterior Ischemic Optic Neuropathy (AAION) and CRAO in elderly patients; its pathognomonic systemic feature is <span class="buzz">Jaw Claudication</span> (plus scalp tenderness and high ESR/CRP).</li>
+        </ul>
+      </li>
+      <li><b>Pupillary Reflex Abnormalities (Memorize Every Eponym!):</b>
+        <ul>
+          <li><span class="buzz">Marcus Gunn Pupil = Relative Afferent Pupillary Defect (RAPD):</span> Detected by swinging flashlight test; classically seen in asymmetric <b>Optic Neuritis</b> (or severe retinal disease like CRAO; <i>never caused by cataract or refractive error!</i>).</li>
+          <li><span class="buzz">Argyll Robertson Pupil:</span> Small bilateral irregular pupils that <b>react to near (accommodation) reflex but do NOT react to light reflex</b> (Light-near dissociation; "prostitute's pupil" of <b>Neurosyphilis</b>).</li>
+          <li><span class="buzz">Horner Syndrome (Oculosympathetic Palsy):</span> Triad of mild <b>Ptosis</b> (Müller's muscle) + <b>Miosis</b> + facial <b>Anhidrosis</b> + apparent Enophthalmos (<i>NEVER exophthalmos!</i>). Because the dilator pupillae is paralyzed, the affected pupil fails to dilate in dim light → <span class="buzz">Anisocoria increases in the DARK</span>!</li>
+          <li><b>Causes of Mydriasis (Dilated Pupil):</b> <b>3rd nerve lesion</b>, <b>Datura/Atropine poisoning</b>, and <b>4th (medullary) stage of anesthesia</b>. <b>Exam Trap:</b> <span class="buzz">Pontine Hemorrhage</span> causes bilateral **pinpoint miosis** (sympathetic disruption), NOT mydriasis!</li>
+        </ul>
+      </li>
+      <li><b>Visual Pathway Lesions:</b>
+        <ul>
+          <li><b>Optic Chiasm (Central lesion / Pituitary tumor):</b> Bitemporal hemianopia.</li>
+          <li><b>Optic Tract (or Geniculocalcarine pathway):</b> Contralateral <span class="buzz">Homonymous Hemianopia</span>.</li>
+          <li><b>Temporal Lobe Lesion (Meyer's loop):</b> Contralateral superior quadrantanopia (<span class="buzz">Right upper temporal / "Pie in the sky"</span> defect for a Left temporal lobe lesion).</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Q23 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 23 Final - Q12</span>
+    </div>
+    <div class="q-stem">23. Photoreceptor cells are absent in which retinal area?</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Macula</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Fovea</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Optic disc</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Nasal retina</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: C (Optic disc).</b><br><b>Rationale:</b> The optic nerve head (optic disc) consists solely of unmyelinated ganglion cell axons exiting the globe through the lamina cribrosa and contains no rods or cones, creating the physiological blind spot.</div>
+  </div>
+
+  <!-- Q24 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 22 Final - Q15</span>
+    </div>
+    <div class="q-stem">24. The test used to detect color vision:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Snellen chart</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Ishihara color test</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Schirmer test</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Amsler grid</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: B (Ishihara color test).</b><br><b>Rationale:</b> Ishihara pseudoisochromatic plates test red-green color vision (dyschromatopsia is an early sensitive sign of optic nerve disease). Snellen = visual acuity; Schirmer = dry eye; Amsler grid = macular function.</div>
+  </div>
+
+  <!-- Q25 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag mod4-tag">Batch 23 Midterm - Q4</span>
+      <span class="tag mod4-tag">Batch 20 Midterm - Q10</span>
+    </div>
+    <div class="q-stem">25. A 35-year-old woman presents with sudden/rapid onset of unilateral vision loss and pain on eye movement (up and in), with an afferent pupillary conduction defect. The most likely diagnosis is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Optic neuritis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Glaucoma / Papilledema</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Anterior ischemic optic neuropathy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Central retinal artery occlusion</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: A (Optic neuritis).</b> <i>(Option A in Batch 23 Midterm; Option C in Batch 20 Midterm).</i><br><b>Rationale:</b> Rapid unilateral visual loss in a young adult accompanied by ocular pain on eye movement and a Relative Afferent Pupillary Defect (RAPD) is the classic triad of Acute Optic Neuritis (retrobulbar neuritis).</div>
+  </div>
+
+  <!-- Q26 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag mod4-tag">Batch 23 Midterm - Q19</span>
+      <span class="tag mod4-tag">Batch 23 Final - Q5</span>
+    </div>
+    <div class="q-stem">26. Relative afferent pupillary defect (RAPD / APD) in one eye is classically seen in:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Glaucoma / Dry eye</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Optic neuritis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Myopia / Peripheral retinal detachment</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: C (Optic neuritis).</b> <i>(Option A in Batch 23 Midterm; Option C in Batch 23 Final).</i><br><b>Rationale:</b> RAPD reflects asymmetric conduction along the anterior afferent visual pathway, most characteristically seen in unilateral Optic Neuritis. Media opacities like cataract NEVER cause an RAPD.</div>
+  </div>
+
+  <!-- Q27 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 23 Final - Q40</span>
+    </div>
+    <div class="q-stem">27. A Relative afferent pupillary defect (RAPD) is also called:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Argyll Robertson pupil</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Hutchinson pupil</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Marcus Gunn pupil</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Adie's tonic pupil</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: C (Marcus Gunn pupil).</b><br><b>Rationale:</b> Marcus Gunn pupil is the eponym for Relative Afferent Pupillary Defect (RAPD), demonstrated clinically by paradoxical dilation of both pupils when the flashlight swings from the normal eye to the diseased eye.</div>
+  </div>
+
+  <!-- Q28 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 23 Final - Q37</span>
+    </div>
+    <div class="q-stem">28. Which drug is known to cause optic neuritis as an adverse effect?</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Isoniazid</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Rifampicin</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Ethambutol</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Pyrazinamide</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: C (Ethambutol).</b><br><b>Rationale:</b> Ethambutol causes dose-dependent retrobulbar toxic optic neuropathy presenting with bilateral central/centrocecal scotoma and early red-green color vision loss.</div>
+  </div>
+
+  <!-- Q29 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 23 Final - Q2</span>
+    </div>
+    <div class="q-stem">29. Papilledema is caused by:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Optic neuritis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Raised intracranial pressure</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Central retinal vein occlusion</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Retinal detachment</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: B (Raised intracranial pressure).</b><br><b>Rationale:</b> By definition, the term "Papilledema" is reserved specifically for passive bilateral optic disc swelling secondary to raised intracranial pressure (transmitted along the subarachnoid space of the optic nerve sheath).</div>
+  </div>
+
+  <!-- Q30 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Midterm - Q6</span>
+    </div>
+    <div class="q-stem">30. Which of the following is NOT a feature of papilledema:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Bilateral optic disc swelling</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Vision loss (Early stage)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Enlarged blind spot</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Headache</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: B (Vision loss — Early stage).</b><br><b>Rationale:</b> Central visual acuity remains completely normal (6/6) in early and established papilledema; this is the single most important clinical feature differentiating early papilledema from bilateral papillitis!</div>
+  </div>
+
+  <!-- Q31 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 22 Final - Q22</span>
+    </div>
+    <div class="q-stem">31. Common symptom with papilledema:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Pain</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Diplopia</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Visual field defect</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Photophobia</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: C (Visual field defect).</b><br><b>Rationale:</b> Papilledema causes enlargement of the physiological blind spot early on, followed by progressive concentric peripheral visual field constriction in chronic stages.</div>
+  </div>
+
+  <!-- Q32 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 20 Midterm - Q7</span>
+    </div>
+    <div class="q-stem">32. The type of optic atrophy that follows papilledema is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Secondary optic atrophy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Consecutive optic atrophy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Glaucomatous optic atrophy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Primary optic atrophy</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: A (Secondary optic atrophy).</b><br><b>Rationale:</b> Secondary optic atrophy follows any condition preceded by optic disc swelling (chronic papilledema or papillitis), leaving a dirty-gray disc with blurred, gliotic margins.</div>
+  </div>
+
+  <!-- Q33 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 22 Final - Q4</span>
+    </div>
+    <div class="q-stem">33. The characteristic feature of giant cell (temporal) arteritis is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Bilateral papilledema</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Central retinal artery occlusion</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Jaw claudication</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Sudden onset headache</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: C (Jaw claudication).</b><br><b>Rationale:</b> Jaw claudication (ischemic pain in the masseter muscles while chewing) is the most specific systemic symptom of Giant Cell Arteritis, which threatens vision via Arteritic Anterior Ischemic Optic Neuropathy (AAION).</div>
+  </div>
+
+  <!-- Q34 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 23 Final - Q1</span>
+    </div>
+    <div class="q-stem">34. A pupil that reacts to near reflex but not to light reflex is called:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Marcus Gunn pupil</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Argyll Robertson pupil</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Holmes-Adie pupil</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Hutchinson pupil</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: B (Argyll Robertson pupil).</b><br><b>Rationale:</b> Argyll Robertson pupil (dorsal midbrain/pretectal lesion in tertiary neurosyphilis) exhibits light-near dissociation: accommodation reflex is preserved, but direct and consensual light reflexes are absent.</div>
+  </div>
+
+  <!-- Q35 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 22 Final - Q1</span>
+    </div>
+    <div class="q-stem">35. Regarding Horner syndrome:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Ptosis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Anisocoria increases in daylight</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Exophthalmos</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. All of the above</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: A (Ptosis).</b><br><b>Rationale:</b> Horner syndrome causes mild Ptosis (paralysis of sympathetic Müller's muscle), Miosis (anisocoria increases in the DARK, not daylight!), Anhidrosis, and apparent Enophthalmos (not exophthalmos!).</div>
+  </div>
+
+  <!-- Q36 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 21 Final - Q13</span>
+    </div>
+    <div class="q-stem">36. Anisocoria that increases in dark is associated with:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Atropine</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Horner syndrome</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. All of the above</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: B (Horner syndrome).</b><br><b>Rationale:</b> In darkness, the normal pupil dilates rapidly while the sympathetic-denervated Horner pupil fails to dilate (dilation lag), causing the difference in pupil size (anisocoria) to maximize in the dark.</div>
+  </div>
+
+  <!-- Q37 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 24 Midterm - Q10</span>
+    </div>
+    <div class="q-stem">37. Mydriasis is present in all the following except:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Third nerve lesion</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Pontine haemorrhage</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Datura poisoning</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Fourth stage of anesthesia</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: B (Pontine haemorrhage).</b><br><b>Rationale:</b> Pontine hemorrhage interrupts descending sympathetic pathways, producing bilateral "pinpoint" Miosis. CN III palsy, Datura (belladonna alkaloids), and Stage IV medullary anesthesia all cause Mydriasis.</div>
+  </div>
+
+  <!-- Q38 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 24 Midterm - Q22</span>
+    </div>
+    <div class="q-stem">38. Homonymous hemianopia results from a lesion in the:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Optic nerve</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Optic tract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Optic chiasma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Retina</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: B (Optic tract).</b><br><b>Rationale:</b> Any retrochiasmal lesion (Optic tract, LGB, Optic radiations, or Visual cortex) affects crossed nasal fibers from the contralateral eye and uncrossed temporal fibers from the ipsilateral eye, producing a contralateral Homonymous Hemianopia.</div>
+  </div>
+
+  <!-- Q39 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 24 Midterm - Q4</span>
+    </div>
+    <div class="q-stem">39. An adult patient presents with a left temporal lobe clot. After removal of the clot he suffers from left temporal lobe dysfunction. Which visual field defect is likely to occur?</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Right upper temporal</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Right lower temporal</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Right upper nasal</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Right lower nasal</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: A (Right upper temporal — "Pie in the sky").</b><br><b>Rationale:</b> Inferior retinal fibers sweep anteriorly through the temporal lobe (Meyer's loop). A left temporal lobe lesion causes a right homonymous superior quadrantanopia ("Pie in the sky"), which includes the right upper temporal visual field.</div>
+  </div>
+</div>
+
+<!-- TOPIC 4.2: EYELIDS -->
+<div id="m4-t2" class="topic-section">
+  <div class="topic-header mod4-hdr">
+    <span>4.2 Eyelid Disorders (Ptosis, Cilia, Blepharitis &amp; Chalazion)</span>
+    <span style="font-size:12px; color:#64748b;">9 Questions</span>
+  </div>
+
+  <div class="study-review mod4-rev">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (Eyelids)</span>
+    <ul>
+      <li><b>Surgical Eyelid Anatomy:</b>
+        <ul>
+          <li><span class="buzz">Gray Line:</span> Mucocutaneous junction on the lid margin that marks the surgical plane separating the eyelid into the **Anterior Lamella** (skin + orbicularis oculi) and **Posterior Lamella** (tarsal plate + conjunctiva).</li>
+          <li><span class="buzz">Levator Palpebrae Superioris (LPS):</span> Present ONLY in the **upper eyelid**; originates from the lesser wing of sphenoid at the orbital apex; inserts into skin, anterior surface/upper border of tarsus, and superior fornix; **elevates the upper lid**; innervated by the <span class="buzz">3rd Cranial Nerve (Oculomotor)</span>!</li>
+        </ul>
+      </li>
+      <li><b>Ptosis &amp; Lagophthalmos:</b>
+        <ul>
+          <li><b>Most Common Cause of Congenital Ptosis:</b> <span class="buzz">Myogenic</span> (maldevelopment/dystrophy of the LPS muscle fibers).</li>
+          <li><b>Causes of Lagophthalmos (Inability to close eyelids):</b> <b>Facial nerve (CN VII) palsy</b>, <b>Proptosis</b>, and <b>Cicatricial eyelid changes</b> (burns, symblepharon). <span class="buzz">Third nerve palsy</span> causes **Ptosis** (drooping/closed lid), NEVER lagophthalmos!</li>
+        </ul>
+      </li>
+      <li><b>Cilia &amp; Lid Margin Disorders:</b>
+        <ul>
+          <li><span class="buzz">Trichiasis:</span> Posterior misdirection of normal eyelashes rubbing against the conjunctiva and cornea (#1 cause is Trachoma/blepharitis).</li>
+          <li><span class="buzz">Distichiasis:</span> Congenital or acquired **accessory (extra) second row of eyelashes** emerging from the Meibomian gland orifices behind the gray line.</li>
+          <li><span class="buzz">Ulcerative (Staphylococcal) Blepharitis:</span> Hyperemic lid margins + eyelashes matted with **yellow crusts** that leave **small bleeding, painful ulcers** when removed (complications: madarosis, trichiasis, poliosis, tylosis).</li>
+        </ul>
+      </li>
+      <li><b>Chalazion vs. Hordeolum (Stye):</b>
+        <ul>
+          <li><span class="buzz">Chalazion:</span> **Painless**, chronic lipogranulomatous inflammation of the <span class="buzz">Meibomian gland</span> within the tarsal plate (often preceded by posterior blepharitis). **Primary initial conservative treatment:** <span class="buzz">Hot compresses</span> (and lid massage; persistent large ones require vertical tarsal incision &amp; curettage).</li>
+          <li><b>External Hordeolum (Stye):</b> Acute painful suppurative infection of <b>Zeis / Moll gland</b> at the lash follicle.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Q40 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 24 Midterm - Q25</span>
+    </div>
+    <div class="q-stem">40. Separation of the lamellae of the eyelid is marked by the:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Lash line</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Tarsal line</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Gray line</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Lid margin</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: C (Gray line).</b><br><b>Rationale:</b> The gray line (muscle of Riolan) on the intermarginal strip divides the eyelid into the anterior lamella (skin + orbicularis) and posterior lamella (tarsus + conjunctiva).</div>
+  </div>
+
+  <!-- Q41 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag mod4-tag">Batch 22 Midterm - Q9</span>
+      <span class="tag mod4-tag">Batch 21 Final - Q4</span>
+    </div>
+    <div class="q-stem">41. Which is true about the Levator palpebrae superioris muscle (All are false except):</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. It depresses the upper lid / Present in upper and lower eyelids</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. It elevates the upper lid &amp; is supplied by the 3rd cranial nerve</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Its paralysis causes lid retraction / Inserts into posterior tarsal plate</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. It is supplied by the fourth cranial nerve</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: B (Elevates the upper lid &amp; supplied by the 3rd cranial nerve).</b><br><b>Rationale:</b> The Levator palpebrae superioris is located solely in the upper eyelid, inserts into the anterior tarsal surface/skin, is innervated by the superior division of CN III, and elevates the upper lid (its paralysis causes ptosis).</div>
+  </div>
+
+  <!-- Q42 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 24 Midterm - Q2</span>
+    </div>
+    <div class="q-stem">42. Most common cause of congenital ptosis:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Aponeurogenic</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Myogenic</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Neurogenic</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Traumatic</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: B (Myogenic).</b><br><b>Rationale:</b> Simple congenital ptosis is most commonly myogenic (developmental dystrophic replacement of levator muscle fibers by fibrous and adipose tissue). (Aponeurogenic/involutional is the most common cause of acquired senile ptosis).</div>
+  </div>
+
+  <!-- Q43 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 24 Midterm - Q19</span>
+    </div>
+    <div class="q-stem">43. Causes of lagophthalmos except:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Facial nerve palsy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Proptosis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Cicatricial eyelid changes</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Third nerve palsy</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: D (Third nerve palsy).</b><br><b>Rationale:</b> Lagophthalmos is inability to close the eyelids (caused by CN VII palsy, severe proptosis, or cicatricial lid contraction). CN III palsy paralyzes the levator muscle, causing Ptosis (drooping/closure of the upper lid), not lagophthalmos.</div>
+  </div>
+
+  <!-- Q44 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 24 Midterm - Q20</span>
+    </div>
+    <div class="q-stem">44. Distichiasis is defined as:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Inward turning of eyelashes</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Outward turning of eyelid</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Accessory row of eyelashes</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Loss of eyelashes</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: C (Accessory row of eyelashes).</b><br><b>Rationale:</b> Distichiasis is an abnormal extra (second) row of eyelashes arising from metaplastic Meibomian gland orifices behind the gray line. (Loss of lashes = Madarosis; whitening of lashes = Poliosis).</div>
+  </div>
+
+  <!-- Q45 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 22 Final - Q7</span>
+    </div>
+    <div class="q-stem">45. The condition where lashes rub on the conjunctiva is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Entropion</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Ectropion</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Trichiasis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Blepharitis</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: C (Trichiasis).</b><br><b>Rationale:</b> Trichiasis is the posterior misdirection of eyelashes so that they rub directly against the cornea and bulbar conjunctiva while the lid margin itself remains in normal position.</div>
+  </div>
+
+  <!-- Q46 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 24 Midterm - Q21</span>
+    </div>
+    <div class="q-stem">46. Clinical case: Hyperemic lashes matted with yellow crusts with painful ulcer. Diagnosis is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Squamous blepharitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Ulcerative blepharitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Chalazion</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Hordeolum</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: B (Ulcerative blepharitis).</b><br><b>Rationale:</b> Staphylococcal ulcerative blepharitis is characterized by matted yellow fibrinous crusts at the lash base which, when peeled off, expose small bleeding painful ulcers (unlike squamous/seborrheic blepharitis which has greasy scales without ulcers).</div>
+  </div>
+
+  <!-- Q47 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag mod4-tag">Batch 23 Midterm - Q7</span>
+      <span class="tag mod4-tag">Batch 21 Final - Q5</span>
+    </div>
+    <div class="q-stem">47. A patient with a history of blepharitis develops a painless swelling on the eyelid (Chronic inflammation of the meibomian gland). The most likely diagnosis is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Chalazion (Chronic inflammation of the meibomian gland)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Hordeolum (Inflammation of Zeis gland)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Dacryocystitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Preseptal cellulitis</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: A (Chalazion).</b> <i>(Option A in Batch 23 Midterm; Option B in Batch 21 Final).</i><br><b>Rationale:</b> A chalazion is a chronic, painless lipogranulomatous inflammation of an obstructed Meibomian gland in the tarsal plate.</div>
+  </div>
+
+  <!-- Q48 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 22 Final - Q20</span>
+    </div>
+    <div class="q-stem">48. The primary treatment of chalazion is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Hot compression</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Massage</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Surgical excision</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Oral antibiotics</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: A (Hot compression).</b><br><b>Rationale:</b> Warm/hot compresses (4 times daily) melt the inspissated lipid secretions and promote drainage, serving as the primary initial conservative therapy for a chalazion.</div>
+  </div>
+</div>
+
+<!-- TOPIC 4.3: STRABISMUS, EXTRAOCULAR MUSCLES & AMBLYOPIA -->
+<div id="m4-t3" class="topic-section">
+  <div class="topic-header mod4-hdr">
+    <span>4.3 Strabismus (Squint), Extraocular Muscles &amp; Amblyopia</span>
+    <span style="font-size:12px; color:#64748b;">13 Questions</span>
+  </div>
+
+  <div class="study-review mod4-rev">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (Strabismus &amp; Motility)</span>
+    <ul>
+      <li><b>Extraocular Muscle Anatomy &amp; Actions:</b>
+        <ul>
+          <li><b>Origin Exception:</b> All extraocular muscles (4 recti + superior oblique + LPS) originate from the <b>Orbital Apex (Annulus of Zinn)</b> <span class="buzz">EXCEPT the Inferior Oblique</span>, which originates anteriorly from the orbital floor just lateral to the lacrimal fossa!</li>
+          <li><b>Primary Intorter of the Eye:</b> <span class="buzz">Superior Oblique</span> (supplied by <b>CN IV — Trochlear nerve</b>; actions = **Intorsion**, Depression, Abduction).</li>
+        </ul>
+      </li>
+      <li><b>Cranial Nerve Palsies (CN III vs. CN VI):</b>
+        <ul>
+          <li><b>3rd Cranial Nerve (Oculomotor) Palsy:</b> Causes complete <b>Ptosis</b> + <b>Mydriasis</b> (if compressive) + eye deviated <span class="buzz">Down and Out</span> (due to unopposed Lateral Rectus &amp; Superior Oblique; <i>NEVER "up and out"!</i>).
+            <ul>
+              <li><i>Medical (Ischemic) CN III Palsy:</i> **Most common cranial nerve palsy in Diabetes Mellitus** (typically pupil-sparing!).</li>
+              <li><i>Surgical (Compressive) CN III Palsy with **Pupil Involvement** (dilated fixed pupil):</i> Medical emergency caused by a life-threatening <span class="buzz">Posterior Communicating Artery (PCom) Intracranial Aneurysm</span> compressing superficial dorsomedial parasympathetic fibers!</li>
+            </ul>
+          </li>
+          <li><b>6th Cranial Nerve (Abducens) Palsy:</b> Paralyzes Lateral Rectus (inability to abduct) → causes horizontal <span class="buzz">Binocular Diplopia</span>! (<i>Why doesn't complete 3rd nerve paralysis cause diplopia initially? Because complete **Ptosis** covers the pupil!</i>). In an older diabetic man presenting with squint and CN VI palsy, the exam key states first step is **MRI** to rule out compressive/pontine pathology.</li>
+        </ul>
+      </li>
+      <li><b>Strabismus Terminology, Diagnosis &amp; Management:</b>
+        <ul>
+          <li><span class="buzz">Esotropia:</span> Manifest inward (nasal) deviation of the eye. <span class="buzz">Exophoria:</span> Latent tendency of the eyes to deviate **temporally (outward)**.</li>
+          <li><b>Measuring Angle of Squint:</b> Assessed clinically by the corneal light reflex <span class="buzz">Hirschberg Test</span> (1 mm decentration = 7° or 15 prism diopters).</li>
+          <li><b>Causes of Childhood Squint:</b> Congenital, Hypermetropia (accommodative esotropia), and **Retinoblastoma** (sensory deprivation squint — must always examine the fundus!).</li>
+          <li><b>Amblyopia &amp; Treatment of Squint:</b> **Primary cause of Amblyopia** is <span class="buzz">Strabismus</span> (followed by anisometropia). Congenital squint requires **early treatment to prevent amblyopia**. Not all childhood squints need surgery — some are treated completely by **glasses** (accommodative esotropia) and **occlusion therapy (patching the good eye)**. (<span class="buzz">Steroids</span> have NO role in treating squint!).</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Q49 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 24 Midterm - Q5</span>
+    </div>
+    <div class="q-stem">49. All extraocular muscles emerge from the apex of the orbit except:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Superior rectus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Superior oblique</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Inferior oblique</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Inferior rectus</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: C (Inferior oblique).</b><br><b>Rationale:</b> The inferior oblique is the only extraocular muscle that originates from the anterior floor of the orbit (maxillary bone lateral to the nasolacrimal groove) rather than the orbital apex.</div>
+  </div>
+
+  <!-- Q50 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 23 Final - Q13</span>
+    </div>
+    <div class="q-stem">50. The primary intorting extraocular muscle is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Inferior oblique</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Superior rectus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Superior oblique</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Inferior rectus</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: C (Superior oblique).</b><br><b>Rationale:</b> The primary action of the superior oblique muscle (CN IV) is intorsion (incycloduction), while its secondary and tertiary actions are depression and abduction.</div>
+  </div>
+
+  <!-- Q51 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 21 Final - Q10</span>
+    </div>
+    <div class="q-stem">51. All are present in 3rd nerve palsy except:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Mydriasis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Ptosis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Deviation of eye up and out</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Deviation of eye down and out</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: C (Deviation of eye up and out).</b><br><b>Rationale:</b> In complete CN III palsy, unopposed action of the Lateral Rectus (CN VI) and Superior Oblique (CN IV) pulls the eye "Down and Out" (never up and out), accompanied by ptosis and mydriasis.</div>
+  </div>
+
+  <!-- Q52 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag mod4-tag">Batch 24 Midterm - Q11</span>
+      <span class="tag mod4-tag">Batch 23 Final - Q11</span>
+    </div>
+    <div class="q-stem">52. A common life-threatening cause of a 3rd cranial nerve palsy with pupil involvement is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Diabetes mellitus / Trauma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Intracranial (Posterior communicating artery) aneurysm</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Hypertension</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Multiple sclerosis</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: B (Intracranial / Posterior communicating artery aneurysm).</b><br><b>Rationale:</b> Pupillomotor parasympathetic fibers travel superficially on the dorsomedial perimeter of CN III. External compression by a PCom aneurysm compromises the pupil early ("surgical 3rd nerve palsy"), whereas microvascular ischemia (DM/HTN) affects the central vasa nervorum and spares the pupil.</div>
+  </div>
+
+  <!-- Q53 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 23 Final - Q9</span>
+    </div>
+    <div class="q-stem">53. The most common cranial nerve palsy in diabetes mellitus is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. 3rd cranial nerve</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. 4th cranial nerve</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. 6th cranial nerve</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. 7th cranial nerve</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: A (3rd cranial nerve).</b><br><b>Rationale:</b> According to Kanski and the Batch 23 Final official key, ischemic microvascular palsy of the 3rd cranial nerve (pupil-sparing) is the most common diabetic cranial mononeuropathy.</div>
+  </div>
+
+  <!-- Q54 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 20 Midterm - Q13</span>
+    </div>
+    <div class="q-stem">54. Only one of the following causes binocular diplopia:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Peripheral iridectomy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Complete third nerve paralysis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Sixth nerve palsy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Subluxated lens</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: C (Sixth nerve palsy).</b><br><b>Rationale:</b> Peripheral iridectomy and subluxated lens cause *monocular* diplopia. Complete 3rd nerve paralysis does NOT cause diplopia because complete ptosis occludes the visual axis (unless the lid is manually lifted!). Thus, only 6th nerve palsy causes manifest binocular diplopia.</div>
+  </div>
+
+  <!-- Q55 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 21 Final - Q1</span>
+    </div>
+    <div class="q-stem">55. A 55-year-old man with diabetes presents with squint and 6th cranial nerve palsy. The first thing to do is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. MRI</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Refer to ophthalmology for urgent surgery</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Wait 6 months if there are no other signs</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. A and B</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: A (MRI).</b><br><b>Rationale:</b> Per the Batch 21 Final exam key, neuroimaging (MRI) is performed to exclude intracranial compressive, pontine, or skull-base lesions before attributing an acute cranial nerve palsy solely to microvascular ischemia.</div>
+  </div>
+
+  <!-- Q56 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 22 Final - Q25</span>
+    </div>
+    <div class="q-stem">56. Tendency of the eye to deviate inward is called:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Esotropia</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Exotropia</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Hypertropia</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Hypotropia</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: A (Esotropia).</b><br><b>Rationale:</b> "Eso-" denotes inward (nasal/convergent) deviation; "Exo-" = outward (temporal/divergent); "Hyper-" = upward; "Hypo-" = downward.</div>
+  </div>
+
+  <!-- Q57 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 20 Midterm - Q11</span>
+    </div>
+    <div class="q-stem">57. Exophoria means:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Tendency for eyes to be directed nasally</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Tendency for eyes to be directed temporally</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Tendency for eyes to deviate upward</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Tendency for eyes to deviate downward</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: B (Tendency for eyes to be directed temporally).</b><br><b>Rationale:</b> Exophoria is a latent divergent squint (tendency of the visual axes to deviate outward/temporally when fusion is broken).</div>
+  </div>
+
+  <!-- Q58 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag mod4-tag">Batch 23 Final - Q28</span>
+      <span class="tag mod4-tag">Batch 22 Final - Q14</span>
+    </div>
+    <div class="q-stem">58. The Hirschberg test assesses (The test used to detect the angle of squint):</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Accommodation / Cover-uncover test</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Angle of squint (strabismus) — Hirschberg test</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Pupil reaction / Worth 4-dot test</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Color vision / Maddox rod test</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: B (Angle of squint — Hirschberg test).</b><br><b>Rationale:</b> The Hirschberg corneal light reflex test objectively estimates the angle of manifest strabismus (1 mm displacement from pupil center = ~7° or 15 PD).</div>
+  </div>
+
+  <!-- Q59 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 22 Final - Q3</span>
+    </div>
+    <div class="q-stem">59. The primary cause of amblyopia is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Corneal opacity</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Refractive error</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Strabismus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Optic nerve hypoplasia</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: C (Strabismus).</b><br><b>Rationale:</b> Unilateral constant strabismus (strabismic amblyopia due to cortical suppression of the deviating eye) is the single most common cause of amblyopia.</div>
+  </div>
+
+  <!-- Q60 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 20 Midterm - Q20</span>
+    </div>
+    <div class="q-stem">60. Causes of squint in children include:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Congenital causes</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Retinoblastoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Hypermetropia</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. All of the above</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: D (All of the above).</b><br><b>Rationale:</b> Childhood strabismus can result from congenital/infantile neuromuscular factors, uncorrected hypermetropia (accommodative esotropia), or sensory deprivation from intraocular pathology such as Retinoblastoma (2nd most common sign of RB after leukocoria!).</div>
+  </div>
+
+  <!-- Q61 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 21 Final - Q7</span>
+    </div>
+    <div class="q-stem">61. Regarding congenital squint, all are false except:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. All need surgery</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Early treatment is required to avoid amblyopia</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. All of the above</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: B (Early treatment is required to avoid amblyopia).</b><br><b>Rationale:</b> Early optical correction, amblyopia occlusion therapy, and alignment during the critical period of visual development are essential to prevent permanent strabismic amblyopia.</div>
+  </div>
+
+  <!-- Q62 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 22 Final - Q13</span>
+    </div>
+    <div class="q-stem">62. Strabismus in children:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. All need surgery</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Some treated by glasses</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Medical treatment only in some cases</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. B &amp; C</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: D (B &amp; C).</b><br><b>Rationale:</b> Fully refractive accommodative esotropia is corrected entirely by hyperopic spectacles and medical/orthoptic therapy (patching/cycloplegics) without requiring surgery.</div>
+  </div>
+
+  <!-- Q63 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag mod4-tag">Batch 20 Midterm - Q19</span>
+    </div>
+    <div class="q-stem">63. All of the following can treat squint except:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Occlusion therapy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Surgical correction</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Correction of refractive error</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Steroids</button>
+    </div>
+    <div class="rationale mod4-rat"><b>Correct Answer: D (Steroids).</b><br><b>Rationale:</b> The 3 pillars of strabismus management are (1) Optical correction of refractive error, (2) Occlusion therapy for amblyopia, and (3) Extraocular muscle surgery. Steroids have no role in concomitant squint.</div>
+  </div>
+</div>
+
+<script>
+  let answeredCount = 0;
+  let correctCount = 0;
+  const totalQuestions = document.querySelectorAll('.q-card').length;
+
+  function updateScoreDisplay() {
+    const pct = answeredCount === 0 ? 0 : Math.round((correctCount / answeredCount) * 100);
+    document.getElementById('score-text').textContent =
+      `Answered: ${answeredCount} / ${totalQuestions} | Correct: ${correctCount} (${pct}%)`;
+  }
+
+  function checkAns(btn, selectedLetter) {
+    const card = btn.closest('.q-card');
+    if (card.classList.contains('answered')) return;
+    card.classList.add('answered');
+
+    const correctLetter = card.getAttribute('data-answer');
+    const buttons = card.querySelectorAll('.opt-btn');
+
+    buttons.forEach(b => {
+      b.classList.add('disabled');
+      const letter = b.textContent.trim().charAt(0);
+      if (letter === correctLetter) {
+        b.classList.add('correct');
+      }
+    });
+
+    answeredCount++;
+    if (selectedLetter === correctLetter) {
+      correctCount++;
+    } else {
+      btn.classList.add('wrong');
+    }
+
+    card.querySelector('.rationale').classList.add('show');
+    updateScoreDisplay();
+  }
+
+  function resetAll() {
+    answeredCount = 0;
+    correctCount = 0;
+    document.querySelectorAll('.q-card').forEach(card => {
+      card.classList.remove('answered');
+      card.querySelectorAll('.opt-btn').forEach(b => {
+        b.classList.remove('correct', 'wrong', 'disabled');
+      });
+      card.querySelector('.rationale').classList.remove('show');
+    });
+    updateScoreDisplay();
+  }
+
+  updateScoreDisplay();
+</script>
+
+</body>
+</html>

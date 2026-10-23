@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thamar Ophthalmology — Module 5 (Remaining 35 Qs) + Mega Mind Map & Master Midterm Summary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --primary: #0f172a;
+    --mod5: #be123c;
+    --mod5-soft: #ffe4e6;
+    --sum: #1e40af;
+    --sum-soft: #dbeafe;
+    --correct: #16a34a;
+    --correct-bg: #dcfce7;
+    --wrong: #dc2626;
+    --wrong-bg: #fee2e2;
+    --review-bg: #f8fafc;
+    --border: #cbd5e1;
+    --text: #1e293b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    padding: 14px;
+    padding-top: 72px;
+    font-size: 13.8px;
+  }
+  .sticky-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(15, 23, 42, 0.96); color: #fff;
+    padding: 10px 16px; display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); backdrop-filter: blur(6px);
+    flex-wrap: wrap; gap: 10px;
+  }
+  .sticky-title { font-weight: 800; font-size: 14px; color: #fda4af; }
+  .score-box { display: flex; gap: 14px; align-items: center; font-size: 13px; font-weight: 700; }
+  .score-pill { background: #1e293b; padding: 4px 10px; border-radius: 6px; border: 1px solid #334155; }
+  .reset-btn {
+    background: #ef4444; color: #fff; border: none; padding: 5px 12px;
+    border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 12px;
+  }
+  .reset-btn:hover { background: #dc2626; }
+
+  .module-banner {
+    background: linear-gradient(135deg, #4c0519, #be123c);
+    color: #fff; padding: 20px; border-radius: 12px; margin: 16px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+  }
+  .module-banner.summary-banner {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  }
+  .module-banner h1 { font-size: 20px; margin-bottom: 4px; }
+  .module-banner p { font-size: 13px; opacity: 0.9; }
+
+  .nav-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+  .nav-pill {
+    background: #fff; color: var(--primary); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 700;
+  }
+  .nav-pill:hover { background: var(--mod5); color: #fff; border-color: var(--mod5); }
+
+  .topic-section {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px; margin-bottom: 24px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  }
+  .topic-header {
+    font-size: 17px; font-weight: 800; color: var(--primary);
+    border-bottom: 3px solid var(--mod5); padding-bottom: 8px; margin-bottom: 14px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .topic-header.sum-hdr { border-bottom-color: var(--sum); }
+
+  .study-review {
+    background: var(--review-bg); border-left: 5px solid var(--mod5);
+    padding: 14px; border-radius: 8px; margin-bottom: 18px;
+  }
+  .sr-title {
+    font-weight: 800; font-size: 13px; text-transform: uppercase;
+    color: var(--mod5); margin-bottom: 8px; display: block; letter-spacing: 0.4px;
+  }
+  .study-review ul { padding-left: 18px; }
+  .study-review li { margin-bottom: 5px; font-size: 13.5px; }
+  .buzz { background: #fef08a; padding: 1px 5px; border-radius: 4px; font-weight: 700; color: #854d0e; }
+
+  .q-card {
+    border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px;
+    margin-bottom: 14px; background: #fff; transition: all 0.2s;
+  }
+  .q-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .tag {
+    background: var(--mod5-soft); color: #9f1239; font-size: 11px;
+    font-weight: 800; padding: 3px 8px; border-radius: 5px;
+  }
+  .tag.repeat { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+  .q-stem { font-weight: 700; font-size: 14.5px; margin-bottom: 10px; color: #0f172a; }
+  .options { display: flex; flex-direction: column; gap: 7px; }
+  .opt-btn {
+    text-align: left; background: #f8fafc; border: 1px solid #cbd5e1;
+    padding: 9px 12px; border-radius: 7px; cursor: pointer; font-size: 13.5px;
+    color: #1e293b; font-weight: 500; transition: all 0.15s;
+  }
+  .opt-btn:hover:not(.disabled) { background: #e2e8f0; border-color: #94a3b8; }
+  .opt-btn.correct {
+    background: var(--correct-bg) !important; border-color: var(--correct) !important;
+    color: #14532d !important; font-weight: 700;
+  }
+  .opt-btn.wrong {
+    background: var(--wrong-bg) !important; border-color: var(--wrong) !important;
+    color: #7f1d1d !important; text-decoration: line-through;
+  }
+  .opt-btn.disabled { cursor: default; }
+  .rationale {
+    display: none; margin-top: 10px; padding: 10px 12px; border-radius: 7px;
+    background: #fff1f2; border-left: 4px solid var(--mod5); font-size: 13px; color: #881337;
+  }
+  .rationale.show { display: block; }
+
+  /* Mega Mind Map Styling */
+  .mega-mm { display: flex; flex-direction: column; gap: 14px; background: #f8fafc; padding: 16px; border-radius: 10px; border: 2px dashed #64748b; }
+  .mm-center { background: linear-gradient(90deg, #0f172a, #1e40af, #0f172a); color: #fff; text-align: center; padding: 14px; border-radius: 8px; font-weight: 900; font-size: 16px; letter-spacing: 0.6px; }
+  .mm-grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .mm-box { background: #fff; border-radius: 8px; padding: 12px; border-top: 5px solid; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+  .mm-box.b1 { border-color: #2563eb; }
+  .mm-box.b2 { border-color: #0d9488; }
+  .mm-box.b3 { border-color: #7c3aed; }
+  .mm-box.b4 { border-color: #ea580c; }
+  .mm-box-hdr { font-weight: 800; font-size: 13.5px; margin-bottom: 8px; padding-bottom: 5px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; }
+  .mm-tree { list-style: none; padding-left: 0; font-size: 12.2px; }
+  .mm-tree > li { margin-bottom: 7px; background: #f8fafc; padding: 6px 8px; border-radius: 6px; border-left: 3px solid #94a3b8; }
+  .mm-tree > li b { color: #0f172a; }
+.mm-tree > li > b:first-child { display: block; margin-bottom: 4px; }
+
+  /* Summary Tables & Grids */
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 12.5px; }
+  th, td { border: 1px solid var(--border); padding: 7px 9px; text-align: left; vertical-align: top; }
+  th { background: #f1f5f9; font-weight: 700; color: var(--primary); }
+  tr:nth-child(even) { background: #fcfcfd; }
+  .sum-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 14px; margin-top: 10px; }
+  .sum-card { border: 1px solid #cbd5e1; border-radius: 8px; padding: 12px; background: #fcfdff; }
+  .sum-card h4 { color: var(--sum); font-size: 14px; margin-bottom: 6px; border-bottom: 2px solid #dbeafe; padding-bottom: 4px; }
+  .sum-card ul { padding-left: 16px; font-size: 12.8px; }
+  .sum-card li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<div class="sticky-bar">
+  <div class="sticky-title">🎯 Remaining 35 Qs (Glaucoma/Retina/Trauma) + Mega Midterm Mind Map &amp; Summary</div>
+  <div class="score-box">
+    <span class="score-pill" id="score-text">Answered: 0 / 26 | Correct: 0 (0%)</span>
+    <button class="reset-btn" onclick="resetAll()">🔄 Reset All</button>
+  </div>
+</div>
+
+<div class="nav-pills">
+  <a href="#m5-t1" class="nav-pill">M5.1: Glaucoma (14 Cards / 20 Qs)</a>
+  <a href="#m5-t2" class="nav-pill">M5.2: Retina &amp; Emergencies (12 Cards / 15 Qs)</a>
+  <a href="#mega-map" class="nav-pill">🧠 MEGA MIDTERM MIND MAP</a>
+  <a href="#mega-sum" class="nav-pill">⚡ MASTER HIGH-YIELD MIDTERM SUMMARY</a>
+</div>
+
+<!-- ================================================================= -->
+<!-- MODULE 5: THE REMAINING 35 QUESTIONS (BATCHES 20–24) -->
+<!-- ================================================================= -->
+<div class="module-banner">
+  <h1>📕 MODULE 5: REMAINING 35 EXAM QUESTIONS (153 + 35 = 188/188 COMPLETE)</h1>
+  <p>Topics: Glaucoma &amp; Tonometry • Retinal Vascular / Diabetic / RD / RP • Chemical Burns (Included in Midterm 23 &amp; 24!)</p>
+</div>
+
+<!-- TOPIC 5.1: GLAUCOMA & TONOMETRY -->
+<div id="m5-t1" class="topic-section">
+  <div class="topic-header">
+    <span>5.1 Glaucoma &amp; Intraocular Pressure (14 Unique Cards = 20 Exam Questions)</span>
+    <span style="font-size:12px; color:#64748b;">20 Questions Total</span>
+  </div>
+
+  <div class="study-review">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (Glaucoma)</span>
+    <ul>
+      <li><b>Intraocular Pressure (IOP) &amp; Tonometry:</b>
+        <ul>
+          <li><b>Normal IOP Range:</b> <span class="buzz">10–21 mmHg</span>.</li>
+          <li><b>Measurement:</b> Measured by <span class="buzz">Tonometry</span>; the <b>most accurate method (Gold Standard)</b> is <span class="buzz">Goldmann Applanation Tonometry</span>. (<i>Pachymetry = corneal thickness; Gonioscopy = AC angle; Ophthalmoscopy = fundus</i>).</li>
+          <li><b>Glaucoma Definition:</b> Progressive <span class="buzz">optic neuropathy due to increased IOP</span> causing characteristic optic disc cupping and <span class="buzz">visual field defects</span>.</li>
+        </ul>
+      </li>
+      <li><b>Primary Open-Angle Glaucoma (POAG / Chronic Simple Glaucoma):</b>
+        <ul>
+          <li><b>Risk Factors:</b> <span class="buzz">Age &gt; 50 years, Black race, Positive family history</span>, High myopia, and Diabetes.</li>
+          <li><b>Visual Field Defects in POAG:</b> Paracentral scotoma, Seidel's scotoma, <span class="buzz">Arcuate (Bjerrum) scotoma</span>, <span class="buzz">Roenne's nasal step</span>, and <span class="buzz">Annular (ring) scotoma</span> / tubular vision. (<b>Exam Trap:</b> <span class="buzz">Binasal quadrantanopia</span> or hemianopia is a neuro-ophthalmic chiasmal/tract defect and NEVER occurs in POAG!).</li>
+          <li><b>Medical Treatment:</b> First-line in Thamar exam keys is topical <span class="buzz">Beta-blocker (Timolol)</span> (or Prostaglandin analogs). <b>Contraindications to Beta-blockers:</b> <span class="buzz">Asthma / COPD, Congestive Heart Failure / Heart block, and Brittle Diabetes</span> (masks hypoglycemia).</li>
+        </ul>
+      </li>
+      <li><b>Primary Acute Angle-Closure (Congestive) Glaucoma (AACG):</b>
+        <ul>
+          <li><b>Mechanism:</b> Pupillary block leading to <span class="buzz">occlusion of the trabecular drainage angle</span> by the peripheral iris in an eye with a <b>shallow anterior chamber</b> (hypermetropic eye).</li>
+          <li><b>Clinical Picture:</b> <span class="buzz">Acute painful loss of vision (down to Hand Movements)</span> + redness, profuse lacrimation, <span class="buzz">colored halos around lights</span>, stony-hard high IOP, shallow AC, and a <b>vertically oval, mid-dilated fixed pupil</b> (<i>NOT a pinpoint constricted pupil!</i>).</li>
+          <li><b>Management &amp; Drug Contraindication:</b>
+            <ul>
+              <li><i>First-line acute medical IOP reduction:</i> Systemic/IV <span class="buzz">Carbonic Anhydrase Inhibitor (Acetazolamide)</span> + Hyperosmotic Mannitol + Topical Beta-blocker + Pilocarpine (miotic).</li>
+              <li><i>Prophylactic &amp; Definitive Treatment of Choice for the **Fellow (Other) Eye**:</i> <span class="buzz">Nd:YAG Laser Peripheral Iridotomy (LPI)</span>!</li>
+              <li><i>Strictly Contraindicated Drug:</i> <span class="buzz">Atropine (and all mydriatics)</span> — dilates the pupil, crowding the iris into the angle and worsening the attack!</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><b>Congenital Glaucoma (Buphthalmos):</b> Presents in an infant (e.g., 1-month-old boy) with the classic triad of <span class="buzz">epiphora (lacrimation), photophobia, blepharospasm</span> + <span class="buzz">large hazy/cloudy cornea (&gt;13 mm)</span> due to Haab's striae and corneal edema.</li>
+    </ul>
+  </div>
+
+  <!-- Q1 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q39</span>
+    </div>
+    <div class="q-stem">1. Normal intraocular pressure range is approximately:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. 8–15 mmHg</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. 10–21 mmHg</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. 15–25 mmHg</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. 20–30 mmHg</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (10–21 mmHg).</b><br><b>Rationale:</b> Normal physiological IOP in the general population is 10–21 mmHg (mean 16 ± 2.5 mmHg).</div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q33</span>
+    </div>
+    <div class="q-stem">2. Intraocular pressure (IOP) is measured by:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Gonioscopy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Ophthalmoscopy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Tonometry</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Pachymetry</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Tonometry).</b><br><b>Rationale:</b> Tonometry measures intraocular pressure; Gonioscopy examines the anterior chamber angle; Pachymetry measures corneal thickness.</div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Midterm - Q7</span>
+    </div>
+    <div class="q-stem">3. The most accurate method of measuring IOP is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Digital</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Applanation</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Air-puff non-contact tonometer</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Gonioscopy</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Applanation).</b><br><b>Rationale:</b> Goldmann Applanation Tonometry (based on the Imbert-Fick principle) is the clinical gold standard and most accurate method for measuring IOP.</div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 21 Final - Q8</span>
+    </div>
+    <div class="q-stem">4. Regarding glaucoma:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Optic neuropathy due to increased intraocular pressure (IOP)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Visual field defects present</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. All of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (All of the above).</b><br><b>Rationale:</b> Glaucoma is defined by progressive optic neuropathy (cupping/retinal ganglion cell loss) associated with elevated IOP and corresponding visual field defects.</div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 24 Midterm - Q6</span>
+    </div>
+    <div class="q-stem">5. A one-month-old boy presents with photophobia, lacrimation and a large hazy cornea. The most probable diagnosis is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Congenital cataract</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Congenital glaucoma (Buphthalmos)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Keratitis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Megalocornea</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Congenital glaucoma / Buphthalmos).</b><br><b>Rationale:</b> The classic triad of epiphora (lacrimation), photophobia, and blepharospasm in an infant combined with corneal enlargement (buphthalmos) and edema (hazy cornea) is diagnostic of Primary Congenital Glaucoma. (Megalocornea has a clear cornea and normal IOP).</div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Final - Q19</span>
+    </div>
+    <div class="q-stem">6. Risk factors for open-angle glaucoma include:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Age &gt; 50</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Black race</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Family history</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. All of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (All of the above).</b><br><b>Rationale:</b> Older age, African/Black ancestry, positive family history, elevated IOP, thin central cornea, and high myopia are the major established risk factors for POAG.</div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 22 Midterm - Q15</span>
+      <span class="tag">Batch 20 Final - Q18</span>
+    </div>
+    <div class="q-stem">7. All the following visual field changes occur in primary open-angle glaucoma (POAG) EXCEPT:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Arcuate scotoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Annular scotoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Nasal step of Roenne</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Binasal quadrantanopia</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (Binasal quadrantanopia).</b><br><b>Rationale:</b> Retinal nerve fiber bundle damage in POAG causes paracentral, arcuate (Bjerrum), annular (double arcuate), and Roenne's nasal step defects. Binasal quadrantanopia is a neurological chiasmal defect.</div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Midterm - Q13</span>
+    </div>
+    <div class="q-stem">8. First-line treatment of open-angle glaucoma (OAG) is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Beta-blocker</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Pilocarpine</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Atropine</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Laser trabeculoplasty</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Beta-blocker).</b><br><b>Rationale:</b> Among the given choices, topical Beta-blockers (e.g., Timolol 0.5%, which decreases aqueous humor secretion by the ciliary epithelium) are the first-line medical therapy for POAG.</div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q21</span>
+    </div>
+    <div class="q-stem">9. Topical/systemic beta blockers are relatively contraindicated in patients with:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Asthma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Congestive heart failure</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Diabetes mellitus (brittle)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. All of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (All of the above).</b><br><b>Rationale:</b> Non-selective beta-blockers (Timolol) block β2 receptors in bronchi (causing fatal bronchospasm in asthma/COPD), block β1 receptors in the heart (worsening heart failure/bradycardia), and mask hypoglycemic tachycardia in brittle diabetics.</div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q18</span>
+    </div>
+    <div class="q-stem">10. The mechanism of primary angle-closure glaucoma is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Vitreous traction</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Occlusion of trabecular angle</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Ciliary hypersecretion</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Optic nerve ischemia</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Occlusion of trabecular angle).</b><br><b>Rationale:</b> In PACG, relative pupillary block bows the peripheral iris forward (iris bombé) to physically occlude the trabecular meshwork drainage angle, causing a rapid spike in IOP.</div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 24 Midterm - Q7</span>
+      <span class="tag">Batch 22 Final - Q27</span>
+    </div>
+    <div class="q-stem">11. An adult patient presents with acute painful loss of vision, red eye, lacrimation, colored halos, increased IOP, and shallow anterior chamber angle. The probable diagnosis is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Hypermature cataract / Vitreous hemorrhage</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Open angle glaucoma / Retinal detachment</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Uveitis / Central serous retinopathy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Acute closed-angle glaucoma (AACG)</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (Acute closed-angle glaucoma).</b> <i>(Option D in Batch 24 Midterm; Option A in Batch 22 Final).</i><br><b>Rationale:</b> Severe ocular pain + red eye + colored halos (from corneal epithelial edema) + decreased VA + high IOP + shallow AC is the classic presentation of an acute congestive angle-closure glaucoma attack.</div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Final - Q17</span>
+    </div>
+    <div class="q-stem">12. Primary acute closed angle glaucoma is characterized by:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Vision diminished to hand movement</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Pinpoint constricted pupil</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Cupping of the optic disc</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. All of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Vision diminished to hand movement).</b><br><b>Rationale:</b> In an acute congestive attack, corneal edema and optic nerve ischemia reduce vision profoundly to Hand Movements (HM). The pupil is mid-dilated vertically oval (NOT pinpoint!), and optic disc cupping only develops in chronic neglected stages, not during the first acute attack.</div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Final - Q6</span>
+    </div>
+    <div class="q-stem">13. The first-line treatment of acute congestive glaucoma is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Beta-blocker</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Carbonic anhydrase inhibitor</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Laser iridotomy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Pilocarpine</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Carbonic anhydrase inhibitor).</b><br><b>Rationale:</b> Immediate systemic/IV Acetazolamide (Carbonic anhydrase inhibitor) + hyperosmotic agents are given first-line in an acute attack to rapidly lower IOP below 40 mmHg (because when IOP is &gt;50 mmHg, the iris sphincter is ischemic and paralyzed, so Pilocarpine cannot work until IOP is lowered first!).</div>
+  </div>
+
+  <!-- Q14 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 Repeated in 2 Exams</span>
+      <span class="tag">Batch 24 Midterm - Q12</span>
+      <span class="tag">Batch 22 Midterm - Q5</span>
+    </div>
+    <div class="q-stem">14. Prophylactic treatment of choice for the fellow (other) eye in angle-closure glaucoma is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Timolol drops / Surgical peripheral iridectomy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. YAG Laser iridotomy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Trabeculectomy / Trabeculotomy</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Pilocarpine</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (YAG Laser iridotomy).</b><br><b>Rationale:</b> Primary angle closure is a bilateral anatomical predisposition (50–75% risk of fellow eye attack within 5 years); prophylactic Nd:YAG Laser Peripheral Iridotomy (LPI) in the fellow eye is mandatory to bypass pupillary block.</div>
+  </div>
+
+  <!-- Q15 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q6</span>
+    </div>
+    <div class="q-stem">15. Which drug is contraindicated in acute primary angle-closure glaucoma?</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Pilocarpine</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Atropine</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Timolol</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Acetazolamide</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Atropine).</b><br><b>Rationale:</b> Mydriatics/cycloplegics like Atropine dilate the pupil and bunch up the peripheral iris tissue into the narrow drainage angle, precipitating or worsening angle closure.</div>
+  </div>
+</div>
+
+<!-- TOPIC 5.2: RETINA & CHEMICAL EMERGENCIES -->
+<div id="m5-t2" class="topic-section">
+  <div class="topic-header">
+    <span>5.2 Retina &amp; Chemical Ocular Emergencies (12 Unique Cards = 15 Exam Questions)</span>
+    <span style="font-size:12px; color:#64748b;">15 Questions Total</span>
+  </div>
+
+  <div class="study-review">
+    <span class="sr-title">💡 Concise Study Review &amp; Exam Concepts (Retina &amp; Emergencies)</span>
+    <ul>
+      <li><b>Central Retinal Artery Occlusion (CRAO):</b> Presents in a cardiac/carotid/hypertensive patient with <span class="buzz">sudden, painless, profound monocular loss of vision (down to No Perception of Light / Counting Fingers)</span> + RAPD + pale milky retina with a macular <span class="buzz">Cherry-Red Spot</span> (intact choroidal glow seen through thin avascular foveola).</li>
+      <li><b>Diabetic &amp; Hypertensive Retinopathy:</b>
+        <ul>
+          <li><b>Diabetic Retinopathy (DR):</b> <span class="buzz">Neovascularization</span> (hallmark of Proliferative DR) occurs due to <span class="buzz">Retinal Ischemia</span> (VEGF release). <span class="buzz">Hard exudates</span> are composed mainly of <span class="buzz">Lipids</span> leaking from abnormal capillaries.</li>
+          <li><b>Hypertensive Retinopathy:</b> **1st / Earliest sign** is generalized <span class="buzz">Arteriolar Narrowing</span> (vasoconstriction). Typical signs include **Cotton-wool spots** (nerve fiber layer micro-infarcts) and **Hard exudates** (macular star). **4th Stage (Malignant) Hypertensive Retinopathy** is defined by the presence of <span class="buzz">Papilledema (Optic disc swelling)</span>!</li>
+          <li><b>Roth Spots (White-centered retinal hemorrhages):</b> Non-specific; seen in <span class="buzz">Subacute Bacterial Endocarditis, Leukemia/Anemia, Hypertension, and Diabetes Mellitus</span>.</li>
+        </ul>
+      </li>
+      <li><b>Retinal Detachment (RD) &amp; Retinitis Pigmentosa (RP):</b>
+        <ul>
+          <li><b>Retinal Detachment:</b> Completely <span class="buzz">Painless</span>; preceded by premonitory <span class="buzz">Flashes of light (Photopsia) and Floaters</span>, followed by sudden visual loss described as a <span class="buzz">"black curtain / veil falling"</span> across the field of vision.</li>
+          <li><b>Retinitis Pigmentosa:</b> Dystrophy of retinal rods presenting classically with <span class="buzz">Night Blindness (Nyctalopia)</span> + tunnel vision (ring scotoma) + fundus triad of **bone-spicule pigmentation, attenuated arterioles, and waxy disc pallor**.</li>
+        </ul>
+      </li>
+      <li><b>Chemical Injury to the Eye (Alkali / Acid Burn):</b> True ophthalmic emergency; the **immediate first-line management** before any test or referral is <span class="buzz">copious irrigation with normal saline or plain tap water</span>!</li>
+    </ul>
+  </div>
+
+  <!-- Q16 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Midterm - Q5</span>
+    </div>
+    <div class="q-stem">16. A cardiac patient complains of sudden painless loss of vision in one eye with no perception of light. The possible diagnosis is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Vitreous hemorrhage</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Optic neuritis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Papilledema</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Central retinal artery occlusion</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (Central retinal artery occlusion).</b><br><b>Rationale:</b> Cardiac emboli (from atrial fibrillation or valvular disease) lodging in the central retinal artery cause instantaneous, painless, profound monocular blindness (often down to No PL).</div>
+  </div>
+
+  <!-- Q17 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 22 Final - Q28</span>
+    </div>
+    <div class="q-stem">17. Cherry red spot is seen in:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Central retinal artery occlusion (CRAO)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Central retinal vein occlusion (CRVO)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Optic neuritis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Retinopathy of prematurity</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Central retinal artery occlusion — CRAO).</b><br><b>Rationale:</b> In CRAO, ischemic Cloudy swelling whitens the ganglion cell layer of the posterior pole, whereas the thin foveola (which lacks ganglion cells) allows the normal red choroidal reflex to shine through as a Cherry-Red Spot.</div>
+  </div>
+
+  <!-- Q18 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Midterm - Q5</span>
+    </div>
+    <div class="q-stem">18. In diabetic retinopathy, neovascularization occurs due to:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Increased intraocular pressure</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Retinal ischemia</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Retinal detachment</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Vitreous hemorrhage</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Retinal ischemia).</b><br><b>Rationale:</b> Capillary non-perfusion and retinal hypoxia/ischemia stimulate the ischemic retina to secrete Vascular Endothelial Growth Factor (VEGF), driving proliferative retinal neovascularization.</div>
+  </div>
+
+  <!-- Q19 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q14</span>
+    </div>
+    <div class="q-stem">19. Hard exudates in the retina are composed mainly of:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Proteins</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Lipids</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Hemorrhage</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Calcium</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Lipids).</b><br><b>Rationale:</b> Hard exudates are yellow, waxy intraretinal deposits of lipoproteins and lipid-laden macrophages located in the outer plexiform layer due to chronic microvascular leakage.</div>
+  </div>
+
+  <!-- Q20 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Midterm - Q13</span>
+    </div>
+    <div class="q-stem">20. The first sign of hypertensive retinopathy is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Cotton wool spots</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Papilledema</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Retinal hemorrhages</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Arteriolar narrowing</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (Arteriolar narrowing).</b><br><b>Rationale:</b> The earliest autoregulatory response of retinal arterioles to systemic hypertension is generalized/focal vasoconstriction (Grade 1 arteriolar narrowing).</div>
+  </div>
+
+  <!-- Q21 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q15</span>
+    </div>
+    <div class="q-stem">21. Which of the following are typical signs of hypertensive retinopathy?</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Cotton wool spots</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Hard exudates</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Both A and B</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Cherry red spot</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Both A and B).</b><br><b>Rationale:</b> Grade 3 hypertensive retinopathy features flame-shaped hemorrhages, cotton-wool spots (NFL ischemia), and hard exudates (often arranged as a macular star).</div>
+  </div>
+
+  <!-- Q22 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 20 Final - Q20</span>
+    </div>
+    <div class="q-stem">22. Which of the following is seen in the 4th stage of hypertensive retinopathy:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Arteriovenous crossing</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Papilledema</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Soft exudates</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Cotton wool spots</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Papilledema).</b><br><b>Rationale:</b> In the Keith-Wagener-Barker classification, Stage 4 (malignant) hypertensive retinopathy is defined by the addition of bilateral optic disc swelling (Papilledema) to Stage 3 changes.</div>
+  </div>
+
+  <!-- Q23 -->
+  <div class="q-card" data-answer="D">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q20</span>
+    </div>
+    <div class="q-stem">23. Roth spots (white-centered retinal hemorrhages) can be seen in:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Hypertension</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Diabetes mellitus</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Bacterial endocarditis</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. All of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: D (All of the above).</b><br><b>Rationale:</b> Roth spots (retinal hemorrhages with a central white fibrin-platelet plug or focal ischemia) occur in subacute bacterial endocarditis, leukemia, severe anemia, hypertension, and diabetes.</div>
+  </div>
+
+  <!-- Q24 -->
+  <div class="q-card" data-answer="C">
+    <div class="q-tags">
+      <span class="tag repeat">🔥 3 Related RD Questions in Batch 22 Final!</span>
+      <span class="tag">Batch 22 Final - Q8, Q26 &amp; Q30</span>
+    </div>
+    <div class="q-stem">24. A patient complains of flashes of light and floaters followed by sudden painless loss of vision like a curtain falling. The most likely diagnosis is:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Central retinal artery occlusion (Painful)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Central retinal vein occlusion (Gradual with redness)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Retinal detachment (Painless, flashes &amp; floaters, curtain falling)</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Optic neuritis</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: C (Retinal detachment).</b><br><b>Rationale:</b> Covers 3 questions in Batch 22 Final: (Q8) Sudden loss of vision like a curtain falling = <b>Retinal detachment</b>; (Q26) Flashes of light and floaters are present in = <b>Retinal detachment</b>; (Q30) True about retinal detachment = <b>Painless</b>.</div>
+  </div>
+
+  <!-- Q25 -->
+  <div class="q-card" data-answer="A">
+    <div class="q-tags">
+      <span class="tag">Batch 21 Final - Q11</span>
+    </div>
+    <div class="q-stem">25. Associated with night blindness:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Retinitis pigmentosa</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Progressive myopia</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Chronic glaucoma</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. All of the above</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: A (Retinitis pigmentosa).</b><br><b>Rationale:</b> Retinitis pigmentosa is a hereditary rod-cone photoreceptor dystrophy in which early degeneration of retinal rods causes Nyctalopia (night blindness) as the earliest hallmark symptom.</div>
+  </div>
+
+  <!-- Q26 -->
+  <div class="q-card" data-answer="B">
+    <div class="q-tags">
+      <span class="tag">Batch 23 Final - Q36</span>
+    </div>
+    <div class="q-stem">26. The immediate management of chemical injury to the eye includes:</div>
+    <div class="options">
+      <button class="opt-btn" onclick="checkAns(this, 'A')">A. Topical steroids immediately</button>
+      <button class="opt-btn" onclick="checkAns(this, 'B')">B. Copious irrigation with saline/water</button>
+      <button class="opt-btn" onclick="checkAns(this, 'C')">C. Patching the eye</button>
+      <button class="opt-btn" onclick="checkAns(this, 'D')">D. Immediate topical antibiotics only</button>
+    </div>
+    <div class="rationale"><b>Correct Answer: B (Copious irrigation with saline/water).</b><br><b>Rationale:</b> Immediate, continuous, copious irrigation with normal saline, Ringer's lactate, or plain tap water for at least 15–30 minutes until pH normalizes (7.0–7.4) is the single most critical sight-saving intervention in chemical burns.</div>
+  </div>
+</div>
+
+<!-- ================================================================= -->
+<!-- MEGA VISUAL MIND MAP FOR ALL MIDTERM MODULES -->
+<!-- ================================================================= -->
+<div id="mega-map" class="module-banner summary-banner">
+  <h1>🧠 MEGA VISUAL MIND MAP — ENTIRE MIDTERM SYLLABUS AT A GLANCE</h1>
+  <p>Connecting All 4 Doctors' Modules: Dr. Al-Ansi • Dr. Al-Soufi • Dr. Al-Khayat • Dr. Nabil Sabr</p>
+</div>
+
+<div class="topic-section">
+  <div class="mega-mm">
+    <div class="mm-center">👁️ THAMAR UNIVERSITY OPHTHALMOLOGY MIDTERM MASTER ARCHITECTURE</div>
+    <div class="mm-grid-4">
+      
+      <!-- BRANCH 1 -->
+      <div class="mm-box b1">
+        <div class="mm-box-hdr">
+          <span style="color:#2563eb;">1. DR. MOHAMMED AL-ANSI</span>
+          <span>50 Q-Cards</span>
+        </div>
+        <ul class="mm-tree">
+          <li>
+            <b>A. Intro &amp; Red Eye Triage</b>
+            • <b>Iris</b> = light amount; <b>Retina</b> = photoreceptors (absent at <b>Optic Disc</b>; Cones at avascular <b>Fovea</b>).<br>
+            • <b>Posterior Chamber</b> = behind iris; Aqueous drains via <b>Schlemm's canal</b>.<br>
+            • <b>Routine Mydriatic:</b> <b>Tropicamide</b>.<br>
+            • <b>Ciliary Flush:</b> Ulcer, Iritis, AACG (not conjunctivitis/episcleritis).
+          </li>
+          <li>
+            <b>B. Conjunctiva &amp; Dry Eye</b>
+            • <b>Viral (#1 Adenovirus):</b> Watery + lower follicles + preauricular node.<br>
+            • <b>Bacterial:</b> <i>Gonococcus</i> (#1 dangerous neonatorum); <i>Diphtheria</i> (membrane + squint); <i>Moraxella</i> (Angular → Zinc/Oxytetracycline). <b>NO bandage in purulent!</b><br>
+            • <b>Trachoma:</b> WHO <b>FISTO</b> (no pannus/Trantas); medical Rx effective.<br>
+            • <b>VKC (Spring Catarrh):</b> Hot weather, boys, itching, ropy discharge (no mucopurulent/pseudomembrane), <b>Cobblestones</b>, <b>Trantas dots</b>, Shield ulcer.<br>
+            • <b>Phlycten:</b> Endogenous hypersensitivity (TB/Staph) → Steroids.<br>
+            • <b>Pterygium:</b> UV light, degenerative (not tumor).<br>
+            • <b>Dry Eye:</b> <b>Sjögren's</b> (xerophthalmia), <b>Bitot's spot</b> (Vit A), <b>Schirmer test</b>, Topical lubricants.
+          </li>
+          <li>
+            <b>C. The Cornea</b>
+            • <b>Nutrition:</b> Air, Aqueous, Perilimbal (<b>NOT Vitreous!</b>).<br>
+            • <b>Penetrate Intact Epithelium:</b> <i>C. diphtheriae &amp; N. gonorrhoeae</i>.<br>
+            • <b>Ulcers:</b> Typical Hypopyon = <i>Pneumococcus</i>; Contact lens = <i>Pseudomonas</i>; <i>Acanthamoeba</i> = Ring infiltrate.<br>
+            • <b>HSV Keratitis:</b> Branching <b>Dendritic ulcer</b>, loss of sensation, <b>Acyclovir ointment</b>; <b>Steroids CONTRAINDICATED!</b> (Recurrent = dendritic, geographic, disciform; <i>NOT SPK</i>).<br>
+            • <b>Scars/Signs:</b> <b>Leucoma adherent</b> (iris incarcerated); <b>Seidel test</b> (perforation/leak); <b>Band keratopathy</b> (Calcium); <b>Salmon patch</b> (Interstitial keratitis).<br>
+            • <b>Keratoconus:</b> Central thinning + bulging, scissoring reflex, <b>Fleischer iron ring</b>, <b>Munson's sign</b>, <b>Acute hydrops</b> (Descemet rupture), Gold standard = <b>Corneal Topography</b>.
+          </li>
+          <li>
+            <b>D. Errors of Refraction</b>
+            • <b>#1 Cause:</b> Change in <b>Axial Length</b>.<br>
+            • <b>Myopia:</b> Focus in front → <b>Concave (-) lens</b>; predisposes to <b>Retinal Detachment</b>.<br>
+            • <b>Hyperopia:</b> Focus behind → <b>Convex (+) lens</b>.<br>
+            • <b>Presbyopia:</b> Bifocal / Plus reading glasses.<br>
+            • <b>Unilateral Aphakia:</b> IOL or Contact lens (<b>NEVER Glasses!</b>).
+          </li>
+        </ul>
+      </div>
+
+      <!-- BRANCH 2 -->
+      <div class="mm-box b2">
+        <div class="mm-box-hdr">
+          <span style="color:#0d9488;">2. DR. IBRAHIM AL-SOUFI</span>
+          <span>17 Q-Cards</span>
+        </div>
+        <ul class="mm-tree">
+          <li>
+            <b>A. Lacrimal System &amp; Orbit</b>
+            • <b>Infant Watering:</b> Congenital NLD obstruction → Sac massage + Antibiotics up to 6–9m (probing if persistent).<br>
+            • <b>Adult Chronic Dacryocystitis:</b> Regurgitation (+); treated by <b>DCR (Middle meatus)</b>.<br>
+            • <b>#1 Cause of Proptosis (Uni &amp; Bilateral):</b> <b>Thyroid Eye Disease (Graves')</b> (Lid retraction = #1 sign; spares tendons; affects <b>IR &gt; MR</b>).<br>
+            • <b>Orbital Cellulitis:</b> Unilateral, painful red eye + lid edema + proptosis + <b>ophthalmoplegia</b> (vs CST = bilateral + CN III, IV, VI + mastoid edema).<br>
+            • <b>Orbital Pseudotumor:</b> Idiopathic orbital inflammation.<br>
+            • <b>Blow-Out Fracture:</b> Orbital floor → <b>Diplopia</b> + Enophthalmos.
+          </li>
+          <li>
+            <b>B. Uveal Tract &amp; Endophthalmitis</b>
+            • <b>#1 Cause of Uveitis:</b> <b>Idiopathic</b> (~50%).<br>
+            • <b>#1 Systemic Association of AAU:</b> <b>Ankylosing Spondylitis</b> (HLA-B27).<br>
+            • <b>Acute Iridocyclitis:</b> Constant symptom = <b>Diminution of vision</b>; Earliest sign = <b>Aqueous flare</b>; Diagnostic sign = <b>KPs</b>; Small constricted irregular pupil.<br>
+            • <b>Granulomatous Uveitis:</b> Mutton-fat KPs + <b>Koeppe's nodules</b> (pupillary border).<br>
+            • <b>Behçet Disease:</b> HLA-B5, Oral &amp; genital ulcers + bilateral recurrent iridocyclitis with <b>Hypopyon</b>.<br>
+            • <b>Treatment of Iritis:</b> <b>Corticosteroids</b> (#1 anti-inflammatory) + <b>Atropine</b> (relieves ciliary pain &amp; prevents posterior synechiae; <b>Miotics taboo!</b>).<br>
+            • <b>Rubeosis Iridis:</b> Iris neovascularization due to <b>DM &amp; CRVO</b>.<br>
+            • <b>Endophthalmitis:</b> Purulent inflammation of <b>internal eye structures</b> (treated by Intravitreal antibiotics).
+          </li>
+          <li>
+            <b>C. Sclera &amp; Staphylomas</b>
+            • <b>Blue Sclera:</b> <b>Osteogenesis Imperfecta &amp; Ehlers-Danlos</b>.<br>
+            • <b>Scleritis:</b> Severe boring night pain + <b>Rheumatoid Arthritis</b>.<br>
+            • <b>Posterior Staphyloma:</b> Pathological Myopia (<b>ONLY staphyloma with normal IOP</b>).
+          </li>
+          <li>
+            <b>D. Vitreous Humor</b>
+            • <b>#1 Cause of Vitreous Hemorrhage:</b> <b>Proliferative Diabetic Retinopathy (PDR)</b> (Trauma in young). Causes sudden painless visual loss &amp; absent red reflex.
+          </li>
+        </ul>
+      </div>
+
+      <!-- BRANCH 3 -->
+      <div class="mm-box b3">
+        <div class="mm-box-hdr">
+          <span style="color:#7c3aed;">3. DR. FOUAD AL-KHAYAT</span>
+          <span>22 Q-Cards</span>
+        </div>
+        <ul class="mm-tree">
+          <li>
+            <b>A. Cataract Morphology &amp; Symptoms</b>
+            • <b>Central / Posterior Polar / PSC:</b> Worse vision in <b>bright daylight</b>, <b>glare &amp; difficulty reading</b> (due to miosis). <b>Posterior Polar</b> affects vision the most (at <b>Nodal Point</b>).<br>
+            • <b>Nuclear Cataract:</b> Causes <b>Index Myopia ("Second Sight")</b> &amp; gradual change in glasses.<br>
+            • <b>Specific Etiologies:</b><br>
+              – <b>Steroids:</b> Posterior Subcapsular Cataract (PSC).<br>
+              – <b>Blunt Trauma:</b> Rosette-shaped cataract.<br>
+              – <b>Wilson's Disease:</b> Sunflower cataract.<br>
+              – <b>Secondary Causes:</b> Uveitis, Retinoblastoma, Diabetic retinopathy, Trauma, Steroids (<b>NOT Blepharitis!</b>).
+          </li>
+          <li>
+            <b>B. Leukocoria (White Reflex)</b>
+            • <b>#1 Cause in Children:</b> <b>Congenital Cataract</b>.<br>
+            • <b>Other Causes:</b> Retinoblastoma (also causes absent red reflex), Total RD, Endophthalmitis, PHPV, After-cataract.<br>
+            • <b>NOT Leukocoria:</b> <b>Congenital Glaucoma (Buphthalmos)</b> &amp; <b>Optic Atrophy</b>!
+          </li>
+          <li>
+            <b>C. Lens-Induced Glaucoma &amp; Dislocation</b>
+            • <b>Immature / Intumescent (Swollen) Cataract:</b> Causes <b>Shallow AC</b> &amp; <b>Phacomorphic Glaucoma</b> (angle closure).<br>
+            • <b>Hypermature (Morgagnian) Cataract:</b> Leaking proteins clog trabecular meshwork → <b>Phacolytic Glaucoma</b>. Definitive Rx = <b>Cataract Extraction</b>!<br>
+            • <b>Does NOT cause Glaucoma:</b> <b>Posterior Polar Cataract</b>.<br>
+            • <b>Displaced Lens (Ectopia Lentis):</b> Marfan, Weill-Marchesani, Homocystinuria (<b>NOT Laurence-Moon-Biedl!</b>).
+          </li>
+          <li>
+            <b>D. Cataract Surgery &amp; PCO</b>
+            • <b>Indication:</b> Early cataract compromising <b>daily activities</b> (do not wait for maturity).<br>
+            • <b>Ideal IOL Site:</b> Inside the <b>Capsular Bag</b>.<br>
+            • <b>After-Cataract (Posterior Capsule Opacification - PCO):</b> Treated by <b>Nd:YAG Laser Capsulotomy</b>!
+          </li>
+        </ul>
+      </div>
+
+      <!-- BRANCH 4 -->
+      <div class="mm-box b4">
+        <div class="mm-box-hdr">
+          <span style="color:#ea580c;">4. DR. NABIL SABR</span>
+          <span>41 Q-Cards</span>
+        </div>
+        <ul class="mm-tree">
+          <li>
+            <b>A. Optic Nerve, Pathway &amp; Pupil</b>
+            • <b>Color Vision Test:</b> <b>Ishihara plates</b>.<br>
+            • <b>Optic Neuritis:</b> Young female + sudden unilateral visual loss + <b>pain on eye movement</b> + <b>RAPD (Marcus Gunn pupil)</b>. Drug cause = <b>Ethambutol</b>.<br>
+            • <b>Papilledema:</b> Caused by <b>Raised ICP</b>; bilateral disc swelling, headache, <b>enlarged blind spot</b>, with <b>NO vision loss in early stage!</b> Heals into <b>Secondary Optic Atrophy</b>.<br>
+            • <b>Giant Cell Arteritis:</b> <b>Jaw claudication</b>.<br>
+            • <b>Argyll Robertson Pupil:</b> Accommodates (near) but does NOT react to light (neurosyphilis).<br>
+            • <b>Horner Syndrome:</b> Ptosis + Miosis (<b>anisocoria increases in DARK</b>) + Anhidrosis (no exophthalmos).<br>
+            • <b>Mydriasis EXCEPT:</b> <b>Pontine hemorrhage</b> (causes pinpoint miosis!).<br>
+            • <b>Visual Fields:</b> Optic Chiasm = Bitemporal hemianopia; <b>Optic Tract = Homonymous hemianopia</b>; Left Temporal Lobe = <b>Right upper temporal ("Pie in the sky")</b>.
+          </li>
+          <li>
+            <b>B. Eyelid Disorders</b>
+            • <b>Gray Line:</b> Separates anterior &amp; posterior lid lamellae.<br>
+            • <b>Levator Muscle (LPS):</b> Elevates upper lid, supplied by <b>CN III</b>.<br>
+            • <b>Congenital Ptosis #1 Cause:</b> <b>Myogenic</b>.<br>
+            • <b>Lagophthalmos Causes:</b> CN VII palsy, Proptosis, Cicatricial lid changes (<b>NEVER CN III palsy!</b>).<br>
+            • <b>Trichiasis:</b> Lashes rubbing on cornea/conjunctiva.<br>
+            • <b>Distichiasis:</b> Accessory extra row of eyelashes.<br>
+            • <b>Ulcerative Blepharitis:</b> Matted yellow crusts + painful bleeding ulcers.<br>
+            • <b>Chalazion:</b> Painless chronic granuloma of <b>Meibomian gland</b>; primary Rx = <b>Hot compresses</b>.
+          </li>
+          <li>
+            <b>C. Strabismus &amp; Motility</b>
+            • <b>Muscle Origin Exception:</b> <b>Inferior Oblique</b> (anterior orbital floor, NOT apex).<br>
+            • <b>Primary Intorter:</b> <b>Superior Oblique (CN IV)</b>.<br>
+            • <b>CN III Palsy:</b> Ptosis + Mydriasis + eye <b>Down &amp; Out</b>. Pupil-involving = <b>PCom Intracranial Aneurysm</b>; Pupil-sparing = <b>Diabetes (#1 CN palsy in DM)</b>.<br>
+            • <b>CN VI Palsy:</b> Causes <b>Binocular Diplopia</b>; first step in 55y diabetic = <b>MRI</b>.<br>
+            • <b>Squint Terms &amp; Tests:</b> Esotropia = inward; Exophoria = latent temporal; Angle measured by <b>Hirschberg test</b>; #1 cause of Amblyopia = <b>Strabismus</b>; Treated by glasses, occlusion, or surgery (<b>NEVER steroids!</b>).
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================= -->
+<!-- MASTER HIGH-YIELD MIDTERM SUMMARY (RAPID REVISION TABLES) -->
+<!-- ================================================================= -->
+<div id="mega-sum" class="module-banner summary-banner">
+  <h1>⚡ MASTER HIGH-YIELD MIDTERM SUMMARY — RAPID REVISION TABLES</h1>
+  <p>Every Golden Rule, Diagnostic Test, Drug of Choice, Contraindication &amp; "EXCEPT" Trap in One Place</p>
+</div>
+
+<div class="topic-section">
+  <div class="topic-header sum-hdr">
+    <span>Table 1: Master "Drug of Choice" vs. "Strictly Contraindicated" Rapid-Fire Guide</span>
+  </div>
+  <table>
+    <tr>
+      <th>Clinical Condition</th>
+      <th>First-Line / Drug or Procedure of Choice</th>
+      <th>Strictly Contraindicated (Exam Trap!)</th>
+    </tr>
+    <tr>
+      <td><b>Herpes Simplex Dendritic Ulcer</b></td>
+      <td><b>Topical Acyclovir 3% ointment</b> (5x/day) + Cycloplegic (Atropine).</td>
+      <td><b>Topical Corticosteroids</b> (causes geographic ulcer &amp; corneal perforation!).</td>
+    </tr>
+    <tr>
+      <td><b>Bacterial / Hypopyon Corneal Ulcer</b></td>
+      <td>Intensive fortified <b>Topical Antibiotics</b> + <b>Atropine 1%</b> (always indicated for pain &amp; synechiae).</td>
+      <td><b>Topical Corticosteroids</b> &amp; <b>Eye Bandage</b> (if purulent discharge is present).</td>
+    </tr>
+    <tr>
+      <td><b>Phlyctenular Keratoconjunctivitis</b></td>
+      <td><b>Topical Corticosteroids</b> (the ONLY corneal ulcer treated with steroids!) + Anti-TB if proven.</td>
+      <td>Leaving underlying endogenous Staph/TB untreated.</td>
+    </tr>
+    <tr>
+      <td><b>Angular Conjunctivitis (<i>Moraxella</i>)</b></td>
+      <td><b>Oxytetracycline ointment + Zinc sulfate/oxide drops</b> (inhibits proteolytic ferment).</td>
+      <td>Topical steroids alone.</td>
+    </tr>
+    <tr>
+      <td><b>Purulent / Mucopurulent Conjunctivitis</b></td>
+      <td>Frequent eye washing + Topical broad-spectrum Antibiotics.</td>
+      <td><b>Bandaging / Patching the eye</b> (creates bacterial incubator → corneal melting!).</td>
+    </tr>
+    <tr>
+      <td><b>Vernal Keratoconjunctivitis (VKC)</b></td>
+      <td><b>Mast-cell stabilizers</b> + Antihistamines + Cold compresses (Short steroid/cyclosporine pulse if severe).</td>
+      <td><b>Long-term unsupervised Topical Steroids</b> (causes <b>Posterior Subcapsular Cataract &amp; Glaucoma</b>); Antivirals have NO role.</td>
+    </tr>
+    <tr>
+      <td><b>Acute Anterior Uveitis (Iridocyclitis)</b></td>
+      <td><b>Topical Corticosteroids + Atropine 1%</b> (relieves ciliary spasm pain &amp; breaks posterior synechiae).</td>
+      <td><b>Miotics (Pilocarpine)</b> (worsens pain, vascular leakage, and causes ring synechiae!).</td>
+    </tr>
+    <tr>
+      <td><b>Acute Angle-Closure Glaucoma (AACG)</b></td>
+      <td><b>IV/Oral Acetazolamide (CAI)</b> + Mannitol + Timolol + Pilocarpine → <b>YAG Laser Iridotomy</b> (for both &amp; fellow eye).</td>
+      <td><b>Atropine / Mydriatics</b> (crowds iris into angle and worsens pupillary block!).</td>
+    </tr>
+    <tr>
+      <td><b>Primary Open-Angle Glaucoma (POAG)</b></td>
+      <td>Topical <b>Beta-blockers (Timolol)</b> / Prostaglandin analogs → Trabeculectomy if medical fails.</td>
+      <td><b>Beta-blockers are contraindicated</b> in <b>Asthma, Heart Failure, Heart Block, and Brittle Diabetes</b>.</td>
+    </tr>
+    <tr>
+      <td><b>Phacolytic / Phacomorphic Glaucoma</b></td>
+      <td>Medical IOP reduction followed by urgent <b>Cataract Extraction</b>.</td>
+      <td>Treating medically alone without removing the lens.</td>
+    </tr>
+    <tr>
+      <td><b>Keratoconus</b></td>
+      <td><b>Corneal Collagen Cross-Linking (CXL)</b> to halt progression + <b>RGP Hard Contact Lenses</b> (or PKP/DALK if scarred).</td>
+      <td><b>LASIK surgery</b> (strictly contraindicated — causes severe corneal ectasia!). Spectacles fail in advanced cones.</td>
+    </tr>
+    <tr>
+      <td><b>Unilateral Aphakia</b></td>
+      <td><b>Posterior Chamber IOL (in capsular bag)</b>, Anterior Chamber IOL, or <b>Contact Lens</b>.</td>
+      <td><b>Spectacles (Glasses)</b> (causes 25–30% aniseikonia and intractable binocular diplopia!).</td>
+    </tr>
+    <tr>
+      <td><b>Posterior Capsule Opacification (After-Cataract)</b></td>
+      <td><b>Nd:YAG Laser Posterior Capsulotomy</b>.</td>
+      <td>Excimer, Argon, or Diode laser.</td>
+    </tr>
+    <tr>
+      <td><b>Chalazion vs. Congenital NLD Block</b></td>
+      <td><b>Chalazion:</b> Primary conservative Rx = <b>Hot compresses</b> (Vertical incision &amp; curettage if persistent).<br><b>Infant NLD block (&lt;6m):</b> <b>Sac massage + Antibiotic drops</b>.</td>
+      <td>Horizontal incision in chalazion (cuts adjacent Meibomian ducts); DCR in infants &lt;1 year.</td>
+    </tr>
+  </table>
+
+  <div class="topic-header sum-hdr" style="margin-top:22px;">
+    <span>Table 2: Master Diagnostic Tests &amp; Pathognomonic Clinical Signs ("Buzzword Decoder")</span>
+  </div>
+  <div class="sum-grid">
+    <div class="sum-card">
+      <h4>🔬 Diagnostic Tests &amp; Instruments</h4>
+      <ul>
+        <li><b>Corneal Topography (Pentacam):</b> Gold standard for <b>Keratoconus</b>.</li>
+        <li><b>Pachymetry:</b> Measures <b>Corneal Thickness</b>.</li>
+        <li><b>Specular Microscopy:</b> Examines <b>Corneal Endothelium</b>.</li>
+        <li><b>Fluorescein 2% Stain (Green):</b> Sure sign of <b>Corneal Ulcer</b> (denuded stroma).</li>
+        <li><b>Seidel Test (+ve):</b> Detects <b>Corneal Perforation / Aqueous Leak</b>.</li>
+        <li><b>Schirmer Test:</b> Diagnoses <b>Dry Eye (Xerophthalmia)</b>.</li>
+        <li><b>Goldmann Applanation Tonometry:</b> Most accurate measurement of <b>IOP</b>.</li>
+        <li><b>Gonioscopy:</b> Examines the <b>Anterior Chamber Drainage Angle</b>.</li>
+        <li><b>Hirschberg Test:</b> Estimates the <b>Angle of Squint (Strabismus)</b>.</li>
+        <li><b>Ishihara Plates:</b> Tests <b>Color Vision</b> (optic nerve function).</li>
+        <li><b>B-Scan Ultrasonography:</b> Evaluates posterior segment when media is opaque (<b>Vitreous hemorrhage / Mature cataract</b>) &amp; extraocular muscles in <b>Graves' disease</b>.</li>
+      </ul>
+    </div>
+
+    <div class="sum-card">
+      <h4>🎯 Pathognomonic Signs &amp; Triads</h4>
+      <ul>
+        <li><b>Scissoring Reflex + Oil-Droplet + Munson's Sign + Fleischer (Iron) Ring + Vogt's Striae:</b> <b>Keratoconus</b>.</li>
+        <li><b>Cobblestone Giant Papillae + Horner-Trantas Dots + Ropy White Discharge + Shield Ulcer:</b> <b>Vernal Keratoconjunctivitis (VKC)</b>.</li>
+        <li><b>Arlt's Line + Herbert's Pits + Superior Pannus + H.P. Inclusion Bodies:</b> <b>Trachoma</b>.</li>
+        <li><b>Macerated Skin at Canthi + Diplobacilli:</b> <b>Angular Conjunctivitis (<i>Moraxella</i>)</b>.</li>
+        <li><b>Bitot's Foamy Spot + Keratomalacia + Night Blindness:</b> <b>Vitamin A Deficiency</b>.</li>
+        <li><b>Aqueous Flare (Earliest) + KPs (Diagnostic) + Miotic Festooned Pupil + Koeppe's Nodules:</b> <b>Anterior Uveitis (Iridocyclitis)</b>.</li>
+        <li><b>Rosette Cataract + Vossius Ring + 'D'-Shaped Pupil (Iridodialysis):</b> <b>Blunt Ocular Trauma</b>.</li>
+        <li><b>Sunflower Cataract + Kayser-Fleischer Ring:</b> <b>Wilson's Disease (Copper)</b>.</li>
+        <li><b>Pain on Eye Movement + Unilateral Visual Loss + RAPD (Marcus Gunn Pupil):</b> <b>Optic Neuritis</b>.</li>
+        <li><b>Bilateral Disc Swelling + Enlarged Blind Spot + Normal Early Vision (6/6):</b> <b>Papilledema (Raised ICP)</b>.</li>
+        <li><b>Ptosis + Miosis (Anisocoria worse in Dark) + Anhidrosis:</b> <b>Horner Syndrome</b>.</li>
+        <li><b>Light-Near Dissociation (Reacts to Near, NOT to Light):</b> <b>Argyll Robertson Pupil (Neurosyphilis)</b>.</li>
+        <li><b>Ptosis + Eye Down &amp; Out + Dilated Fixed Pupil:</b> <b>Surgical CN III Palsy (PCom Aneurysm)</b>.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  let answeredCount = 0;
+  let correctCount = 0;
+  const totalQuestions = document.querySelectorAll('.q-card').length;
+
+  function updateScoreDisplay() {
+    const pct = answeredCount === 0 ? 0 : Math.round((correctCount / answeredCount) * 100);
+    document.getElementById('score-text').textContent =
+      `Answered: ${answeredCount} / ${totalQuestions} | Correct: ${correctCount} (${pct}%)`;
+  }
+
+  function checkAns(btn, selectedLetter) {
+    const card = btn.closest('.q-card');
+    if (card.classList.contains('answered')) return;
+    card.classList.add('answered');
+
+    const correctLetter = card.getAttribute('data-answer');
+    const buttons = card.querySelectorAll('.opt-btn');
+
+    buttons.forEach(b => {
+      b.classList.add('disabled');
+      const letter = b.textContent.trim().charAt(0);
+      if (letter === correctLetter) {
+        b.classList.add('correct');
+      }
+    });
+
+    answeredCount++;
+    if (selectedLetter === correctLetter) {
+      correctCount++;
+    } else {
+      btn.classList.add('wrong');
+    }
+
+    card.querySelector('.rationale').classList.add('show');
+    updateScoreDisplay();
+  }
+
+  function resetAll() {
+    answeredCount = 0;
+    correctCount = 0;
+    document.querySelectorAll('.q-card').forEach(card => {
+      card.classList.remove('answered');
+      card.querySelectorAll('.opt-btn').forEach(b => {
+        b.classList.remove('correct', 'wrong', 'disabled');
+      });
+      card.querySelector('.rationale').classList.remove('show');
+    });
+    updateScoreDisplay();
+  }
+
+  updateScoreDisplay();
+</script>
+
+</body>
+</html>

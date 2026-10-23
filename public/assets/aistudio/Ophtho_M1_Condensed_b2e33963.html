@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ophtho Ultra-Condensed — Module 1 (Dr. Al-Ansi)</title>
+<style>
+  :root {
+    --bg: #f8fafc; --card: #ffffff; --text: #0f172a; --muted: #475569;
+    --border: #e2e8f0; --accent: #2563eb; --th-bg: #f1f5f9;
+    --buzz-bg: #fef08a; --buzz-txt: #854d0e;
+    --trap-bg: #ffe4e6; --trap-txt: #be123c;
+    --mech-bg: #e0f2fe; --mech-txt: #0369a1;
+  }
+  body.dark {
+    --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8;
+    --border: #334155; --accent: #38bdf8; --th-bg: #0f172a;
+    --buzz-bg: #713f12; --buzz-txt: #fef08a;
+    --trap-bg: #4c0519; --trap-txt: #fda4af;
+    --mech-bg: #082f49; --mech-txt: #7dd3fc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.42;
+    padding: 12px; font-size: 13px; transition: 0.2s;
+  }
+  .top-bar {
+    background: linear-gradient(135deg, #0f172a, #1d4ed8); color: #fff;
+    padding: 12px 16px; border-radius: 8px; margin-bottom: 10px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .top-bar h1 { font-size: 17px; font-weight: 800; }
+  .top-bar p { font-size: 11.5px; opacity: 0.85; }
+  .btn-toggle {
+    background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);
+    padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 11.5px; font-weight: 700;
+  }
+  .nav {
+    display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 12px;
+    position: sticky; top: 6px; z-index: 99; background: var(--bg); padding: 5px 0;
+  }
+  .nav a {
+    background: var(--card); color: var(--text); border: 1px solid var(--border);
+    text-decoration: none; padding: 4px 10px; border-radius: 5px; font-size: 11px; font-weight: 700;
+  }
+  .nav a:hover { border-color: var(--accent); color: var(--accent); }
+  .sec {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 14px; margin-bottom: 14px;
+  }
+  .sec-hdr {
+    font-size: 15px; font-weight: 800; color: var(--accent);
+    border-bottom: 2px solid var(--accent); padding-bottom: 5px; margin-bottom: 10px;
+    display: flex; justify-content: space-between;
+  }
+  h3 {
+    font-size: 13px; font-weight: 800; margin: 10px 0 6px 0;
+    color: var(--text); border-left: 3px solid var(--accent); padding-left: 6px;
+  }
+  ul, ol { padding-left: 16px; margin-bottom: 6px; }
+  li { margin-bottom: 3px; }
+  .g2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 10px; }
+  .g3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
+  .g4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; }
+  .card-mini {
+    border: 1px solid var(--border); border-radius: 6px; padding: 7px 9px; background: var(--bg);
+  }
+  .card-mini b { color: var(--accent); display: block; font-size: 12px; margin-bottom: 2px; }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 12px; }
+  th, td { border: 1px solid var(--border); padding: 5px 7px; text-align: left; vertical-align: top; }
+  th { background: var(--th-bg); font-weight: 700; }
+  .bz { background: var(--buzz-bg); color: var(--buzz-txt); padding: 0 4px; border-radius: 3px; font-weight: 700; }
+  .trp { background: var(--trap-bg); color: var(--trap-txt); padding: 1px 5px; border-radius: 3px; font-weight: 700; font-size: 11.5px; }
+  .mech { background: var(--mech-bg); color: var(--mech-txt); padding: 4px 8px; border-radius: 5px; margin: 5px 0; font-size: 12px; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div>
+    <h1>⚡ OPHTHALMOLOGY ULTRA-CONDENSED — MODULE 1</h1>
+    <p>Dr. Mohammed Al-Ansi: Intro &amp; Red Eye • Conjunctiva &amp; Dry Eye • Cornea • Refraction (100% Bank Yield, Zero Fluff)</p>
+  </div>
+  <button class="btn-toggle" onclick="document.body.classList.toggle('dark')">🌓 Dark / Light</button>
+</div>
+
+<div class="nav">
+  <a href="#terms">🔤 Terminology</a>
+  <a href="#mm">🧠 Mind Map</a>
+  <a href="#ch1">1. Intro &amp; Red Eye</a>
+  <a href="#ch2">2. Conjunctiva &amp; Xerosis</a>
+  <a href="#ch3">3. Cornea &amp; Keratoconus</a>
+  <a href="#ch4">4. Optics &amp; Refraction</a>
+</div>
+
+<!-- ==================== TERMINOLOGY ==================== -->
+<div id="terms" class="sec">
+  <div class="sec-hdr"><span>🔤 HIGH-YIELD KEYWORDS &amp; TERMINOLOGY</span><span>★★★★★</span></div>
+  <div class="g4">
+    <div class="card-mini"><b>Follicles vs. Papillae</b>• <b>Follicles:</b> Lymphoid hyperplasia (avascular center) → <i>Viral, Trachoma</i>.<br>• <b>Papillae:</b> Central vascular core → <i>Allergic (VKC Cobblestones), Bacterial</i>.</div>
+    <div class="card-mini"><b>Pannus</b>Superficial corneal vascularization + lymphocytic infiltration.<br>• <b>Trachomatous:</b> Upper 1/3, lies <b>between Bowman's &amp; Epithelium</b>.</div>
+    <div class="card-mini"><b>Arlt's Line &amp; Herbert's Pits</b>Trachoma scars:<br>• <b>Arlt's:</b> Horizontal scar in upper tarsal conjunctiva.<br>• <b>Herbert's Pits:</b> Limbal depressions left by healed <b>Herbert's rosettes</b>.</div>
+    <div class="card-mini"><b>Horner-Trantas Dots</b>Chalky-white limbal dots of degenerated <b>eosinophils</b> in Bulbar VKC (<i>disappear with medical Rx!</i>).</div>
+    <div class="card-mini"><b>Symblepharon vs. Ankyloblepharon</b>• <b>Symblepharon:</b> Adhesion of <b>palpebral to bulbar conjunctiva</b>.<br>• <b>Ankyloblepharon:</b> Adhesion of <b>upper to lower lid margins</b>.</div>
+    <div class="card-mini"><b>Xerosis / Bitot's / Keratomalacia</b>• <b>Xerosis:</b> Conjunctival/corneal dryness &amp; keratinization.<br>• <b>Bitot's Spot:</b> Foamy triangular keratin plaque (Vit A def).<br>• <b>Keratomalacia:</b> Full-thickness corneal melting (Vit A def).</div>
+    <div class="card-mini"><b>Nebula / Macula / Leucoma</b>Corneal stromal scars:<br>• <b>Nebula:</b> Faint (&lt;Bowman's) → <i>worst visual distortion/scattering!</i><br>• <b>Macula:</b> Moderate.<br>• <b>Leucoma:</b> Dense white (<b>Adherent</b> = incarcerated iris).</div>
+    <div class="card-mini"><b>Descemetocele &amp; Seidel Test</b>• <b>Descemetocele:</b> Bulging intact Descemet's membrane in deep ulcer.<br>• <b>Seidel (+):</b> Fluorescein diluted by leaking aqueous → <b>Corneal perforation/fistula</b>.</div>
+    <div class="card-mini"><b>Hypopyon vs. Hyphema</b>• <b>Hypopyon:</b> Pus in AC (<b>Sterile</b> in bacterial ulcer; <b>Infected</b> in fungal ulcer).<br>• <b>Hyphema:</b> Blood in AC (blunt trauma).</div>
+    <div class="card-mini"><b>Keratoconus Signs</b>• <b>Munson:</b> V-indentation of lower lid on downgaze.<br>• <b>Fleischer Ring:</b> Epithelial <b>Iron</b> ring at cone base.<br>• <b>Vogt Striae:</b> Deep vertical stress lines.</div>
+    <div class="card-mini"><b>Salmon Patch vs. Band Keratopathy</b>• <b>Salmon Patch:</b> Deep stromal vascularization in <b>Syphilitic Interstitial Keratitis</b>.<br>• <b>Band Keratopathy:</b> Subepithelial <b>Calcium salts</b>.</div>
+    <div class="card-mini"><b>Anisometropia vs. Aniseikonia</b>• <b>Anisometropia:</b> Unequal refractive power between both eyes.<br>• <b>Aniseikonia:</b> Unequal retinal image size (1 D = 2% difference; max tolerated = 5% / 2.5 D).</div>
+  </div>
+</div>
+
+<!-- ==================== MIND MAP ==================== -->
+<div id="mm" class="sec">
+  <div class="sec-hdr"><span>🧠 BIG-PICTURE MIND MAP (1-MINUTE OVERVIEW)</span><span>⚡</span></div>
+  <div class="g4">
+    <div class="card-mini">
+      <b>1. PHYSIOLOGY &amp; RED EYE</b>
+      • <b>Avascular:</b> Cornea, Lens, Vitreous, Fovea (🚫 <i>Not Sclera!</i>).<br>
+      • <b>Fovea (0.35 mm):</b> 3 layers, cones only, avascular.<br>
+      • <b>Conjunctival Flush:</b> Fornix, bright red, mobile, blanches.<br>
+      • <b>Ciliary Flush:</b> Limbus (4mm), violaceous, fixed, NO blanching (Ulcer, Iritis, AACG).
+    </div>
+    <div class="card-mini">
+      <b>2. CONJUNCTIVA &amp; DRY EYE</b>
+      • <b>Intact Epithelium Invaders:</b> <i>Gonococcus, Diphtheria, Meningococcus, Haemophilus</i>.<br>
+      • <b>Angular:</b> <i>Moraxella</i> → Canthal maceration → Rx: <b>Zinc + Oxytetracycline</b>.<br>
+      • <b>Viral:</b> <i>Adenovirus</i> → Watery + Follicles + Preauricular node.<br>
+      • <b>Trachoma:</b> WHO <b>FISTO</b>, H.P. bodies, Arlt's, Herbert's, Upper Pannus.<br>
+      • <b>VKC:</b> Boys, summer, itching, ropy discharge, Cobblestones, Trantas.<br>
+      • <b>Phlycten:</b> Endogenous (TB/Staph) → <b>ONLY ulcer given Steroids!</b>
+    </div>
+    <div class="card-mini">
+      <b>3. THE CORNEA</b>
+      • <b>Nutrition:</b> Air, Aqueous, Limbal capillaries (🚫 <i>Not Vitreous!</i>).<br>
+      • <b>Ulcers:</b> Typical Hypopyon = <i>Pneumococcus</i> (Dacryocystitis); Contact lens = <i>Pseudomonas</i>; Vegetative = <i>Fungal</i> (satellites); Ring infiltrate + severe pain = <i>Acanthamoeba</i>. Always give <b>Atropine</b>!<br>
+      • <b>HSV Dendritic:</b> Terminal bulbs, hypoesthesia, Acyclovir (🚫 <b>Never Steroids!</b>).<br>
+      • <b>Keratoconus:</b> Thinning, Myopic astigmatism, Topography (#1) → CXL, RGP lens, PKP (🚫 <b>Never LASIK!</b>).
+    </div>
+    <div class="card-mini">
+      <b>4. OPTICS &amp; REFRACTION</b>
+      • <b>Power:</b> Cornea = 2/3 (43D); Lens = 1/3 (17D). Nodal point = posterior lens.<br>
+      • <b>Myopia (In front):</b> Long globe, deep AC, Concave (-). Pathological → <b>RD, Post. Staphyloma (Normal IOP), Fuchs' spot</b>.<br>
+      • <b>Hyperopia (Behind):</b> Short globe, shallow AC → <b>AACG &amp; Esotropia</b>. Convex (+).<br>
+      • <b>Astigmatism:</b> Simple = Cylindrical; Compound = Spherocylindrical; Irregular = Hard Contact Lens.<br>
+      • <b>Unilateral Aphakia:</b> IOL or Contact Lens (🚫 <b>Never Glasses!</b>).
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 1 ==================== -->
+<div id="ch1" class="sec">
+  <div class="sec-hdr"><span>1. INTRODUCTION, PHYSIOLOGY &amp; THE RED EYE</span><span>★★★★★</span></div>
+  <div class="g2">
+    <div>
+      <h3>1.1 Core Anatomy &amp; Physiology</h3>
+      <ul>
+        <li><b>Avascular Structures (4):</b> <span class="bz">Cornea</span>, <span class="bz">Lens</span>, <span class="bz">Vitreous</span>, <span class="bz">Fovea (Foveola)</span>. <span class="trp">🚫 Sclera &amp; Choroid are VASCULAR!</span></li>
+        <li><b>Key Dimensions:</b> Optic Disc = <b>1.5 mm</b> (no photoreceptors = Blind Spot) | Macula = <b>5.0 mm</b> | Foveola = <b>0.35 mm</b>.</li>
+        <li><b>Why Fovea has Best Visual Acuity (4):</b> (1) Very thin (<b>3 layers</b>), (2) <b>Avascular</b>, (3) Center of posterior pole (visual axis), (4) High density of <b>Cones only</b>.</li>
+        <li><b>Embryology:</b> <b>Surface Ectoderm</b> $\rightarrow$ Lens, Corneal/Conjunctival epithelium, Lacrimal glands | <b>Neuroectoderm</b> $\rightarrow$ Retina, Optic nerve, Iris muscles (Sphincter/Dilator), Ciliary epithelium | <b>Mesoderm/Neural Crest</b> $\rightarrow$ Stroma, Sclera, Choroid, Extraocular muscles.</li>
+        <li><b>Natural Protection:</b> Bony orbit, Blinking reflex, Tear lysozyme/IgA, Neck withdrawal reflex.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>1.2 Conjunctival vs. Ciliary Injection</h3>
+      <table>
+        <tr><th>Feature</th><th>Conjunctival Injection</th><th>Ciliary (Circumcorneal) Injection</th></tr>
+        <tr><td><b>Origin / Max Site</b></td><td>Post. conjunctival a. / <b>Max at Fornix</b></td><td>Ant. ciliary a. / <b>Max at Limbus (4 mm zone)</b></td></tr>
+        <tr><td><b>Color &amp; Vessels</b></td><td>Bright brick-red; superficial tortuous, <b>movable</b></td><td>Violaceous (dull dusky red); deep radial, <b>immovable</b></td></tr>
+        <tr><td><b>Adrenaline 1:1000</b></td><td><span class="bz">Blanches</span> (constricts)</td><td><span class="bz">Does NOT blanch</span></td></tr>
+        <tr><td><b>Seen In</b></td><td>Conjunctivitis (Bacterial, Viral, Allergic)</td><td><b>Corneal Ulcer, Acute Iritis, Acute Glaucoma</b> (<span class="trp">🚫 NOT in catarrhal conjunctivitis or simple episcleritis!</span>)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3>1.3 Master Differential Diagnosis: Acute Red Eye</h3>
+  <table>
+    <tr>
+      <th>Feature</th>
+      <th>Acute Conjunctivitis</th>
+      <th>Corneal Ulcer (Keratitis)</th>
+      <th>Acute Anterior Uveitis (Iritis)</th>
+      <th>Acute Angle-Closure Glaucoma</th>
+    </tr>
+    <tr>
+      <td><b>Pain &amp; Vision</b></td>
+      <td>Grittiness / FB sensation<br><b>Vision: Normal (6/6)</b></td>
+      <td>Sharp pricking pain + Photophobia<br><b>Vision: Reduced</b></td>
+      <td>Moderate aching brow pain (worse at night) | <b>Vision: Reduced</b></td>
+      <td><b>Severe agonizing pain + Nausea/Vomiting</b> | <b>Vision: Hand Movement + <span class="bz">Colored Halos</span></b></td>
+    </tr>
+    <tr>
+      <td><b>Discharge &amp; Flush</b></td>
+      <td>Purulent / Mucopurulent / Watery / Ropy | Conjunctival flush</td>
+      <td>Watery or Purulent | Ciliary flush</td>
+      <td>Watery reflex tearing only (<span class="trp">🚫 Never purulent!</span>) | Ciliary flush</td>
+      <td>Profuse watery tearing | Mixed Ciliary + Conjunctival flush</td>
+    </tr>
+    <tr>
+      <td><b>Cornea</b></td>
+      <td>Clear (Fluorescein –ve)</td>
+      <td>White infiltrate + <span class="bz">+ve Green Fluorescein stain</span></td>
+      <td>Hazy + posterior endothelial <span class="bz">Keratic Precipitates (KPs)</span></td>
+      <td><b>Steamy / Cloudy</b> (epithelial edema)</td>
+    </tr>
+    <tr>
+      <td><b>Anterior Chamber</b></td>
+      <td>Normal</td>
+      <td>Normal +/- Sterile <b>Hypopyon</b></td>
+      <td><span class="bz">Aqueous Flare &amp; Cells</span> (earliest sign!) +/- Hypopyon</td>
+      <td><b>Very Shallow</b></td>
+    </tr>
+    <tr>
+      <td><b>Pupil &amp; IOP</b></td>
+      <td>Normal &amp; reactive | <b>IOP: Normal</b></td>
+      <td>Normal or miotic | <b>IOP: Normal / High</b></td>
+      <td><b>Small, constricted (Miosis), irregular / <span class="bz">Festooned</span></b> | <b>IOP: Normal, Low, or High</b></td>
+      <td><b>Vertically Oval, Mid-dilated, Fixed</b> | <b>IOP: Stony Hard (&gt;50 mmHg)</b></td>
+    </tr>
+    <tr>
+      <td><b>Core Rx &amp; Taboo</b></td>
+      <td>Antibiotics | <span class="trp">🚫 NO Bandage!</span></td>
+      <td>Antibiotics + <b>Atropine</b> | <span class="trp">🚫 NO Steroids!</span></td>
+      <td><b>Steroids + Atropine</b> | <span class="trp">🚫 NO Miotics!</span></td>
+      <td><b>Pilocarpine + Acetazolamide + Mannitol + Timolol</b> | <span class="trp">🚫 NO Atropine!</span></td>
+    </tr>
+  </table>
+</div>
+
+<!-- ==================== CHAPTER 2 ==================== -->
+<div id="ch2" class="sec">
+  <div class="sec-hdr"><span>2. CONJUNCTIVA &amp; DRY EYE (XEROSIS)</span><span>★★★★★</span></div>
+
+  <div class="g2">
+    <div>
+      <h3>2.1 Infectious Conjunctivitis</h3>
+      <ul>
+        <li><b>Normal Commensal Flora:</b> <span class="bz">Corynebacterium xerosis</span>, <i>Staph. epidermidis</i>.</li>
+        <li><b>Mucopurulent:</b> <b><i>Staph. aureus</i></b> (#1 overall bacterial) or <b><i>Koch-Weeks bacillus (H. aegyptius)</i></b> (#1 epidemic). Yellow crusts gluing lashes in morning. (<i>Persistent unilateral conjunctivitis $\rightarrow$ rule out <b>Chronic Dacryocystitis</b>!</i>).</li>
+        <li><b>Purulent (Hyperacute):</b> <span class="bz">Neisseria gonorrhoeae</span> $\rightarrow$ copious pus $\rightarrow$ <b>invades intact corneal epithelium</b>.</li>
+        <li><b>True Membranous:</b> <span class="bz">Corynebacterium diphtheriae</span> $\rightarrow$ fibrinous membrane peels with bleeding $\rightarrow$ heals with <b>Symblepharon</b> &amp; paralytic squint.</li>
+        <li><b>Angular Blepharoconjunctivitis:</b>
+          <ul>
+            <li><b>Organism:</b> <span class="bz">Morax-Axenfeld diplobacillus</span> (<i>Moraxella lacunata</i>) $\rightarrow$ proteolytic enzyme macerates skin at <b>inner &amp; outer canthi</b>.</li>
+            <li><b>Rx of Choice:</b> <span class="bz">Zinc sulfate/oxide drops</span> (inhibits enzyme) + <span class="bz">Oxytetracycline ointment</span>.</li>
+          </ul>
+        </li>
+        <li><b>Adenoviral (Epidemic) Keratoconjunctivitis:</b>
+          <ul>
+            <li><b>#1 Viral cause:</b> <span class="bz">Adenovirus</span>.</li>
+            <li><b>Classic Vignette:</b> Child/adult with <b>fever &amp; sore throat</b> + <b>excessive watery discharge</b> + <b>lower tarsal follicles</b> + <span class="bz">tender preauricular lymphadenopathy</span> (+ subconjunctival hemorrhage).</li>
+          </ul>
+        </li>
+        <li><b>Ophthalmia Neonatorum (First 28 days of life):</b>
+          <ul>
+            <li><b>Causes:</b> <b><i>N. gonorrhoeae</i></b> (Days 2–4; most dangerous!), <i>Chlamydia trachomatis</i> (TRIC — Days 5–14; most common), <i>Staph. aureus</i>, <i>HSV-2</i>. (<span class="trp">🚫 NOT caused by birth trauma or Adenovirus!</span>).</li>
+            <li><b>Prophylaxis:</b> Crede's <span class="bz">1% Silver Nitrate drops</span> or Povidone-iodine / Penicillin drops.</li>
+          </ul>
+        </li>
+        <li><span class="trp">🚫 NEVER Bandage (Patch) the Eye in Mucopurulent / Purulent Conjunctivitis!</span> (Traps pus/heat $\rightarrow$ corneal ulceration).</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>2.2 Trachoma (Chlamydia trachomatis A–C) ★★★★</h3>
+      <div class="mech">🔬 Obligate intracellular bacteria $\rightarrow$ <span class="bz">H.P. intracytoplasmic inclusion bodies</span> $\rightarrow$ chronic upper tarsal inflammation $\rightarrow$ subepithelial fibrosis &amp; cicatrization.</div>
+      <ul>
+        <li><b>Active Infectious Signs (Contagious ONLY at this stage!):</b>
+          <ul>
+            <li>Upper tarsal <b>expressible follicles &amp; papillae</b>.</li>
+            <li>Superior limbal follicles (<span class="bz">Herbert's Rosettes</span>).</li>
+            <li><b>Active Pannus:</b> Vessels + infiltrate in <b>upper 1/3 of cornea</b> lying <span class="bz">between Bowman's membrane &amp; Epithelium</span>.</li>
+          </ul>
+        </li>
+        <li><b>Cicatricial (Healed) Pathognomonic Signs:</b>
+          <ul>
+            <li><span class="bz">Arlt's Line:</span> Horizontal fibrous scar in <b>upper palpebral conjunctiva</b>.</li>
+            <li><span class="bz">Herbert's Pits:</span> Depressed pits at superior limbus (healed rosettes).</li>
+            <li><b>Post-trachomatous concretions</b> (calcified debris in Henle's glands).</li>
+          </ul>
+        </li>
+        <li><b>WHO Classification of Trachoma (<span class="bz">FISTO</span>):</b>
+          <ol>
+            <li><b>TF:</b> Follicular ($\ge$5 follicles &gt;0.5 mm on upper tarsus).</li>
+            <li><b>TI:</b> Intense inflammatory thickening obscuring &gt;50% of tarsal vessels.</li>
+            <li><b>TS:</b> Trachomatous Scarring (Arlt's line).</li>
+            <li><b>TT:</b> Trachomatous Trichiasis ($\ge$1 lash rubbing cornea).</li>
+            <li><b>CO:</b> Corneal Opacity (<span class="bz">#1 cause of vision loss/blindness in Trachoma!</span>).</li>
+          </ol>
+          <span class="trp">🚫 Trap: "Pannus" and "Trantas spots" are NOT in the WHO FISTO classification!</span>
+        </li>
+        <li><b>Complications (Corneal Damage Mechanisms):</b> Upper lid <b>Trichiasis (#1 cause!)</b>, <b>Cicatricial Entropion</b>, <b>Xerosis</b> (goblet/lacrimal duct destruction), Symblepharon, Lagophthalmos/exposure, and Upper Corneal Ulcer.</li>
+        <li><b>Rx:</b> <b>Medical is effective!</b> Oral <b>Azithromycin</b> (single dose) or Topical Tetracycline 1% ointment + Surgery for TT.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>2.3 Allergic Conjunctivitis: VKC vs. Phlyctenular vs. GPC ★★★★★</h3>
+  <table>
+    <tr>
+      <th>Feature</th>
+      <th>Vernal Keratoconjunctivitis (Spring Catarrh / VKC)</th>
+      <th>Phlyctenular Keratoconjunctivitis</th>
+      <th>Giant Papillary (GPC)</th>
+    </tr>
+    <tr>
+      <td><b>Mechanism &amp; Cells</b></td>
+      <td>Exogenous Type I (IgE) &amp; IV allergy; rich in <span class="bz">Eosinophils</span>.</td>
+      <td>Delayed Type IV allergy to <span class="bz">Endogenous antigen</span> (<b>Staph</b> protein or <b>TB</b> tuberculoprotein).</td>
+      <td>Mechanical irritation from <b>Contact Lens</b>, prosthesis, or sutures.</td>
+    </tr>
+    <tr>
+      <td><b>Profile &amp; Symptoms</b></td>
+      <td>Young boys (5–15y), bilateral, recurrent in <b>hot summer weather</b>.<br>Hallmark: <span class="bz">Intense itching</span> + thick <span class="bz">white ropy (mucoid) discharge</span> (<span class="trp">🚫 NOT mucopurulent!</span>).</td>
+      <td>Malnourished children; irritation, severe photophobia &amp; blepharospasm if corneal.<br>(<i>Differs from Episcleritis: Episcleritis is <b>tender &amp; flat</b></i>).</td>
+      <td>Contact lens wearer with redness, FB sensation, <b>VA 6/6, and –ve Fluorescein</b>.</td>
+    </tr>
+    <tr>
+      <td><b>Pathognomonic Signs</b></td>
+      <td>
+        1. <b>Palpebral:</b> Flat-topped polygonal <span class="bz">Cobblestone giant papillae</span> on upper tarsus.<br>
+        2. <b>Bulbar (Limbal):</b> Mucoid limbal nodules + chalky-white <span class="bz">Horner-Trantas dots</span> (<i>disappear with medical Rx!</i>).
+      </td>
+      <td>
+        1. Pinkish-white limbal nodule.<br>
+        2. <span class="bz">Fascicular Corneal Ulcer:</span> Creeps radially toward center dragging a leash of blood vessels.
+      </td>
+      <td>Upper tarsal giant papillae (no Trantas dots, non-seasonal).</td>
+    </tr>
+    <tr>
+      <td><b>Complications</b></td>
+      <td>
+        • <b>Disease:</b> Sterile oval <span class="bz">Shield ulcer</span>, <span class="bz">Keratoconus</span> (from chronic rubbing), Pseudogerontoxon.<br>
+        • <b>Chronic Steroid Drops:</b> <span class="bz">Posterior Subcapsular Cataract (PSC)</span> &amp; <span class="bz">Steroid-induced Glaucoma</span>! (<span class="trp">🚫 No pseudomembrane!</span>).
+      </td>
+      <td>Superficial radial vascularized corneal scar.</td>
+      <td>Contact lens intolerance, mild ptosis.</td>
+    </tr>
+    <tr>
+      <td><b>Treatment</b></td>
+      <td>Cold compresses + <b>Mast-cell stabilizers</b> (Cromolyn) + Antihistamines + Artificial tears + Short pulse <b>Topical Steroids</b> or <b>Cyclosporine/Tacrolimus</b>. (<span class="trp">🚫 Never Antivirals!</span>).</td>
+      <td><span class="bz">Topical Corticosteroids</span> (<b>ONLY corneal ulcer where steroids are indicated!</b>) + Atropine + Treat TB/Staph.</td>
+      <td>Stop contact lens wear + Mast-cell stabilizers.</td>
+    </tr>
+  </table>
+
+  <div class="g2">
+    <div>
+      <h3>2.4 Degenerations (Pterygium) &amp; Symblepharon ★★★★</h3>
+      <ul>
+        <li><b>Pinguecula:</b> Yellowish perilimbal nodule; <span class="bz">Elastoid hyaline degeneration</span> (<span class="trp">🚫 NOT fatty!</span>).</li>
+        <li><b>Pterygium:</b> Triangular degenerative fibrovascular encroachment of bulbar conjunctiva onto cornea (nasal &gt; temporal).
+          <ul>
+            <li><b>Etiology:</b> Chronic <span class="bz">Ultraviolet (UV) radiation</span>, hot/dry/dusty climate $\rightarrow$ elastotic degeneration destroying Bowman's membrane. (<span class="trp">🚫 NOT a tumor, NOT viral, NOT immunocompromised!</span>).</li>
+            <li><b>Effects:</b> Cosmetic, <b>With-the-rule / Irregular Astigmatism</b>, Visual loss (if crosses pupil), <b>Diplopia</b> (restricts medial rectus).</li>
+            <li><b>Rx:</b> Surgical excision + <b>Conjunctival Autograft</b>. <b>Prevent recurrence with:</b> Mitomycin-C / 5-FU, Beta-irradiation, Topical Steroids (<span class="trp">🚫 Topical antibiotics do NOT prevent recurrence!</span>).</li>
+          </ul>
+        </li>
+        <li><b>True Pterygium vs. Pseudopterygium:</b>
+          <ul>
+            <li><b>Pterygium:</b> Degenerative, horizontal (3/9 o'clock), progressive, <b>Probe CANNOT pass</b> under neck.</li>
+            <li><b>Pseudopterygium:</b> Inflammatory fold adherent to marginal ulcer/burn, any meridian, stationary, <span class="bz">Probe CAN pass underneath neck</span>!</li>
+          </ul>
+        </li>
+        <li><b>Symblepharon:</b> Adhesion of palpebral to bulbar conjunctiva (Alkali burns, Diphtheria, Trachoma, Post-pterygium excision). <b>Complications:</b> <span class="bz">Lagophthalmos</span>, <span class="bz">Binocular Diplopia</span> (1 month post-pterygium surgery!), Dry eye, Entropion.</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>2.5 Dry Eye (Xerosis), Bitot's Spot &amp; Keratomalacia ★★★★</h3>
+      <ul>
+        <li><b>Etiology of Xerosis (4):</b>
+          <ol>
+            <li><b>Lacrimal Hyposecretion:</b> Congenital alacrima, Senile atrophy, <span class="bz">Sjögren's Syndrome</span> (Autoimmune: Dry eye/Xerophthalmia + Dry mouth + Rheumatoid arthritis).</li>
+            <li><b>Cicatricial / Mucin Deficiency:</b> Trachoma, Chemical burns, Diphtheria, Pemphigoid.</li>
+            <li><b>Exposure:</b> Lagophthalmos (CN VII palsy), Severe Proptosis, Ectropion.</li>
+            <li><b>Nutritional:</b> <span class="bz">Vitamin A Deficiency</span>.</li>
+          </ol>
+        </li>
+        <li><b>Vitamin A Deficiency Spectrum (WHO):</b>
+          <ul>
+            <li><b>XN:</b> <b>Night Blindness (Nyctalopia)</b> — #1 earliest symptom (rod rhodopsin deficiency).</li>
+            <li><b>X1B (<span class="bz">Bitot's Spot</span>):</b> Silvery-white foamy triangular keratinized plaque on temporal bulbar conjunctiva (+ <i>C. xerosis</i> gas).</li>
+            <li><b>X3B (<span class="bz">Keratomalacia</span>):</b> Acute bilateral painless full-thickness liquefactive corneal melting in marasmic children (triggered by Measles) $\rightarrow$ perforation, Anterior Staphyloma, Phthisis bulbi. (<b>Corneal involvement is the cause of blindness in Vit A def!</b>).</li>
+          </ul>
+        </li>
+        <li><b>Diagnosis of Dry Eye:</b> <span class="bz">Schirmer's Test</span> (&lt;5 mm in 5 min = severe dry eye), <b>TBUT</b> (&lt;10 sec), <b>Rose Bengal</b> (stains dead cells).</li>
+        <li><b>Rx:</b> Mild = <span class="bz">Topical Lubricants (Artificial tears)</span> + Punctal plugs | Vit A def = Urgent Systemic <b>Vitamin A (200,000 IU Days 1, 2, 14)</b> + Protein diet + Atropine/Antibiotics.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 3 ==================== -->
+<div id="ch3" class="sec">
+  <div class="sec-hdr"><span>3. THE CORNEA (KERATITIS, KERATOCONUS &amp; SURGERY)</span><span>★★★★★</span></div>
+
+  <div class="g2">
+    <div>
+      <h3>3.1 Applied Corneal Anatomy &amp; Physiology</h3>
+      <ul>
+        <li><b>Refractive Power:</b> ~43 D = <span class="bz">2/3 of total eye power</span>. Anterior radius = <b>8.0 mm</b> (increasing radius to 8.2 mm flattens cornea $\rightarrow$ causes <b>Hypermetropia</b>).</li>
+        <li><b>5 Layers (Ant $\rightarrow$ Post):</b>
+          <ol>
+            <li><b>Epithelium:</b> <span class="bz">Non-keratinized stratified squamous</span> (regenerates without scar).</li>
+            <li><b>Bowman's Membrane:</b> Acellular collagen; <b>never regenerates</b> (scars).</li>
+            <li><b>Substantia Propria (Stroma):</b> Forms <span class="bz">90% of thickness</span>; regular collagen lattice (heals with irregular fibers $\rightarrow$ opacity).</li>
+            <li><b>Descemet's Membrane:</b> Tough elastic membrane; <span class="bz">resistant to destruction &amp; CAN regenerate</span> (herniates as <b>Descemetocele</b>).</li>
+            <li><b>Endothelium:</b> Single layer with active <b>Na+/K+ pump</b>; examined by <span class="bz">Specular Microscope</span>. Injury $\rightarrow$ immediate <b>Corneal Edema</b> (increased thickness, cloudy, bullae, vascularization; <span class="trp">🚫 does NOT increase corneal diameter in adults!</span>).</li>
+          </ol>
+        </li>
+        <li><b>Transparency Factors:</b> Regular stromal collagen lattice, Avascular/no lymphatics, Unmyelinated nerves, Endothelial pump, Normal IOP.</li>
+        <li><b>3 Nutrition Sources:</b> <b>Air (O2)</b>, <b>Aqueous humor (Glucose)</b>, <b>Perilimbal capillaries</b>. (<span class="trp">🚫 NOT Vitreous &amp; NOT Anterior ciliary arteries!</span>).</li>
+        <li><b>Nerves &amp; Reflex:</b> Sensory = <b>CN V1</b>. <b>Corneal Touch Reflex:</b> <span class="bz">CN V (afferent) + CN VII (efferent)</span>.</li>
+        <li><b>Metrics:</b> Thickness = <span class="bz">Pachymetry</span> | Power/Shape = <b>Keratometry &amp; Topography</b> | Diameter = <b>Caliper &amp; Ruler</b>.</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>3.2 Bacterial Corneal Ulcers &amp; Hypopyon Ulcer ★★★★★</h3>
+      <div class="mech">🔬 <b>4 Bacteria Invading INTACT Epithelium:</b> <span class="bz">N. gonorrhoeae</span>, <span class="bz">C. diphtheriae</span>, <i>N. meningitidis</i>, <i>Haemophilus/Listeria</i>. (<span class="trp">🚫 Fungi CANNOT invade intact epithelium!</span>).</div>
+      <ul>
+        <li><b>Symptoms:</b> <b>Pain (earliest!)</b>, Photophobia, Blepharospasm, Watery tearing, Decreased vision (<span class="trp">🚫 NOT mucopurulent discharge!</span>).</li>
+        <li><b>Sure Diagnostic Sign:</b> <span class="bz">+ve Fluorescein Stain (turns GREEN)</span>.</li>
+        <li><b>Hypopyon Facts:</b> Pus (leukocytes + fibrin) in AC caused by bacterial toxin diffusion $\rightarrow$ <span class="bz">STERILE (contains NO bacteria!)</span> &amp; absorbs with therapy.</li>
+        <li><b>Typical Hypopyon Ulcer (Ulcus Serpens):</b> Caused by <span class="bz">Streptococcus pneumoniae (Pneumococcus — #1!)</span> (source = <b>Chronic Dacryocystitis</b>!). Central disc ulcer + <b>coagulated pyramidal hypopyon</b> + early perforation (<i>Descemetocele is uncommon with Pneumococcus!</i>).</li>
+        <li><b>Contact Lens Ulcer (#1):</b> <span class="bz">Pseudomonas aeruginosa</span> (fulminant melting).</li>
+        <li><b>Moment of Perforation:</b> <span class="bz">Sudden cessation of pain</span> + aqueous gush + flat AC.</li>
+        <li><b>Complications:</b>
+          <ul>
+            <li><i>Non-perforating:</i> Toxic iridocyclitis, Secondary glaucoma, Descemetocele, Scars (<b>Nebula</b> affects vision/glare more if central vs <b>Dense Leucoma</b> blocks light).</li>
+            <li><i>Perforating:</i> <span class="bz">Leucoma Adherent</span> (iris incarcerated in dense scar), <b>Peripheral Anterior Synechiae</b> (from small peripheral perforation), <b>Corneal Fistula</b> (<span class="bz">+ve Seidel test</span>), Anterior polar cataract, Anterior staphyloma, Endophthalmitis. (<span class="trp">🚫 Vitreous hemorrhage is NOT a typical complication!</span>).</li>
+          </ul>
+        </li>
+        <li><b>Rx:</b> Scrape for Gram/Culture + Intensive hourly Fortified Antibiotics + <span class="bz">Atropine 1% Cycloplegic (Drug ALWAYS indicated in any ulcer!)</span> + Vit A/C. (<span class="trp">🚫 NEVER give Topical Steroids $\rightarrow$ Perforation!</span>).</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>3.3 Specific Infectious, Neurotrophic &amp; Exposure Keratitis ★★★★★</h3>
+  <table>
+    <tr>
+      <th>Type</th>
+      <th>Etiology &amp; Trigger</th>
+      <th>Pathognomonic Signs &amp; Pain Level</th>
+      <th>Treatment &amp; Exam Traps</th>
+    </tr>
+    <tr>
+      <td><b>Herpes Simplex Keratitis (HSK)</b><br>(#1 Viral Keratitis)</td>
+      <td><b>HSV-1</b> (dormant in <b>Trigeminal ganglion</b>). Unilateral, recurrent.</td>
+      <td>
+        • <span class="bz">Dendritic Ulcer</span> (branching with <b>terminal bulbs</b>).<br>
+        • <b>Double Staining:</b> Floor = Fluorescein (green); Margins = <b>Rose Bengal</b> (red).<br>
+        • <span class="bz">Lost Corneal Sensation (Hypoesthesia)</span>!<br>
+        • <b>Geographic Ulcer:</b> Caused by steroid misuse.<br>
+        • <b>Disciform Keratitis:</b> Immune stromal edema + KPs (<span class="trp">🚫 SPK is NOT a recurrent HSK feature!</span>).
+      </td>
+      <td>
+        • <b>Dendritic Rx:</b> <span class="bz">Acyclovir 3% ointment</span> + Atropine.<br>
+        • <span class="trp">🚫 Steroids STRICTLY CONTRAINDICATED in Dendritic ulcer!</span><br>
+        • <b>Exception:</b> Topical steroids ARE indicated in <span class="bz">Disciform / Herpetic Interstitial Keratitis</span>!
+      </td>
+    </tr>
+    <tr>
+      <td><b>Herpes Zoster Ophthalmicus (HZO)</b></td>
+      <td><b>VZV</b> in <b>Gasserian ganglion</b> (CN V1). Strictly unilateral, painful periocular vesicles.</td>
+      <td><span class="bz">Hutchinson's Sign</span> (tip of nose vesicles = nasociliary nerve) $\rightarrow$ pseudodendrites, neuroparalytic ulcer, scleritis, uveitis.</td>
+      <td>Oral Acyclovir (800 mg 5x/d) + Topical Steroids (for uveitis/scleritis).</td>
+    </tr>
+    <tr>
+      <td><b>Fungal (Mycotic) Ulcer</b></td>
+      <td><b>Vegetative / Plant leaf trauma</b> (<i>Aspergillus, Candida</i>).</td>
+      <td>Feathery hyphal margins + <span class="bz">Satellite lesions</span> + thick immobile <b>infected hypopyon</b> (symptoms milder than signs).</td>
+      <td>Topical <b>Natamycin 5%</b> / Amphotericin B + Atropine (<span class="trp">🚫 No steroids!</span>).</td>
+    </tr>
+    <tr>
+      <td><b>Acanthamoeba Keratitis</b></td>
+      <td><b>Contact lens</b> + tap water / swimming.</td>
+      <td><span class="bz">Most painful ulcer (pain &gt;&gt; signs!)</span> + <span class="bz">Ring-shaped stromal infiltrate</span>.</td>
+      <td>Topical <b>PHMB (Biguanide) + Propamidine</b>.</td>
+    </tr>
+    <tr>
+      <td><b>Lagophthalmic (Exposure) Ulcer</b></td>
+      <td><b>7th Nerve (Facial) Palsy</b>, Proptosis, Symblepharon, Ectropion (<span class="trp">🚫 Never CN III!</span>).</td>
+      <td>Inability to close lids $\rightarrow$ ulcer in <span class="bz">Lower 1/3 of cornea</span>. <b>Painful</b> (intact CN V sensation).</td>
+      <td>Lubricants, night taping, and <span class="bz">Lateral Tarsorrhaphy</span>.</td>
+    </tr>
+    <tr>
+      <td><b>Neuroparalytic Ulcer</b></td>
+      <td><b>5th Nerve (Trigeminal) Lesion</b> (HZO, Gasserian lesion).</td>
+      <td>Central epithelial sloughing. <span class="bz">Least painful ulcer (Completely Painless / Anesthetic!)</span>.</td>
+      <td>Artificial tears, antibiotic ointment, and <span class="bz">Tarsorrhaphy (Essential Rx!)</span>.</td>
+    </tr>
+  </table>
+  <p style="font-size:11.5px; margin-top:4px;"><b>*Quick Pearls:</b> <b>Photophthalmia</b> (UV/welding burn to corneal epithelium) $\rightarrow$ Rx: <b>Patching + reassurance</b>. | <b>Band Keratopathy</b> = <b>Calcium salts</b>. | <b>Mooren's Ulcer</b> = Painful <b>autoimmune</b> peripheral non-infective ulcer. | <b>Central Dense Leucoma (&gt;5 mm) Rx:</b> <span class="bz">Penetrating Keratoplasty (PKP)</span>.</p>
+
+  <h3>3.4 Keratoconus (Conical Cornea) ★★★★★</h3>
+  <div class="g2">
+    <div>
+      <ul>
+        <li><b>Definition:</b> Bilateral non-inflammatory central/paracentral <b>corneal thinning &amp; conical ectasia</b> starting at puberty $\rightarrow$ causes <b>High Myopia &amp; Irregular Astigmatism</b> (<span class="trp">🚫 Never Hypermetropia!</span>).</li>
+        <li><b>7 Classic Signs:</b>
+          <ol>
+            <li>Ophthalmoscopy: <span class="bz">"Oil-droplet" red reflex</span>.</li>
+            <li>Retinoscopy: <span class="bz">Scissoring red reflex</span>.</li>
+            <li>Slit-lamp: Central thinning, <span class="bz">Vogt's striae</span> (vertical lines), &amp; <span class="bz">Fleischer's ring</span> (epithelial <b>Iron</b> deposit at cone base).</li>
+            <li>Downgaze: <span class="bz">Munson's sign</span> (V-shaped lower lid bulge).</li>
+            <li><b>Acute Hydrops:</b> Sudden corneal edema from <b>rupture of Descemet's membrane</b> (<span class="trp">🚫 Hutchinson's sign is HZO, NOT keratoconus!</span>).</li>
+          </ol>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li><b>Gold Standard Investigation:</b> <span class="bz">Corneal Topography (Pentacam)</span> (+ Pachymetry for thinning, Keratometry &gt;48 D).</li>
+        <li><b>Stepwise Management:</b>
+          <ol>
+            <li><b>Halt Progression:</b> <b>Corneal Collagen Cross-Linking (CXL)</b> (Riboflavin + UV-A).</li>
+            <li><b>Optical Correction:</b> Early = Glasses $\rightarrow$ Moderate = <span class="bz">Rigid Gas Permeable (Hard) Contact Lenses</span> (<span class="trp">🚫 Advanced keratoconus is LEAST corrected by Spectacles!</span>).</li>
+            <li><b>Surgical:</b> <b>Intracorneal Ring Segments (ICRS)</b> $\rightarrow$ Advanced scarring = <span class="bz">Penetrating Keratoplasty (PKP) / DALK</span>.</li>
+            <li><span class="trp">🚫 LASIK is STRICTLY CONTRAINDICATED in Keratoconus!</span></li>
+          </ol>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 4 ==================== -->
+<div id="ch4" class="sec">
+  <div class="sec-hdr"><span>4. OPTICS &amp; ERRORS OF REFRACTION</span><span>★★★★★</span></div>
+
+  <div class="mech">
+    🔬 <b>Core Optics:</b> <b>Emmetropia</b> = parallel rays focus <b>on</b> retina at rest. | <b>Ametropia</b> = Myopia, Hyperopia, Astigmatism (<b>#1 cause of defective vision in school children!</b>). | <b>Primary Cause of Refractive Errors:</b> Change in <span class="bz">Axial Length</span>. | <b>Nodal Point:</b> Optical center just anterior to posterior lens capsule (<span class="bz">Rays passing through Nodal Point do NOT undergo refraction!</span>). | <b>Angle Alpha:</b> Angle between Optic &amp; Visual axes at nodal point (+5° normal; &gt;5° in Hyperopia; negative in High Myopia). | <b>Accommodation (CN III):</b> Max in <b>Childhood</b>; ciliary muscle contracts $\rightarrow$ lens becomes <b>thicker/more convex</b> (<span class="trp">🚫 NEVER thinner!</span>), AC shallows, pupil constricts.
+  </div>
+
+  <h3>4.1 Master Comparison: Myopia vs. Hypermetropia</h3>
+  <table>
+    <tr>
+      <th>Feature</th>
+      <th>Myopia (Nearsightedness)</th>
+      <th>Hypermetropia / Hyperopia (Farsightedness)</th>
+    </tr>
+    <tr>
+      <td><b>Focus &amp; Etiology</b></td>
+      <td>Parallel rays focus <b>IN FRONT OF retina</b>.<br>• <b>Axial (#1):</b> Long globe (&gt;24 mm).<br>• <b>Curvature:</b> Steep cornea (Keratoconus).<br>• <b>Index Myopia:</b> <span class="bz">Nuclear Cataract ("Second Sight")</span> &amp; <b>Hyperglycemia</b>. (<span class="trp">🚫 No "Facultative Myopia"!</span>).</td>
+      <td>Parallel rays focus <b>BEHIND retina</b>.<br>• <b>Axial (#1):</b> Short globe (&lt;24 mm).<br>• <b>Curvature:</b> Flat cornea.<br>• <b>Absence of Lens:</b> <span class="bz">Aphakia</span> (+10 to +12 D).<br>• Subtypes: <b>Latent</b> (needs Atropine) + <b>Manifest</b> (no Atropine = Facultative + Absolute).</td>
+    </tr>
+    <tr>
+      <td><b>Globe &amp; Fundus Signs</b></td>
+      <td>Large globe, <span class="bz">Deep Anterior Chamber</span>, steep cornea.<br>• <b>Progressive Myopia (does NOT stabilize at 18y!):</b> <span class="bz">Temporal Myopic Crescent</span>, Tigroid fundus, <span class="bz">Fuchs' macular spot</span>, Lattice degeneration (<span class="trp">🚫 NO Pseudopapillitis!</span>).</td>
+      <td>Small globe, flat cornea, <span class="bz">Shallow Anterior Chamber</span> (<span class="trp">🚫 Never deep AC!</span>), positive angle alpha.<br>• <b>Fundus:</b> <b>Pseudopapillitis</b> (small crowded hyperemic disc).</td>
+    </tr>
+    <tr>
+      <td><b>Complications (High-Yield!)</b></td>
+      <td>
+        1. <span class="bz">Rhegmatogenous Retinal Detachment</span>.<br>
+        2. <span class="bz">Posterior Staphyloma</span> (<b>ONLY staphyloma with normal IOP!</b>).<br>
+        3. <b>Macular Degeneration / Hemorrhage (Fuchs' spot)</b>.<br>
+        4. Complicated cataract, POAG, Vitreous floaters, &amp; <b>Exophoria / Exotropia</b>.
+      </td>
+      <td>
+        1. <span class="bz">Primary Acute Angle-Closure Glaucoma</span> (e.g., wearing +5.00 D glasses!).<br>
+        2. <span class="bz">Accommodative Convergent Squint (Esotropia)</span> in children.<br>
+        3. Accommodative asthenopia, recurrent styes/blepharitis, &amp; Amblyopia.
+      </td>
+    </tr>
+    <tr>
+      <td><b>Correction</b></td>
+      <td><span class="bz">Concave (Minus) spherical lenses</span>, Contact lenses, <b>LASIK</b>, or Radial Keratotomy.</td>
+      <td><span class="bz">Convex (Plus) spherical lenses</span>, Contact lenses, or Laser (<span class="trp">🚫 Never Concave lenses!</span>).</td>
+    </tr>
+  </table>
+
+  <h3>4.2 Astigmatism, Presbyopia, Anisometropia &amp; Aphakia</h3>
+  <div class="g2">
+    <div>
+      <ul>
+        <li><b>Astigmatism:</b> Parallel rays form two focal lines (no single point focus) due to unequal curvature across meridians.
+          <ul>
+            <li><b>Regular (Meridians 90° apart):</b> <i>With-the-rule</i> = Vertical meridian more curved (commonest).
+              <ul>
+                <li><b>Simple Regular</b> (1 emmetropic, 1 ametropic) $\rightarrow$ Rx: <span class="bz">Cylindrical Lenses</span>.</li>
+                <li><b>Compound Regular</b> (both myopic or both hyperopic, e.g., <span class="bz">+2.00 +2.00 x 180</span>) $\rightarrow$ Rx: <span class="bz">Sphero-Cylindrical Lenses</span>.</li>
+              </ul>
+            </li>
+            <li><b>Irregular:</b> Causes = <b>Keratoconus, Corneal scars/opacities, Pterygium</b>. Rx: <span class="bz">Rigid Contact Lenses</span> or Keratoplasty (<span class="trp">🚫 Cannot be corrected with glasses!</span>).</li>
+          </ul>
+        </li>
+        <li><b>Presbyopia:</b> Physiological age-related loss of accommodation (&gt;40y) due to lens sclerosis. Affected by: Age, Refractive error, Working distance (<span class="trp">🚫 Not found in children or aphakia; not sight-threatening!</span>).
+          <ul>
+            <li><b>Rx:</b> <b>Convex / Bifocal glasses</b>. (<i>Pearl: <b>Frequent change of presbyopic glasses</b> = early sign of <b>Open-Angle Glaucoma</b>!</i>).</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li><b>Anisometropia:</b> Significant refractive difference between both eyes $\rightarrow$ causes <b>Aniseikonia</b> &amp; <span class="bz">Unilateral Amblyopia</span>. Rx: <b>Contact Lenses</b> (<span class="trp">🚫 Not best corrected with glasses if &gt;3 D!</span>).</li>
+        <li><b>Aphakia:</b> Absence of lens $\rightarrow$ high hyperopia, deep AC, <span class="bz">Tremulous iris (Iridodonesis)</span>.
+          <ul>
+            <li><b>Rx of Choice:</b> <span class="bz">Posterior Chamber IOL (PCIOL) in the Capsular Bag</span> (or Contact lens / ACIOL).</li>
+            <li><span class="trp">🚫 TOP EXAM TRAP: Unilateral Aphakia CANNOT be corrected by Spectacles (Glasses)!</span> (+10 D glasses cause 25–30% image magnification $\rightarrow$ intractable <b>Binocular Diplopia</b>!).</li>
+          </ul>
+        </li>
+        <li><b>LASIK Contraindications:</b> <span class="bz">Age &lt;18y (e.g., 15 years old!)</span>, unstable refraction, thin cornea, or Keratoconus.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
